@@ -250,13 +250,7 @@ const { offerBanner } = config;
   if (closeBanner && offerBanner) {
     closeBanner.addEventListener('click', () => {
       offerBanner.style.display = 'none';
-      // Store in sessionStorage so it only stays closed during this browsing session
-      sessionStorage.setItem('offerBannerClosed', 'true');
+      // No storage - banner will reappear on page refresh
     });
-  }
-
-  // Check if banner was previously closed in this session
-  if (sessionStorage.getItem('offerBannerClosed') === 'true' && offerBanner) {
-    offerBanner.style.display = 'none';
   }
 </script>
