@@ -435,14 +435,9 @@ import OfferBanner from './OfferBanner.astro';
 </style>
 
 <script>
-  // Quote button handler
-  const quoteBtn = document.getElementById('quoteBtn');
-  if (quoteBtn) {
-    quoteBtn.addEventListener('click', () => {
-      const form = document.getElementById('mainQuoteForm');
-      if (form) form.scrollIntoView({ behavior: 'smooth' });
-    });
-  }
+  // Quote button handler - opens the quote modal
+  // Note: The actual modal opening is handled by QuoteModal.astro's global click listener
+  // which detects clicks on elements with id 'quoteBtn'
 
   // Mobile menu toggle
   const mobileToggle = document.querySelector('.mobile-menu-toggle');
