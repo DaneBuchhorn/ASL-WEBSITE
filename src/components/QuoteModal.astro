@@ -385,7 +385,9 @@
   const modal = document.getElementById('quoteModal');
   const modalOverlay = document.getElementById('modalOverlay');
   const modalClose = document.getElementById('modalClose');
-  const modalForm = document.getElementById('modalQuoteForm');
+  const modalForm = document.getElementById('modalQuoteForm') as HTMLFormElement;
+
+  console.log('QuoteModal initialized:', { modal: !!modal, modalForm: !!modalForm });
 
   // Function to open modal
   function openModal() {
@@ -457,6 +459,8 @@
   if (modalForm) {
     modalForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      console.log('QuoteModal: Form submission started');
 
       const submitBtn = document.getElementById('quoteSubmitBtn') as HTMLButtonElement;
 
