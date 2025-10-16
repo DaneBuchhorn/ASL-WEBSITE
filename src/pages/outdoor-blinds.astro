@@ -35,32 +35,14 @@ export const prerender = true;
     <!-- Quick Benefits -->
     <section class="quick-benefits">
       <div class="container">
-        <div class="benefits-grid">
-          <div class="benefit-item">
-            <div class="benefit-icon">✓</div>
-            <p>Patented suspension system removes installation gaps</p>
-          </div>
-          <div class="benefit-item">
-            <div class="benefit-icon">✓</div>
-            <p>Tailored to your exact measurements</p>
-          </div>
-          <div class="benefit-item">
-            <div class="benefit-icon">✓</div>
-            <p>Complimentary design consultation</p>
-          </div>
-          <div class="benefit-item">
-            <div class="benefit-icon">✓</div>
-            <p>Extensive range of fabrics and finishes</p>
-          </div>
-          <div class="benefit-item">
-            <div class="benefit-icon">✓</div>
-            <p>Expert installation by licensed professionals</p>
-          </div>
-          <div class="benefit-item">
-            <div class="benefit-icon">✓</div>
-            <p>Upfront pricing with no surprises</p>
-          </div>
-        </div>
+        <ul class="benefits-list">
+          <li>Patented suspension system removes installation gaps</li>
+          <li>Tailored to your exact measurements</li>
+          <li>Complimentary design consultation</li>
+          <li>Extensive range of fabrics and finishes</li>
+          <li>Expert installation by licensed professionals</li>
+          <li>Upfront pricing with no surprises</li>
+        </ul>
         <div class="trust-stat">
           <strong>Trusted by over 50,000 homeowners & businesses</strong>
         </div>
@@ -73,37 +55,45 @@ export const prerender = true;
         <h2>Solves the 5 common outdoor blind failures</h2>
         <p class="section-intro">Our engineering team identified the weaknesses in conventional outdoor blinds and designed an entirely new system from scratch. TruScreen addresses every problem that causes standard blinds to fail.</p>
 
-        <div class="problems-grid">
-          <div class="problem-card">
+        <div class="problems-list">
+          <div class="problem-item">
             <img src="/assets/icons/stack-svgrepo-com.svg" alt="Adjustability" class="problem-icon" />
-            <h3>Total system adjustability</h3>
-            <p>Every part can be fine-tuned during installation, ensuring flawless alignment and a professional finish regardless of your structure's quirks.</p>
+            <div class="problem-content">
+              <h3>Total system adjustability</h3>
+              <p>Every part can be fine-tuned during installation, ensuring flawless alignment and a professional finish regardless of your structure's quirks.</p>
+            </div>
           </div>
 
-          <div class="problem-card">
+          <div class="problem-item">
             <img src="/assets/icons/sparkles-outline-svgrepo-com.svg" alt="No Deflection" class="problem-icon" />
-            <h3>Reinforced bottom bar</h3>
-            <p>Our engineered bottom rail maintains its shape across wide spans, eliminating the drooping and warping common in standard blind systems.</p>
+            <div class="problem-content">
+              <h3>Reinforced bottom bar</h3>
+              <p>Our engineered bottom rail maintains its shape across wide spans, eliminating the drooping and warping common in standard blind systems.</p>
+            </div>
           </div>
 
-          <div class="problem-card">
+          <div class="problem-item">
             <img src="/assets/icons/wind-svgrepo-com.svg" alt="Top Bar" class="problem-icon" />
-            <h3>Premium head rail design</h3>
-            <p>Proprietary aluminium profiles resist warping and sagging. Unlike generic components used in budget blinds, ours are precision-engineered for strength.</p>
+            <div class="problem-content">
+              <h3>Premium head rail design</h3>
+              <p>Proprietary aluminium profiles resist warping and sagging. Unlike generic components used in budget blinds, ours are precision-engineered for strength.</p>
+            </div>
           </div>
 
-          <div class="problem-card">
+          <div class="problem-item">
             <img src="/assets/icons/smart-home-svgrepo-com.svg" alt="Performance" class="problem-icon" />
-            <h3>Wind-resilient construction</h3>
-            <p>Our shock-absorbing fabric system flexes with wind gusts and light impacts, then returns to position—safeguarding your investment from weather damage.</p>
+            <div class="problem-content">
+              <h3>Wind-resilient construction</h3>
+              <p>Our shock-absorbing fabric system flexes with wind gusts and light impacts, then returns to position—safeguarding your investment from weather damage.</p>
+            </div>
           </div>
+        </div>
 
-          <div class="problem-card highlight">
-            <h3>Zero-gap installation</h3>
-            <p class="large-text">Our exclusive feature that competitors simply can't replicate!</p>
-            <p>Nearly every patio or pergola is slightly out of square—sometimes by several millimetres. Traditional blinds leave visible gaps that installers fill with foam strips. TruScreen's adaptive side channels automatically compensate for structural irregularities, creating a seamless fit without makeshift solutions.</p>
-            <p class="emphasis">Why accept workarounds when you can have proper engineering?</p>
-          </div>
+        <div class="highlight-box">
+          <h3>Zero-gap installation</h3>
+          <p class="large-text">Our exclusive feature that competitors simply can't replicate!</p>
+          <p>Nearly every patio or pergola is slightly out of square—sometimes by several millimetres. Traditional blinds leave visible gaps that installers fill with foam strips. TruScreen's adaptive side channels automatically compensate for structural irregularities, creating a seamless fit without makeshift solutions.</p>
+          <p class="emphasis">Why accept workarounds when you can have proper engineering?</p>
         </div>
       </div>
     </section>
@@ -204,30 +194,24 @@ export const prerender = true;
         <h2>A complete system redesign</h2>
         <p class="section-intro">While other manufacturers have made incremental improvements to individual components, we started from scratch. TruScreen represents a fundamental reimagining of how outdoor blinds should work.</p>
 
-        <div class="advantages-grid">
-          <div class="advantage-card">
+        <div class="advantages-wrapper">
+          <div class="advantage-column">
             <h4>Custom aluminium profiles</h4>
             <p>We manufacture our own extrusions—head rails and bottom bars engineered specifically to prevent sagging and bending. Budget blinds use off-the-shelf generic profiles that compromise performance.</p>
-          </div>
 
-          <div class="advantage-card">
-            <h4>Seamless side installation</h4>
-            <p>Our patented suspension channels flex to match structures that aren't perfectly square—creating tight, professional edges without visible gap fillers or improvised fixes.</p>
-          </div>
-
-          <div class="advantage-card">
             <h4>Resilient fabric mounting</h4>
             <p>Unlike rigid systems, our suspension technology allows fabric movement during wind events and minor impacts—then automatically returns to proper position.</p>
-          </div>
 
-          <div class="advantage-card">
-            <h4>Anti-deflection engineering</h4>
-            <p>Our bottom rail design prevents warping across wide spans. The hidden fabric channel creates clean lines by concealing all attachment points and welds.</p>
-          </div>
-
-          <div class="advantage-card">
             <h4>Installation precision</h4>
             <p>Adjustment points throughout the system allow installers to achieve millimetre-perfect alignment—even when dealing with challenging architectural features.</p>
+          </div>
+
+          <div class="advantage-column">
+            <h4>Seamless side installation</h4>
+            <p>Our patented suspension channels flex to match structures that aren't perfectly square—creating tight, professional edges without visible gap fillers or improvised fixes.</p>
+
+            <h4>Anti-deflection engineering</h4>
+            <p>Our bottom rail design prevents warping across wide spans. The hidden fabric channel creates clean lines by concealing all attachment points and welds.</p>
           </div>
         </div>
       </div>
@@ -491,42 +475,31 @@ export const prerender = true;
     background: var(--white);
   }
 
-  .benefits-grid {
+  .benefits-list {
+    list-style: none;
+    padding: 0;
+    max-width: 800px;
+    margin: 0 auto 2rem;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem;
-    max-width: 900px;
-    margin: 0 auto 2rem;
-  }
-
-  .benefit-item {
-    display: flex;
-    align-items: center;
     gap: 0.75rem;
-    padding: 1rem;
-    background: var(--cream);
-    border-radius: var(--radius-sm);
   }
 
-  .benefit-icon {
-    width: 24px;
-    height: 24px;
-    background: var(--olive-green);
-    color: var(--white);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    flex-shrink: 0;
-    font-size: 0.875rem;
-  }
-
-  .benefit-item p {
-    font-size: 0.9375rem;
+  .benefits-list li {
+    position: relative;
+    padding-left: 2rem;
+    font-size: 1rem;
     color: var(--black);
-    font-weight: 500;
-    margin: 0;
+    line-height: 1.6;
+  }
+
+  .benefits-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--olive-green);
+    font-weight: 700;
+    font-size: 1.25rem;
   }
 
   .trust-stat {
@@ -536,6 +509,8 @@ export const prerender = true;
     color: var(--white);
     border-radius: var(--radius-md);
     font-size: 1.125rem;
+    max-width: 800px;
+    margin: 0 auto;
   }
 
   /* Why TruScreen */
@@ -562,71 +537,77 @@ export const prerender = true;
     line-height: 1.6;
   }
 
-  .problems-grid {
-    display: grid;
-    grid-template-columns: 1fr;
+  .problems-list {
+    max-width: 900px;
+    margin: 0 auto 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .problem-item {
+    display: flex;
     gap: 1.5rem;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .problem-card {
-    background: var(--white);
-    padding: 2rem 1.5rem;
-    border-radius: var(--radius-md);
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .problem-card.highlight {
-    background: var(--olive-green);
-    color: var(--white);
-    padding: 2.5rem 2rem;
-    text-align: left;
-  }
-
-  .problem-card.highlight h3,
-  .problem-card.highlight p {
-    color: var(--white);
-  }
-
-  .problem-card.highlight .large-text {
-    font-size: 1.125rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-  }
-
-  .problem-card.highlight .emphasis {
-    font-style: italic;
-    font-weight: 600;
-    margin-top: 1rem;
+    align-items: start;
   }
 
   .problem-icon {
     width: 48px;
     height: 48px;
-    margin: 0 auto 1rem;
-    display: block;
+    flex-shrink: 0;
     filter: brightness(0) saturate(100%) invert(29%) sepia(14%) saturate(1158%) hue-rotate(52deg) brightness(95%) contrast(89%);
   }
 
-  .problem-card h3 {
+  .problem-content h3 {
     font-size: 1.25rem;
     color: var(--olive-green);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     font-weight: 700;
   }
 
-  .problem-card p {
-    font-size: 0.9375rem;
+  .problem-content p {
+    font-size: 1rem;
     color: var(--black);
-    opacity: 0.85;
+    opacity: 0.9;
     line-height: 1.6;
-    margin-bottom: 0.75rem;
+    margin: 0;
   }
 
-  .problem-card p:last-child {
+  .highlight-box {
+    background: var(--olive-green);
+    color: var(--white);
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius-md);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .highlight-box h3 {
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .highlight-box p {
+    color: var(--white);
+    opacity: 1;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .highlight-box p:last-child {
     margin-bottom: 0;
+  }
+
+  .highlight-box .large-text {
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+
+  .highlight-box .emphasis {
+    font-style: italic;
+    font-weight: 600;
   }
 
   /* Feature Details */
@@ -850,39 +831,32 @@ export const prerender = true;
     font-weight: 700;
   }
 
-  .advantages-grid {
+  .advantages-wrapper {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 2rem;
     max-width: 1000px;
     margin: 2.5rem auto 0;
   }
 
-  .advantage-card {
-    background: var(--white);
-    padding: 1.75rem 1.5rem;
-    border-radius: var(--radius-md);
-    border-left: 4px solid var(--olive-green);
-    transition: transform 0.2s ease;
-  }
-
-  .advantage-card:active {
-    transform: translateX(4px);
-  }
-
-  .advantage-card h4 {
-    font-size: 1.125rem;
+  .advantage-column h4 {
+    font-size: 1.25rem;
     color: var(--olive-green);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    margin-top: 1.5rem;
     font-weight: 700;
   }
 
-  .advantage-card p {
-    font-size: 0.9375rem;
+  .advantage-column h4:first-child {
+    margin-top: 0;
+  }
+
+  .advantage-column p {
+    font-size: 1rem;
     color: var(--black);
-    opacity: 0.85;
-    line-height: 1.5;
-    margin: 0;
+    opacity: 0.9;
+    line-height: 1.6;
+    margin-bottom: 0;
   }
 
   /* Colour Options */
@@ -1038,13 +1012,9 @@ export const prerender = true;
       height: 500px;
     }
 
-    .benefits-grid {
+    .benefits-list {
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
-    }
-
-    .problems-grid {
-      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
     }
 
     .feature-detail {
@@ -1079,8 +1049,9 @@ export const prerender = true;
       text-align: left;
     }
 
-    .advantages-grid {
+    .advantages-wrapper {
       grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
     }
 
     .colour-swatches {
@@ -1107,11 +1078,7 @@ export const prerender = true;
       height: 600px;
     }
 
-    .benefits-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .advantages-grid {
+    .benefits-list {
       grid-template-columns: repeat(3, 1fr);
     }
 
@@ -1132,15 +1099,6 @@ export const prerender = true;
       grid-column: span 3;
     }
 
-    .problem-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-    }
-
-    .advantage-card:hover {
-      transform: translateX(8px);
-      background: var(--light-sage);
-    }
   }
 </style>
 
