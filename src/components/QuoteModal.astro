@@ -1,0 +1,434 @@
+---
+---
+
+<div class="quote-modal" id="quoteModal">
+  <div class="modal-overlay" id="modalOverlay"></div>
+  <div class="modal-content">
+    <button class="modal-close" id="modalClose" aria-label="Close modal">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <div class="modal-header">
+      <h2>Get Your Free Measure & Quote</h2>
+      <p>One of our specialists will contact you within 24 hours to discuss your project and arrange a free on-site measure.</p>
+    </div>
+
+    <form class="modal-form" id="modalQuoteForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="modal-name">Name *</label>
+          <input type="text" id="modal-name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="modal-phone">Phone *</label>
+          <input type="tel" id="modal-phone" name="phone" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="modal-email">Email *</label>
+          <input type="email" id="modal-email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="modal-suburb">Suburb *</label>
+          <input type="text" id="modal-suburb" name="suburb" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="modal-product">Product Interest *</label>
+        <select id="modal-product" name="product" required>
+          <option value="">Select a product</option>
+          <option value="artificial-lawn">Artificial Lawn</option>
+          <option value="roller-shutters">Roller Shutters</option>
+          <option value="outdoor-blinds">Outdoor Blinds</option>
+          <option value="plantation-shutters">Plantation Shutters</option>
+          <option value="multiple">Multiple Products</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="modal-message">Tell us about your project (optional)</label>
+        <textarea id="modal-message" name="message" rows="4"></textarea>
+      </div>
+
+      <button type="submit" class="modal-submit-btn">
+        Submit Request
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+    </form>
+  </div>
+</div>
+
+<style>
+  .quote-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .quote-modal.active {
+    display: flex;
+  }
+
+  .modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .modal-content {
+    position: relative;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.4s ease;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    color: var(--black);
+    z-index: 1;
+  }
+
+  .modal-close:hover {
+    background: var(--light-sage);
+    transform: rotate(90deg);
+  }
+
+  .modal-header {
+    padding: 2.5rem 2rem 1.5rem;
+    text-align: center;
+    background: linear-gradient(135deg, var(--light-sage) 0%, var(--cream) 100%);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+
+  .modal-header h2 {
+    font-size: 1.75rem;
+    color: var(--olive-green);
+    margin: 0 0 0.75rem 0;
+    font-weight: 700;
+  }
+
+  .modal-header p {
+    font-size: 0.9375rem;
+    color: var(--black);
+    margin: 0;
+    opacity: 0.9;
+    line-height: 1.5;
+  }
+
+  .modal-form {
+    padding: 2rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: 500px) {
+    .form-row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-group label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--black);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.875rem;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: var(--white);
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--olive-green);
+    box-shadow: 0 0 0 3px rgba(90, 110, 69, 0.1);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .modal-submit-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: var(--olive-green);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+  }
+
+  .modal-submit-btn:hover {
+    background: #465331;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(90, 110, 69, 0.3);
+  }
+
+  .modal-submit-btn:active {
+    transform: translateY(0);
+  }
+
+  .modal-submit-btn svg {
+    transition: transform 0.3s ease;
+  }
+
+  .modal-submit-btn:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 600px) {
+    .modal-content {
+      max-height: 95vh;
+      border-radius: var(--radius-md);
+    }
+
+    .modal-header {
+      padding: 2rem 1.5rem 1rem;
+    }
+
+    .modal-header h2 {
+      font-size: 1.5rem;
+    }
+
+    .modal-header p {
+      font-size: 0.875rem;
+    }
+
+    .modal-form {
+      padding: 1.5rem;
+    }
+
+    .modal-submit-btn {
+      font-size: 1rem;
+      padding: 0.875rem 1.5rem;
+    }
+  }
+
+  /* Prevent body scroll when modal is open */
+  body.modal-open {
+    overflow: hidden;
+  }
+</style>
+
+<script>
+  import { captureFormData, initializeSessionTracking } from '../utils/formTracking';
+
+  // Initialize tracking
+  initializeSessionTracking();
+
+  const modal = document.getElementById('quoteModal');
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalClose = document.getElementById('modalClose');
+  const modalForm = document.getElementById('modalQuoteForm');
+
+  // Function to open modal
+  function openModal() {
+    if (modal) {
+      modal.classList.add('active');
+      document.body.classList.add('modal-open');
+    }
+  }
+
+  // Function to close modal
+  function closeModal() {
+    if (modal) {
+      modal.classList.remove('active');
+      document.body.classList.remove('modal-open');
+    }
+  }
+
+  // All buttons that should trigger the modal
+  const triggerSelectors = [
+    '#quoteBtn',
+    '#floatingQuoteBtn',
+    '.btn-primary[href*="quote"]',
+    'button:contains("FREE MEASURE & QUOTE")',
+    'a[href="#quote"]'
+  ];
+
+  // Add click listeners to all quote buttons
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    const button = target.closest('button, a') as HTMLElement;
+
+    if (button) {
+      const id = button.id;
+      const text = button.textContent?.toUpperCase() || '';
+
+      // Check if this is a quote button
+      if (
+        id === 'quoteBtn' ||
+        id === 'floatingQuoteBtn' ||
+        text.includes('FREE MEASURE') ||
+        text.includes('GET A QUOTE') ||
+        text.includes('REQUEST') ||
+        button.classList.contains('quote-trigger')
+      ) {
+        e.preventDefault();
+        openModal();
+      }
+    }
+  });
+
+  // Close modal when clicking overlay
+  if (modalOverlay) {
+    modalOverlay.addEventListener('click', closeModal);
+  }
+
+  // Close modal when clicking close button
+  if (modalClose) {
+    modalClose.addEventListener('click', closeModal);
+  }
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal?.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+  // Handle form submission
+  if (modalForm) {
+    modalForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const submitBtn = modalForm.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const originalText = submitBtn?.textContent || '';
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'SUBMITTING...';
+      }
+
+      try {
+        const formData = new FormData(modalForm);
+        const leadData = {
+          name: formData.get('name') as string,
+          email: formData.get('email') as string,
+          phone: formData.get('phone') as string,
+          suburb: formData.get('suburb') as string,
+          product: formData.get('product') as string,
+          message: formData.get('message') as string || undefined,
+        };
+
+        const submission = captureFormData(leadData, 'modalQuoteForm', 'quote-modal-form');
+
+        const response = await fetch('/api/submit-lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(submission),
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'generate_lead', {
+              event_category: 'Form',
+              event_label: 'quote-modal',
+              value: 1
+            });
+          }
+
+          closeModal();
+          alert('Thank you! We\'ll contact you within 24 hours.');
+          window.location.href = '/thank-you';
+        } else {
+          throw new Error(result.message || 'Submission failed');
+        }
+      } catch (error) {
+        console.error('Form submission error:', error);
+        alert('There was an error submitting your form. Please try calling us directly at 0448 243 979.');
+
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
+      }
+    });
+  }
+</script>

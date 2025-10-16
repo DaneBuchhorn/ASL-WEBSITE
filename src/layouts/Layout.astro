@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import SEO from '../components/SEO.astro';
 import FloatingCTA from '../components/FloatingCTA.astro';
+import QuoteModal from '../components/QuoteModal.astro';
 
 interface Props {
   title: string;
@@ -73,5 +74,6 @@ const {
   <body>
     <slot />
     <FloatingCTA />
+    <QuoteModal />
   </body>
 </html>
