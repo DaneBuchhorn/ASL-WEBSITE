@@ -119,20 +119,6 @@
           <path d="M5 12h14M12 5l7 7-7 7"/>
         </svg>
       </button>
-
-      <button type="button" class="view-data-toggle-offer" id="viewDataToggleOffer">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
-        <span>View Captured Data Points</span>
-      </button>
-
-      <div class="captured-data-panel-offer" id="capturedDataPanelOffer">
-        <h3>Data Being Captured</h3>
-        <div class="data-content-offer" id="dataContentOffer">
-          <p class="data-loading">Click "View Captured Data Points" to see all tracking information...</p>
-        </div>
-      </div>
     </form>
   </div>
 </div>
@@ -420,65 +406,6 @@
     transform: translateX(4px);
   }
 
-  .view-data-toggle-offer {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.75rem;
-    background: transparent;
-    color: #f59e0b;
-    border: 2px dashed rgba(245, 158, 11, 0.3);
-    border-radius: 10px;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 1rem;
-  }
-
-  .view-data-toggle-offer:hover {
-    background: rgba(245, 158, 11, 0.05);
-    border-color: #f59e0b;
-  }
-
-  .view-data-toggle-offer svg {
-    transition: transform 0.3s ease;
-  }
-
-  .view-data-toggle-offer.active svg {
-    transform: rotate(90deg);
-  }
-
-  .captured-data-panel-offer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-    margin-top: 1rem;
-  }
-
-  .captured-data-panel-offer.active {
-    max-height: 600px;
-    overflow-y: auto;
-  }
-
-  .captured-data-panel-offer h3 {
-    font-size: 1rem;
-    color: #f59e0b;
-    margin: 0 0 1rem 0;
-    font-weight: 700;
-  }
-
-  .data-content-offer {
-    background: #fef3c7;
-    padding: 1rem;
-    border-radius: 10px;
-    font-size: 0.8125rem;
-    font-family: 'Monaco', 'Courier New', monospace;
-    border: 2px solid #fbbf24;
-  }
-
   @media (max-width: 640px) {
     .offer-modal-content {
       margin: 20px 0;
@@ -559,95 +486,6 @@
       closeModal();
     }
   });
-
-  // Handle data viewer toggle
-  const viewDataToggleOffer = document.getElementById('viewDataToggleOffer');
-  const capturedDataPanelOffer = document.getElementById('capturedDataPanelOffer');
-  const dataContentOffer = document.getElementById('dataContentOffer');
-
-  if (viewDataToggleOffer && capturedDataPanelOffer && dataContentOffer) {
-    viewDataToggleOffer.addEventListener('click', () => {
-      const isActive = capturedDataPanelOffer.classList.toggle('active');
-      viewDataToggleOffer.classList.toggle('active');
-
-      if (isActive) {
-        // Generate and display the captured data
-        const mockLeadData = {
-          name: 'Preview',
-          email: 'preview@example.com',
-          phone: '0400000000',
-          suburb: 'Preview Suburb',
-          product: 'Preview Product',
-          message: 'Preview message'
-        };
-
-        const trackingData = captureFormData(mockLeadData, 'offer-modal', 'Spring Special Offer');
-
-        dataContentOffer.innerHTML = `
-          <div class="data-section">
-            <div class="data-section-title">📍 Page & Source</div>
-            <div class="data-item"><span class="data-label">Source Page:</span><span class="data-value">${trackingData.tracking.sourcePage}</span></div>
-            <div class="data-item"><span class="data-label">Page Title:</span><span class="data-value">${trackingData.tracking.pageTitle}</span></div>
-            <div class="data-item"><span class="data-label">Referrer:</span><span class="data-value">${trackingData.tracking.referrer}</span></div>
-            <div class="data-item"><span class="data-label">Landing Page:</span><span class="data-value">${trackingData.tracking.landingPage || 'N/A'}</span></div>
-            <div class="data-item"><span class="data-label">Form ID:</span><span class="data-value">${trackingData.tracking.formId}</span></div>
-          </div>
-
-          <div class="data-section">
-            <div class="data-section-title">🕒 Time & Session</div>
-            <div class="data-item"><span class="data-label">Timestamp:</span><span class="data-value">${trackingData.tracking.submissionTimestamp}</span></div>
-            <div class="data-item"><span class="data-label">Date:</span><span class="data-value">${trackingData.tracking.submissionDate}</span></div>
-            <div class="data-item"><span class="data-label">Time:</span><span class="data-value">${trackingData.tracking.submissionTime}</span></div>
-            <div class="data-item"><span class="data-label">Day:</span><span class="data-value">${trackingData.tracking.submissionDayOfWeek}</span></div>
-            <div class="data-item"><span class="data-label">Timezone:</span><span class="data-value">${trackingData.tracking.timezone}</span></div>
-            <div class="data-item"><span class="data-label">Time on Page:</span><span class="data-value">${trackingData.tracking.timeOnPage}s</span></div>
-            ${trackingData.tracking.sessionDuration ? `<div class="data-item"><span class="data-label">Session Duration:</span><span class="data-value">${trackingData.tracking.sessionDuration}s</span></div>` : ''}
-          </div>
-
-          <div class="data-section">
-            <div class="data-section-title">💻 Device & Browser</div>
-            <div class="data-item"><span class="data-label">Device Type:</span><span class="data-value">${trackingData.tracking.deviceType}</span></div>
-            <div class="data-item"><span class="data-label">Operating System:</span><span class="data-value">${trackingData.tracking.operatingSystem}</span></div>
-            <div class="data-item"><span class="data-label">Browser:</span><span class="data-value">${trackingData.tracking.browser} ${trackingData.tracking.browserVersion}</span></div>
-            <div class="data-item"><span class="data-label">Screen Resolution:</span><span class="data-value">${trackingData.tracking.screenResolution}</span></div>
-            <div class="data-item"><span class="data-label">Viewport Size:</span><span class="data-value">${trackingData.tracking.viewportSize}</span></div>
-            <div class="data-item"><span class="data-label">Language:</span><span class="data-value">${trackingData.tracking.language}</span></div>
-          </div>
-
-          <div class="data-section">
-            <div class="data-section-title">📊 Behavior & Engagement</div>
-            <div class="data-item"><span class="data-label">Scroll Depth:</span><span class="data-value">${trackingData.tracking.scrollDepth}%</span></div>
-            ${trackingData.tracking.connectionType ? `<div class="data-item"><span class="data-label">Connection Type:</span><span class="data-value">${trackingData.tracking.connectionType}</span></div>` : ''}
-            ${trackingData.tracking.gaClientId ? `<div class="data-item"><span class="data-label">GA Client ID:</span><span class="data-value">${trackingData.tracking.gaClientId}</span></div>` : ''}
-          </div>
-
-          ${trackingData.tracking.utmSource || trackingData.tracking.gclid || trackingData.tracking.fbclid ? `
-          <div class="data-section">
-            <div class="data-section-title">📢 Marketing Attribution</div>
-            ${trackingData.tracking.utmSource ? `<div class="data-item"><span class="data-label">UTM Source:</span><span class="data-value">${trackingData.tracking.utmSource}</span></div>` : ''}
-            ${trackingData.tracking.utmMedium ? `<div class="data-item"><span class="data-label">UTM Medium:</span><span class="data-value">${trackingData.tracking.utmMedium}</span></div>` : ''}
-            ${trackingData.tracking.utmCampaign ? `<div class="data-item"><span class="data-label">UTM Campaign:</span><span class="data-value">${trackingData.tracking.utmCampaign}</span></div>` : ''}
-            ${trackingData.tracking.utmTerm ? `<div class="data-item"><span class="data-label">UTM Term:</span><span class="data-value">${trackingData.tracking.utmTerm}</span></div>` : ''}
-            ${trackingData.tracking.utmContent ? `<div class="data-item"><span class="data-label">UTM Content:</span><span class="data-value">${trackingData.tracking.utmContent}</span></div>` : ''}
-            ${trackingData.tracking.gclid ? `<div class="data-item"><span class="data-label">Google Click ID:</span><span class="data-value">${trackingData.tracking.gclid}</span></div>` : ''}
-            ${trackingData.tracking.fbclid ? `<div class="data-item"><span class="data-label">Facebook Click ID:</span><span class="data-value">${trackingData.tracking.fbclid}</span></div>` : ''}
-            ${trackingData.tracking.fbp ? `<div class="data-item"><span class="data-label">Facebook Pixel:</span><span class="data-value">${trackingData.tracking.fbp}</span></div>` : ''}
-          </div>
-          ` : ''}
-
-          <div class="data-section">
-            <div class="data-section-title">🎁 Offer Information</div>
-            <div class="data-item"><span class="data-label">Lead Source:</span><span class="data-value">Spring Special Offer</span></div>
-            <div class="data-item"><span class="data-label">Offer Code:</span><span class="data-value">SPRING30</span></div>
-          </div>
-        `;
-
-        viewDataToggleOffer.querySelector('span')!.textContent = 'Hide Captured Data';
-      } else {
-        viewDataToggleOffer.querySelector('span')!.textContent = 'View Captured Data Points';
-      }
-    });
-  }
 
   // Form submission
   form?.addEventListener('submit', async (e) => {
