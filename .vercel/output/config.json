@@ -22,14 +22,6 @@
 		{
 			"src": "^/api/submit-lead/?$",
 			"dest": "_render"
-		},
-		{
-			"src": "^/thank-you/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/$",
-			"dest": "_render"
 		}
 	]
 }
