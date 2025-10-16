@@ -99,22 +99,27 @@ export const prerender = true;
     <section class="technical-section">
       <div class="container">
         <h2>A Truly Unique Blind System</h2>
-        <div class="technical-grid">
-          <div class="tech-item">
-            <h4>Performance Under Pressure</h4>
-            <p>The specially designed bottom bar minimizes movement even at wide widths, while the split bottom bar caps secure the zip more effectively for reliable performance.</p>
+        <div class="technical-layout">
+          <div class="technical-image">
+            <img src="/assets/images/outdoor-blinds/Full Blind Render.png" alt="TruScreen Complete System" loading="lazy" />
           </div>
-          <div class="tech-item">
-            <h4>Self Adjusting Track</h4>
-            <p>The two separate channels allow for adjustable installation in any environment, accommodating structures that aren't perfectly level or square.</p>
-          </div>
-          <div class="tech-item">
-            <h4>Suspension System</h4>
-            <p>Optimized fabric polymer channels and tension polymer ensure optimal fabric tensions, providing the best solution for maintaining fabric stability at all times.</p>
-          </div>
-          <div class="tech-item">
-            <h4>Rubber Ring</h4>
-            <p>Reduces vibration from the motor and noise from the headbox, allowing for quiet operation and enhanced performance throughout the system's lifespan.</p>
+          <div class="technical-content">
+            <div class="tech-item">
+              <h4>Performance Under Pressure</h4>
+              <p>The specially designed bottom bar minimizes movement even at wide widths, while the split bottom bar caps secure the zip more effectively for reliable performance.</p>
+            </div>
+            <div class="tech-item">
+              <h4>Self Adjusting Track</h4>
+              <p>The two separate channels allow for adjustable installation in any environment, accommodating structures that aren't perfectly level or square.</p>
+            </div>
+            <div class="tech-item">
+              <h4>Suspension System</h4>
+              <p>Optimized fabric polymer channels and tension polymer ensure optimal fabric tensions, providing the best solution for maintaining fabric stability at all times.</p>
+            </div>
+            <div class="tech-item">
+              <h4>Rubber Ring</h4>
+              <p>Reduces vibration from the motor and noise from the headbox, allowing for quiet operation and enhanced performance throughout the system's lifespan.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -404,20 +409,40 @@ export const prerender = true;
   }
 
   .technical-section h2 {
-    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
     color: var(--olive-green);
     text-align: center;
     margin-bottom: 3rem;
     font-weight: 700;
-    letter-spacing: 2px;
   }
 
-  .technical-grid {
+  .technical-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .technical-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .technical-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15));
+  }
+
+  .technical-content {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
-    max-width: 1000px;
-    margin: 0 auto;
   }
 
   .tech-item h4 {
@@ -716,8 +741,13 @@ export const prerender = true;
       direction: ltr;
     }
 
-    .technical-grid {
-      grid-template-columns: repeat(2, 1fr);
+    .technical-layout {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .technical-content {
+      grid-template-columns: 1fr;
     }
 
     .features-list {
