@@ -491,21 +491,18 @@ export const prerender = true;
   .combined-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 3rem;
     max-width: 1200px;
     margin: 0 auto;
   }
 
   .info-box {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 2.5rem;
-    border-radius: var(--radius-lg);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    color: var(--white);
   }
 
   .info-box h2 {
     font-size: clamp(1.5rem, 4vw, 2rem);
-    color: var(--olive-green);
+    color: var(--white);
     margin-bottom: 1rem;
     font-weight: 700;
   }
@@ -513,14 +510,14 @@ export const prerender = true;
   .info-box p {
     font-size: 1.0625rem;
     line-height: 1.7;
-    color: var(--black);
+    color: rgba(255, 255, 255, 0.95);
   }
 
   .kangaroo-icon {
     width: 80px;
     height: 80px;
     margin-bottom: 1rem;
-    filter: brightness(0) saturate(100%) invert(29%) sepia(14%) saturate(1158%) hue-rotate(52deg) brightness(95%) contrast(89%);
+    filter: brightness(0) saturate(100%) invert(100%);
   }
 
   /* Colours */
