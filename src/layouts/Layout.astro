@@ -13,15 +13,22 @@ const { title, description = 'Transform your home with All Seasons Living. Exper
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Enhanced viewport for mobile optimization -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0" />
     <meta name="description" content={description} />
+
+    <!-- Performance: DNS prefetch -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png" />
     <title>{title} | All Seasons Living</title>
 
-    <!-- Google Fonts - DM Sans -->
+    <!-- Google Fonts - DM Sans - Optimized loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -32,6 +39,13 @@ const { title, description = 'Transform your home with All Seasons Living. Exper
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
+
+    <!-- Mobile optimization -->
+    <meta name="theme-color" content="#54653d" />
+    <meta name="format-detection" content="telephone=yes" />
+
+    <!-- Performance hints -->
+    <link rel="preload" as="image" href="/assets/images/general/Modern Home All Seasons Living.jpg" />
   </head>
   <body>
     <slot />

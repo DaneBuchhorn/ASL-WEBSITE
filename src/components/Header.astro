@@ -61,6 +61,7 @@ import OfferBanner from './OfferBanner.astro';
 </header>
 
 <style>
+  /* Mobile-First Approach - Base styles are for mobile */
   .header {
     position: sticky;
     top: 0;
@@ -84,19 +85,20 @@ import OfferBanner from './OfferBanner.astro';
     padding: 0;
   }
 
+  /* Mobile-first logo - smaller by default */
   .logo img {
-    height: 120px;
+    height: 60px;
     width: auto;
     display: block;
-    padding: 20px;
+    padding: 12px;
   }
 
+  /* Hide desktop actions on mobile */
   .header-actions {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
+    display: none;
   }
 
+  /* Mobile-first button phone */
   .btn-phone {
     display: flex;
     align-items: center;
@@ -108,6 +110,8 @@ import OfferBanner from './OfferBanner.astro';
     font-weight: 700;
     text-decoration: none;
     transition: all var(--transition-base);
+    min-height: 48px; /* Touch-friendly */
+    min-width: 48px;
   }
 
   .btn-phone:hover {
@@ -115,33 +119,60 @@ import OfferBanner from './OfferBanner.astro';
     color: var(--white);
   }
 
+  /* Burger menu - visible by default (mobile) */
   .mobile-menu-toggle {
-    display: none;
+    display: flex;
     flex-direction: column;
-    gap: 4px;
+    justify-content: center;
+    gap: 5px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 12px;
+    min-height: 48px; /* Touch-friendly */
+    min-width: 48px;
+    z-index: 1001;
   }
 
   .mobile-menu-toggle span {
-    width: 25px;
+    width: 28px;
     height: 3px;
     background: var(--black);
     border-radius: 2px;
-    transition: all var(--transition-base);
+    transition: all 0.3s ease;
   }
 
+  /* Burger animation when active */
+  .mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+  }
+
+  .mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  /* Mobile navigation - hidden by default */
   .nav {
     background: var(--white);
     border-top: 1px solid var(--gray-border);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .nav.active {
+    max-height: 100vh;
+    overflow-y: auto;
   }
 
   .nav-menu {
     display: flex;
-    justify-content: center;
-    gap: 3rem;
+    flex-direction: column;
+    gap: 0;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -149,73 +180,68 @@ import OfferBanner from './OfferBanner.astro';
 
   .nav-menu > li {
     position: relative;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
 
   .nav-menu > li > a {
     display: flex;
     align-items: center;
-    gap: 0.25rem;
+    justify-content: space-between;
+    gap: 0.5rem;
     padding: 1rem 1.5rem;
     color: var(--black);
     font-weight: 600;
     text-decoration: none;
     transition: all var(--transition-base);
-    border-radius: var(--radius-sm);
-    position: relative;
+    min-height: 48px; /* Touch-friendly */
+    font-size: 16px; /* Minimum readable size */
   }
 
-  .nav-menu > li > a:hover {
-    color: var(--olive-green);
+  .nav-menu > li > a:active {
     background: var(--light-sage);
   }
 
-  .nav-menu > li > a.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0.75rem;
-    left: 1.5rem;
-    right: 1.5rem;
-    height: 3px;
-    background: var(--olive-green);
-    border-radius: 2px;
+  .nav-menu > li > a.active {
+    color: var(--olive-green);
+    background: var(--cream);
   }
 
+  /* Mobile dropdown */
   .has-dropdown {
     position: relative;
   }
 
   .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--white);
-    box-shadow: var(--shadow-lg);
-    border-radius: var(--radius-sm);
+    position: static;
+    transform: none;
+    background: var(--cream);
+    box-shadow: none;
     list-style: none;
-    padding: 0.5rem 0;
-    min-width: 220px;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
     opacity: 0;
-    visibility: hidden;
-    transition: all var(--transition-base);
+    transition: all 0.3s ease;
   }
 
-  .has-dropdown:hover .dropdown-menu {
+  .has-dropdown.active .dropdown-menu {
+    max-height: 500px;
     opacity: 1;
-    visibility: visible;
+    padding: 0.5rem 0;
   }
 
   .dropdown-menu li a {
     display: block;
-    padding: 0.75rem 1.5rem;
+    padding: 0.875rem 1.5rem 0.875rem 2.5rem;
     color: var(--black);
     text-decoration: none;
     transition: background var(--transition-fast);
+    min-height: 48px; /* Touch-friendly */
+    font-size: 15px;
   }
 
-  .dropdown-menu li a:hover {
+  .dropdown-menu li a:active {
     background: var(--light-sage);
-    color: var(--olive-green);
   }
 
   .coming-soon {
@@ -228,28 +254,102 @@ import OfferBanner from './OfferBanner.astro';
     opacity: 0.7;
   }
 
-  /* Mobile Styles */
-  @media (max-width: 768px) {
+  /* Tablet Styles (768px - 1024px) */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .logo img {
+      height: 80px;
+      padding: 16px;
+    }
+
+    .nav-menu > li > a {
+      font-size: 15px;
+    }
+  }
+
+  /* Desktop Styles (1025px and up) - Original design */
+  @media (min-width: 1025px) {
+    .logo img {
+      height: 120px;
+      padding: 20px;
+    }
+
     .header-actions {
-      display: none;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
     }
 
     .mobile-menu-toggle {
-      display: flex;
+      display: none;
+    }
+
+    .nav {
+      max-height: none;
+      overflow: visible;
     }
 
     .nav-menu {
-      flex-direction: column;
-      gap: 0;
+      flex-direction: row;
+      justify-content: center;
+      gap: 3rem;
+    }
+
+    .nav-menu > li {
+      border-bottom: none;
+    }
+
+    .nav-menu > li > a {
+      border-radius: var(--radius-sm);
+      position: relative;
+    }
+
+    .nav-menu > li > a:hover {
+      color: var(--olive-green);
+      background: var(--light-sage);
+    }
+
+    .nav-menu > li > a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0.75rem;
+      left: 1.5rem;
+      right: 1.5rem;
+      height: 3px;
+      background: var(--olive-green);
+      border-radius: 2px;
     }
 
     .dropdown-menu {
-      position: static;
-      transform: none;
-      box-shadow: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--white);
+      box-shadow: var(--shadow-lg);
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 0;
+      min-width: 220px;
+      max-height: none;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .has-dropdown:hover .dropdown-menu {
       opacity: 1;
       visibility: visible;
-      padding-left: 1rem;
+    }
+
+    .has-dropdown.active .dropdown-menu {
+      max-height: none;
+    }
+
+    .dropdown-menu li a {
+      padding: 0.75rem 1.5rem;
+    }
+
+    .dropdown-menu li a:hover {
+      background: var(--light-sage);
+      color: var(--olive-green);
     }
   }
 </style>
@@ -259,25 +359,67 @@ import OfferBanner from './OfferBanner.astro';
   const quoteBtn = document.getElementById('quoteBtn');
   if (quoteBtn) {
     quoteBtn.addEventListener('click', () => {
-      // Will open modal - to be implemented
-      console.log('Open quote form modal');
+      const form = document.getElementById('mainQuoteForm');
+      if (form) form.scrollIntoView({ behavior: 'smooth' });
     });
   }
 
   // Mobile menu toggle
   const mobileToggle = document.querySelector('.mobile-menu-toggle');
-  const navMenu = document.querySelector('.nav-menu');
+  const nav = document.querySelector('.nav');
+  const body = document.body;
 
-  if (mobileToggle && navMenu) {
+  if (mobileToggle && nav) {
     mobileToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
+      const isActive = nav.classList.toggle('active');
       mobileToggle.classList.toggle('active');
+
+      // Prevent body scroll when menu is open on mobile
+      if (window.innerWidth < 1025) {
+        if (isActive) {
+          body.style.overflow = 'hidden';
+        } else {
+          body.style.overflow = '';
+        }
+      }
     });
   }
 
+  // Mobile dropdown toggle
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+  dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+      if (window.innerWidth < 1025) {
+        e.preventDefault();
+        const parent = toggle.closest('.has-dropdown');
+        parent.classList.toggle('active');
+      }
+    });
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (window.innerWidth < 1025 && nav && mobileToggle) {
+      if (!e.target.closest('.header') && nav.classList.contains('active')) {
+        nav.classList.remove('active');
+        mobileToggle.classList.remove('active');
+        body.style.overflow = '';
+      }
+    }
+  });
+
+  // Close mobile menu on window resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1025 && nav) {
+      nav.classList.remove('active');
+      if (mobileToggle) mobileToggle.classList.remove('active');
+      body.style.overflow = '';
+    }
+  });
+
   // Active page detection
   const currentPath = window.location.pathname;
-  const navLinks = document.querySelectorAll('.nav-menu > li > a');
+  const navLinks = document.querySelectorAll('.nav-menu > li > a:not(.dropdown-toggle)');
 
   navLinks.forEach(link => {
     const href = link.getAttribute('href');
