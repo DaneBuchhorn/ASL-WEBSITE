@@ -39,8 +39,11 @@
             id="offer-phone"
             name="phone"
             required
+            pattern="^(\+?61|0)[2-478]( ?\d){8}$"
+            title="Please enter a valid Australian phone number (e.g., 0400123456)"
             placeholder="0400 000 000"
           />
+          <span class="field-error" id="offer-phone-error"></span>
         </div>
       </div>
 
@@ -52,8 +55,11 @@
             id="offer-email"
             name="email"
             required
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+            title="Please enter a valid email address"
             placeholder="john@example.com"
           />
+          <span class="field-error" id="offer-email-error"></span>
         </div>
 
         <div class="offer-form-group">
@@ -343,6 +349,29 @@
     outline: none;
     border-color: #f59e0b;
     box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+  }
+
+  .offer-form-group input:invalid:not(:placeholder-shown),
+  .offer-form-group input.error {
+    border-color: #dc2626;
+  }
+
+  .offer-form-group input:invalid:not(:placeholder-shown):focus,
+  .offer-form-group input.error:focus {
+    border-color: #dc2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+  }
+
+  .field-error {
+    display: none;
+    color: #dc2626;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    font-weight: 500;
+  }
+
+  .field-error.active {
+    display: block;
   }
 
   .offer-form-group textarea {
