@@ -1,51 +1,67 @@
 ---
 import '../styles/global.css';
+import SEO from '../components/SEO.astro';
 
 interface Props {
   title: string;
   description?: string;
+  canonical?: string;
+  ogImage?: string;
+  noindex?: boolean;
 }
 
-const { title, description = 'Transform your home with All Seasons Living. Expert artificial lawn and roller shutter installations.' } = Astro.props;
+const {
+  title,
+  description = 'Transform your home with All Seasons Living. Expert artificial lawn and roller shutter installations.',
+  canonical,
+  ogImage,
+  noindex = false
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <!-- Enhanced viewport for mobile optimization -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0" />
-    <meta name="description" content={description} />
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonical}
+      ogImage={ogImage}
+      noindex={noindex}
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
 
     <!-- Performance: DNS prefetch -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <title>{title} | All Seasons Living</title>
-
-    <!-- Google Fonts - DM Sans - Optimized loading -->
+    <!-- Google Fonts - DM Sans - Optimized loading with font-display -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-
-    <!-- Mobile optimization -->
-    <meta name="theme-color" content="#54653d" />
-    <meta name="format-detection" content="telephone=yes" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    </noscript>
 
     <!-- Performance hints -->
-    <link rel="preload" as="image" href="/assets/images/general/Modern Home All Seasons Living.jpg" />
+    <link rel="preload" as="image" href="/assets/images/general/Modern Home All Seasons Living.jpg" fetchpriority="high" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CW5WNR8Z5Y"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CW5WNR8Z5Y');
+    </script>
   </head>
   <body>
     <slot />

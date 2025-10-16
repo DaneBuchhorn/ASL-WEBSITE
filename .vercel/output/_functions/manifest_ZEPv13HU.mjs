@@ -1,0 +1,102 @@
+import 'kleur/colors';
+import { p as decodeKey } from './chunks/astro/server_B9RIwROo.mjs';
+import 'clsx';
+import 'cookie';
+import { N as NOOP_MIDDLEWARE_FN } from './chunks/astro-designed-error-pages_pKyGBLkM.mjs';
+import 'es-module-lexer';
+
+function sanitizeParams(params) {
+  return Object.fromEntries(
+    Object.entries(params).map(([key, value]) => {
+      if (typeof value === "string") {
+        return [key, value.normalize().replace(/#/g, "%23").replace(/\?/g, "%3F")];
+      }
+      return [key, value];
+    })
+  );
+}
+function getParameter(part, params) {
+  if (part.spread) {
+    return params[part.content.slice(3)] || "";
+  }
+  if (part.dynamic) {
+    if (!params[part.content]) {
+      throw new TypeError(`Missing parameter: ${part.content}`);
+    }
+    return params[part.content];
+  }
+  return part.content.normalize().replace(/\?/g, "%3F").replace(/#/g, "%23").replace(/%5B/g, "[").replace(/%5D/g, "]");
+}
+function getSegment(segment, params) {
+  const segmentPath = segment.map((part) => getParameter(part, params)).join("");
+  return segmentPath ? "/" + segmentPath : "";
+}
+function getRouteGenerator(segments, addTrailingSlash) {
+  return (params) => {
+    const sanitizedParams = sanitizeParams(params);
+    let trailing = "";
+    if (addTrailingSlash === "always" && segments.length) {
+      trailing = "/";
+    }
+    const path = segments.map((segment) => getSegment(segment, sanitizedParams)).join("") + trailing;
+    return path || "/";
+  };
+}
+
+function deserializeRouteData(rawRouteData) {
+  return {
+    route: rawRouteData.route,
+    type: rawRouteData.type,
+    pattern: new RegExp(rawRouteData.pattern),
+    params: rawRouteData.params,
+    component: rawRouteData.component,
+    generate: getRouteGenerator(rawRouteData.segments, rawRouteData._meta.trailingSlash),
+    pathname: rawRouteData.pathname || void 0,
+    segments: rawRouteData.segments,
+    prerender: rawRouteData.prerender,
+    redirect: rawRouteData.redirect,
+    redirectRoute: rawRouteData.redirectRoute ? deserializeRouteData(rawRouteData.redirectRoute) : void 0,
+    fallbackRoutes: rawRouteData.fallbackRoutes.map((fallback) => {
+      return deserializeRouteData(fallback);
+    }),
+    isIndex: rawRouteData.isIndex,
+    origin: rawRouteData.origin
+  };
+}
+
+function deserializeManifest(serializedManifest) {
+  const routes = [];
+  for (const serializedRoute of serializedManifest.routes) {
+    routes.push({
+      ...serializedRoute,
+      routeData: deserializeRouteData(serializedRoute.routeData)
+    });
+    const route = serializedRoute;
+    route.routeData = deserializeRouteData(serializedRoute.routeData);
+  }
+  const assets = new Set(serializedManifest.assets);
+  const componentMetadata = new Map(serializedManifest.componentMetadata);
+  const inlinedScripts = new Map(serializedManifest.inlinedScripts);
+  const clientDirectives = new Map(serializedManifest.clientDirectives);
+  const serverIslandNameMap = new Map(serializedManifest.serverIslandNameMap);
+  const key = decodeKey(serializedManifest.key);
+  return {
+    // in case user middleware exists, this no-op middleware will be reassigned (see plugin-ssr.ts)
+    middleware() {
+      return { onRequest: NOOP_MIDDLEWARE_FN };
+    },
+    ...serializedManifest,
+    assets,
+    componentMetadata,
+    inlinedScripts,
+    clientDirectives,
+    routes,
+    serverIslandNameMap,
+    key
+  };
+}
+
+const manifest = deserializeManifest({"hrefRoot":"file:///Users/dane/Documents/ASL-Digital/Web%20Files/asl-website/","cacheDir":"file:///Users/dane/Documents/ASL-Digital/Web%20Files/asl-website/node_modules/.astro/","outDir":"file:///Users/dane/Documents/ASL-Digital/Web%20Files/asl-website/dist/","srcDir":"file:///Users/dane/Documents/ASL-Digital/Web%20Files/asl-website/src/","publicDir":"file:///Users/dane/Documents/ASL-Digital/Web%20Files/asl-website/public/","buildClientDir":"file:///Users/dane/Documents/ASL-Digital/Web%20Files/asl-website/dist/client/","buildServerDir":"file:///Users/dane/Documents/ASL-Digital/Web%20Files/asl-website/dist/server/","adapterName":"@astrojs/vercel","routes":[{"file":"","links":[],"scripts":[],"styles":[],"routeData":{"type":"page","component":"_server-islands.astro","params":["name"],"segments":[[{"content":"_server-islands","dynamic":false,"spread":false}],[{"content":"name","dynamic":true,"spread":false}]],"pattern":"^\\/_server-islands\\/([^/]+?)\\/?$","prerender":false,"isIndex":false,"fallbackRoutes":[],"route":"/_server-islands/[name]","origin":"internal","_meta":{"trailingSlash":"ignore"}}},{"file":"","links":[],"scripts":[{"stage":"head-inline","children":"window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };\n\t\tvar script = document.createElement('script');\n\t\tscript.defer = true;\n\t\tscript.src = '/_vercel/insights/script.js';\n\t\tvar head = document.querySelector('head');\n\t\thead.appendChild(script);\n\t"}],"styles":[],"routeData":{"type":"endpoint","isIndex":false,"route":"/_image","pattern":"^\\/_image\\/?$","segments":[[{"content":"_image","dynamic":false,"spread":false}]],"params":[],"component":"node_modules/astro/dist/assets/endpoint/generic.js","pathname":"/_image","prerender":false,"fallbackRoutes":[],"origin":"internal","_meta":{"trailingSlash":"ignore"}}},{"file":"","links":[],"scripts":[{"stage":"head-inline","children":"window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };\n\t\tvar script = document.createElement('script');\n\t\tscript.defer = true;\n\t\tscript.src = '/_vercel/insights/script.js';\n\t\tvar head = document.querySelector('head');\n\t\thead.appendChild(script);\n\t"}],"styles":[],"routeData":{"route":"/api/submit-lead","isIndex":false,"type":"endpoint","pattern":"^\\/api\\/submit-lead\\/?$","segments":[[{"content":"api","dynamic":false,"spread":false}],[{"content":"submit-lead","dynamic":false,"spread":false}]],"params":[],"component":"src/pages/api/submit-lead.ts","pathname":"/api/submit-lead","prerender":false,"fallbackRoutes":[],"distURL":[],"origin":"project","_meta":{"trailingSlash":"ignore"}}},{"file":"","links":[],"scripts":[{"stage":"head-inline","children":"window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };\n\t\tvar script = document.createElement('script');\n\t\tscript.defer = true;\n\t\tscript.src = '/_vercel/insights/script.js';\n\t\tvar head = document.querySelector('head');\n\t\thead.appendChild(script);\n\t"}],"styles":[{"type":"external","src":"/_astro/index.L8YVqIhp.css"},{"type":"inline","content":".thank-you-page[data-astro-cid-reykoxrt]{min-height:70vh;display:flex;align-items:center;padding:var(--spacing-xl) 0;background:linear-gradient(135deg,var(--cream) 0%,#ffffff 100%)}.container[data-astro-cid-reykoxrt]{max-width:800px;margin:0 auto;padding:0 1rem}.thank-you-content[data-astro-cid-reykoxrt]{background:#fff;border-radius:var(--radius-lg);padding:3rem 2rem;text-align:center;box-shadow:0 4px 6px #0000001a}.success-icon[data-astro-cid-reykoxrt]{width:80px;height:80px;margin:0 auto 2rem;color:var(--olive-green)}h1[data-astro-cid-reykoxrt]{font-size:clamp(2rem,5vw,3rem);color:var(--olive-green);margin-bottom:1rem}.lead-text[data-astro-cid-reykoxrt]{font-size:1.25rem;color:var(--black);margin-bottom:2rem}.info-box[data-astro-cid-reykoxrt]{background:var(--light-sage);border-left:4px solid var(--olive-green);padding:1.5rem;margin:2rem 0;text-align:left;border-radius:var(--radius-sm)}.info-box[data-astro-cid-reykoxrt] p[data-astro-cid-reykoxrt]{margin-bottom:.75rem;color:var(--black)}.info-box[data-astro-cid-reykoxrt] p[data-astro-cid-reykoxrt]:last-child{margin-bottom:0}.response-time[data-astro-cid-reykoxrt]{font-weight:600;color:var(--olive-green)}.next-steps[data-astro-cid-reykoxrt]{margin:3rem 0}.next-steps[data-astro-cid-reykoxrt] h2[data-astro-cid-reykoxrt]{font-size:1.75rem;color:var(--olive-green);margin-bottom:2rem}.steps-grid[data-astro-cid-reykoxrt]{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;margin-top:2rem}.step[data-astro-cid-reykoxrt]{text-align:center}.step-number[data-astro-cid-reykoxrt]{width:50px;height:50px;background:var(--olive-green);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:700;margin:0 auto 1rem}.step[data-astro-cid-reykoxrt] h3[data-astro-cid-reykoxrt]{font-size:1.25rem;color:var(--olive-green);margin-bottom:.5rem}.step[data-astro-cid-reykoxrt] p[data-astro-cid-reykoxrt]{color:var(--black);font-size:.95rem}.cta-buttons[data-astro-cid-reykoxrt]{display:flex;gap:1rem;justify-content:center;margin:2rem 0;flex-wrap:wrap}.btn-primary[data-astro-cid-reykoxrt],.btn-secondary[data-astro-cid-reykoxrt]{padding:.875rem 2rem;border-radius:var(--radius-sm);font-weight:600;text-decoration:none;transition:all .3s ease;display:inline-flex;align-items:center;gap:.5rem}.btn-primary[data-astro-cid-reykoxrt]{background:var(--olive-green);color:#fff}.btn-primary[data-astro-cid-reykoxrt]:hover{background:#465331;transform:translateY(-2px)}.btn-secondary[data-astro-cid-reykoxrt]{background:#fff;color:var(--black);border:2px solid var(--black)}.btn-secondary[data-astro-cid-reykoxrt]:hover{background:var(--black);color:#fff}.contact-info[data-astro-cid-reykoxrt]{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--light-sage);color:var(--black)}.contact-info[data-astro-cid-reykoxrt] p[data-astro-cid-reykoxrt]{margin-bottom:.5rem}.contact-info[data-astro-cid-reykoxrt] a[data-astro-cid-reykoxrt]{color:var(--olive-green);text-decoration:none;font-weight:600}.contact-info[data-astro-cid-reykoxrt] a[data-astro-cid-reykoxrt]:hover{text-decoration:underline}@media(max-width:768px){.thank-you-content[data-astro-cid-reykoxrt]{padding:2rem 1.5rem}.steps-grid[data-astro-cid-reykoxrt]{grid-template-columns:1fr;gap:1.5rem}.cta-buttons[data-astro-cid-reykoxrt]{flex-direction:column;align-items:stretch}.btn-primary[data-astro-cid-reykoxrt],.btn-secondary[data-astro-cid-reykoxrt]{width:100%;justify-content:center}}\n"}],"routeData":{"route":"/thank-you","isIndex":false,"type":"page","pattern":"^\\/thank-you\\/?$","segments":[[{"content":"thank-you","dynamic":false,"spread":false}]],"params":[],"component":"src/pages/thank-you.astro","pathname":"/thank-you","prerender":false,"fallbackRoutes":[],"distURL":[],"origin":"project","_meta":{"trailingSlash":"ignore"}}},{"file":"","links":[],"scripts":[{"stage":"head-inline","children":"window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };\n\t\tvar script = document.createElement('script');\n\t\tscript.defer = true;\n\t\tscript.src = '/_vercel/insights/script.js';\n\t\tvar head = document.querySelector('head');\n\t\thead.appendChild(script);\n\t"}],"styles":[{"type":"external","src":"/_astro/index.L8YVqIhp.css"},{"type":"external","src":"/_astro/index.XjL2S7fR.css"}],"routeData":{"route":"/","isIndex":true,"type":"page","pattern":"^\\/$","segments":[],"params":[],"component":"src/pages/index.astro","pathname":"/","prerender":false,"fallbackRoutes":[],"distURL":[],"origin":"project","_meta":{"trailingSlash":"ignore"}}}],"site":"https://allseasonsliving.com.au","base":"/","trailingSlash":"ignore","compressHTML":true,"componentMetadata":[["/Users/dane/Documents/ASL-Digital/Web Files/asl-website/src/pages/index.astro",{"propagation":"none","containsHead":true}],["/Users/dane/Documents/ASL-Digital/Web Files/asl-website/src/pages/thank-you.astro",{"propagation":"none","containsHead":true}]],"renderers":[],"clientDirectives":[["idle","(()=>{var l=(n,t)=>{let i=async()=>{await(await n())()},e=typeof t.value==\"object\"?t.value:void 0,s={timeout:e==null?void 0:e.timeout};\"requestIdleCallback\"in window?window.requestIdleCallback(i,s):setTimeout(i,s.timeout||200)};(self.Astro||(self.Astro={})).idle=l;window.dispatchEvent(new Event(\"astro:idle\"));})();"],["load","(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event(\"astro:load\"));})();"],["media","(()=>{var n=(a,t)=>{let i=async()=>{await(await a())()};if(t.value){let e=matchMedia(t.value);e.matches?i():e.addEventListener(\"change\",i,{once:!0})}};(self.Astro||(self.Astro={})).media=n;window.dispatchEvent(new Event(\"astro:media\"));})();"],["only","(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).only=e;window.dispatchEvent(new Event(\"astro:only\"));})();"],["visible","(()=>{var a=(s,i,o)=>{let r=async()=>{await(await s())()},t=typeof i.value==\"object\"?i.value:void 0,c={rootMargin:t==null?void 0:t.rootMargin},n=new IntersectionObserver(e=>{for(let l of e)if(l.isIntersecting){n.disconnect(),r();break}},c);for(let e of o.children)n.observe(e)};(self.Astro||(self.Astro={})).visible=a;window.dispatchEvent(new Event(\"astro:visible\"));})();"]],"entryModules":{"\u0000noop-middleware":"_noop-middleware.mjs","\u0000noop-actions":"_noop-actions.mjs","\u0000@astro-page:src/pages/api/submit-lead@_@ts":"pages/api/submit-lead.astro.mjs","\u0000@astro-page:src/pages/thank-you@_@astro":"pages/thank-you.astro.mjs","\u0000@astro-page:src/pages/index@_@astro":"pages/index.astro.mjs","\u0000@astrojs-ssr-virtual-entry":"entry.mjs","\u0000@astro-renderers":"renderers.mjs","\u0000@astro-page:node_modules/astro/dist/assets/endpoint/generic@_@js":"pages/_image.astro.mjs","\u0000@astrojs-ssr-adapter":"_@astrojs-ssr-adapter.mjs","\u0000@astrojs-manifest":"manifest_ZEPv13HU.mjs","/Users/dane/Documents/ASL-Digital/Web Files/asl-website/node_modules/astro/dist/assets/services/sharp.js":"chunks/sharp_B9Z6t3vi.mjs","/Users/dane/Documents/ASL-Digital/Web Files/asl-website/src/pages/index.astro?astro&type=script&index=0&lang.ts":"_astro/index.astro_astro_type_script_index_0_lang.e4li_5A7.js","/Users/dane/Documents/ASL-Digital/Web Files/asl-website/src/pages/thank-you.astro?astro&type=script&index=0&lang.ts":"_astro/thank-you.astro_astro_type_script_index_0_lang.DJx3YQpe.js","/Users/dane/Documents/ASL-Digital/Web Files/asl-website/src/components/Header.astro?astro&type=script&index=0&lang.ts":"_astro/Header.astro_astro_type_script_index_0_lang.BRrES6WQ.js","/Users/dane/Documents/ASL-Digital/Web Files/asl-website/src/components/Footer.astro?astro&type=script&index=0&lang.ts":"_astro/Footer.astro_astro_type_script_index_0_lang.F-sNJOgz.js","/Users/dane/Documents/ASL-Digital/Web Files/asl-website/src/components/OfferBanner.astro?astro&type=script&index=0&lang.ts":"_astro/OfferBanner.astro_astro_type_script_index_0_lang.CL5TNY2x.js","astro:scripts/before-hydration.js":""},"inlinedScripts":[["/Users/dane/Documents/ASL-Digital/Web Files/asl-website/src/pages/thank-you.astro?astro&type=script&index=0&lang.ts","\"undefined\"!=typeof gtag&&gtag(\"event\",\"page_view\",{page_title:\"Thank You\",page_location:window.location.href,page_path:\"/thank-you\"});"],["/Users/dane/Documents/ASL-Digital/Web Files/asl-website/src/components/Header.astro?astro&type=script&index=0&lang.ts","const e=document.getElementById(\"quoteBtn\");e&&e.addEventListener(\"click\",()=>{const e=document.getElementById(\"mainQuoteForm\");e&&e.scrollIntoView({behavior:\"smooth\"})});const t=document.querySelector(\".mobile-menu-toggle\"),o=document.querySelector(\".nav\"),n=document.body;t&&o&&t.addEventListener(\"click\",()=>{const e=o.classList.toggle(\"active\");t.classList.toggle(\"active\"),window.innerWidth<1025&&(n.style.overflow=e?\"hidden\":\"\")});document.querySelectorAll(\".dropdown-toggle\").forEach(e=>{e.addEventListener(\"click\",t=>{if(window.innerWidth<1025){t.preventDefault();e.closest(\".has-dropdown\").classList.toggle(\"active\")}})}),document.addEventListener(\"click\",e=>{window.innerWidth<1025&&o&&t&&!e.target.closest(\".header\")&&o.classList.contains(\"active\")&&(o.classList.remove(\"active\"),t.classList.remove(\"active\"),n.style.overflow=\"\")}),window.addEventListener(\"resize\",()=>{window.innerWidth>=1025&&o&&(o.classList.remove(\"active\"),t&&t.classList.remove(\"active\"),n.style.overflow=\"\")});const i=window.location.pathname;document.querySelectorAll(\".nav-menu > li > a:not(.dropdown-toggle)\").forEach(e=>{const t=e.getAttribute(\"href\");(t===i||\"/\"===i&&\"/\"===t)&&e.classList.add(\"active\")});"],["/Users/dane/Documents/ASL-Digital/Web Files/asl-website/src/components/Footer.astro?astro&type=script&index=0&lang.ts","const e=document.querySelector(\".newsletter-form\");e&&e.addEventListener(\"submit\",async t=>{t.preventDefault();e.querySelector(\"input\").value;alert(\"Thank you for subscribing!\"),e.reset()});"],["/Users/dane/Documents/ASL-Digital/Web Files/asl-website/src/components/OfferBanner.astro?astro&type=script&index=0&lang.ts","const e=document.getElementById(\"closeBanner\"),n=document.getElementById(\"offerBanner\");e&&n&&e.addEventListener(\"click\",()=>{n.style.display=\"none\",sessionStorage.setItem(\"offerBannerClosed\",\"true\")}),\"true\"===sessionStorage.getItem(\"offerBannerClosed\")&&n&&(n.style.display=\"none\");"]],"assets":["/_astro/index.XjL2S7fR.css","/_astro/index.L8YVqIhp.css","/Screenshot 2025-10-16 at 8.24.38 pm.png","/favicon.png","/favicon.svg","/robots.txt","/_astro/index.astro_astro_type_script_index_0_lang.e4li_5A7.js","/assets/icons/Artificial_Lawn_inline_image.svg","/assets/icons/australia (4).png","/assets/icons/australia.svg","/assets/icons/car.png","/assets/icons/cloud-rain-svgrepo-com.svg","/assets/icons/diamond-svgrepo-com.svg","/assets/icons/ear-sound (1).svg","/assets/icons/ear-sound.svg","/assets/icons/eye-crossed.svg","/assets/icons/golf-ball_1120613.png","/assets/icons/grass (1).png","/assets/icons/grass.png","/assets/icons/grass.svg","/assets/icons/grass_17161087.png","/assets/icons/grass_17371528.png","/assets/icons/grass_17371528.svg","/assets/icons/guarantee-certificate.png","/assets/icons/guarantee-certificate.svg","/assets/icons/home-temperature-out.svg","/assets/icons/icons8-dog-64.png","/assets/icons/kangaroo-illustration-3-svgrepo-com.svg","/assets/icons/key (1).svg","/assets/icons/key.svg","/assets/icons/light-switch.svg","/assets/icons/mail.png","/assets/icons/measure.png","/assets/icons/measure.svg","/assets/icons/outdoor-blinds.svg","/assets/icons/padlock-check (1).png","/assets/icons/padlock-check.png","/assets/icons/padlock-check.svg","/assets/icons/paw-svgrepo-com.svg","/assets/icons/phone-call.png","/assets/icons/piggy-bank.svg","/assets/icons/plantation-shutters.svg","/assets/icons/remote-control.svg","/assets/icons/roller-shutters.svg","/assets/icons/sketch (1).png","/assets/icons/slider-vertical-minimalistic-svgrepo-com.svg","/assets/icons/smart-home-svgrepo-com.svg","/assets/icons/smart-home.svg","/assets/icons/sparkles-outline-svgrepo-com.svg","/assets/icons/stack-svgrepo-com.svg","/assets/icons/sun-2-svgrepo-com.svg","/assets/icons/tape (1).svg","/assets/icons/tape.svg","/assets/icons/temperature-frigid.svg","/assets/icons/walking-the-dog.png","/assets/icons/water.png","/assets/icons/wildfire.svg","/assets/icons/wind-svgrepo-com.svg","/assets/icons/www.png","/assets/icons/yoga.png","/assets/images/general/All Seasons Living SVG Logo.svg","/assets/images/general/Logo.png","/assets/images/general/Modern Home All Seasons Living.jpg","/assets/images/general/Modern Home All Seasons Living.webp","/assets/images/outdoor-blinds/ASL - Outdoor Blinds.jpeg","/assets/images/outdoor-blinds/Outdoor Motorised Blinds.png","/assets/images/outdoor-blinds/Outdoor Motorised Blinds.webp","/assets/images/artificial-lawn/Artificial-lawn-asl-media.png","/assets/images/artificial-lawn/Artificial-lawn-asl-media.webp","/assets/images/artificial-lawn/asl-artificial-lawn-close-up-2.png","/assets/images/artificial-lawn/asl-artificial-lawn-family.png","/assets/images/artificial-lawn/asl-artificial-lawn-hero.png","/assets/images/artificial-lawn/asl-artificial-lawn-picnic2.png","/assets/images/artificial-lawn/asl-artificial-lawn-puppy.png","/assets/images/roller-shutters/ASL Shutters.png","/assets/images/roller-shutters/All Seasons Living -Roller Shutters.png","/assets/images/roller-shutters/All Seasons Living -Roller Shutters.webp","/assets/images/roller-shutters/Horizontal Roller Shutters - ASL.png","/assets/images/roller-shutters/RS-Image1.png","/assets/images/roller-shutters/Roller Shutter Render.png"],"buildFormat":"directory","checkOrigin":true,"allowedDomains":[],"serverIslandNameMap":[],"key":"MaDZ5tKjl2sY1pBKy9YYMPbKxXj7vNmw3Hd7ZJijw9g="});
+if (manifest.sessionConfig) manifest.sessionConfig.driverModule = null;
+
+export { manifest };

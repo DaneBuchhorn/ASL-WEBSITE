@@ -10,7 +10,7 @@ const currentYear = new Date().getFullYear();
       <div class="footer-grid">
         <!-- Company Info -->
         <div class="footer-col">
-          <img src="/assets/images/general/Logo.png" alt="All Seasons Living" class="footer-logo" />
+          <img src="/assets/images/general/All Seasons Living SVG Logo.svg" alt="All Seasons Living" class="footer-logo" />
           <p class="footer-contact">
             <a href={`mailto:${config.contact.email}`}>{config.contact.email}</a>
           </p>
@@ -83,29 +83,33 @@ const currentYear = new Date().getFullYear();
 
   .footer-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--spacing-lg);
+    align-items: start;
   }
 
   .footer-logo {
     height: 60px;
     width: auto;
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: 1rem;
     filter: brightness(0) invert(1);
+    margin-top: -80px;
   }
 
   .footer-col h4 {
     color: var(--white);
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: 1rem;
+    margin-top: 0;
   }
 
   .footer-col ul {
     list-style: none;
     padding: 0;
+    margin: 0;
   }
 
   .footer-col ul li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
   }
 
   .footer-col ul li a {
@@ -124,7 +128,8 @@ const currentYear = new Date().getFullYear();
   }
 
   .footer-contact {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    margin-top: 0;
   }
 
   .footer-contact a {
@@ -137,12 +142,13 @@ const currentYear = new Date().getFullYear();
   }
 
   .newsletter {
-    margin-top: var(--spacing-md);
+    margin-top: 1.5rem;
   }
 
   .newsletter h4 {
     font-size: 1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    margin-top: 0;
   }
 
   .newsletter p {
@@ -187,6 +193,13 @@ const currentYear = new Date().getFullYear();
 
   .footer-bottom a:hover {
     color: var(--yellow);
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .footer-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-md);
+    }
   }
 
   @media (max-width: 768px) {
