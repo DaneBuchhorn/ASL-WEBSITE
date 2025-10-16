@@ -506,24 +506,25 @@ export const prerender = true;
     bottom: 0;
     overflow: hidden;
     pointer-events: none;
+    z-index: 0;
   }
 
   .blob {
     position: absolute;
     opacity: 1;
-    width: 600px;
-    height: 600px;
+    width: 500px;
+    height: 500px;
   }
 
   .blob-1 {
-    top: -200px;
-    left: -100px;
+    top: -100px;
+    left: -50px;
     animation: float 20s ease-in-out infinite;
   }
 
   .blob-2 {
-    bottom: -150px;
-    right: -150px;
+    bottom: -100px;
+    right: -50px;
     animation: float 25s ease-in-out infinite reverse;
   }
 
