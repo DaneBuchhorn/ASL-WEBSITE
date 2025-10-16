@@ -427,16 +427,15 @@ export const prerender = true;
 
   .technical-image {
     width: 100%;
-    display: flex;
-    justify-content: center;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   }
 
   .technical-image img {
     width: 100%;
-    max-width: 500px;
     height: auto;
     display: block;
-    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15));
   }
 
   .technical-content {
