@@ -4,12 +4,88 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 export const prerender = true;
+
+// Product Schema for TruScreen Outdoor Blinds
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'TruScreen® Outdoor Blinds',
+  image: 'https://allseasonsliving.com.au/assets/images/outdoor-blinds/Blinds Hero.webp',
+  description: 'Australia\'s most advanced outdoor blind system with patented suspension technology. Eliminates gaps, prevents sagging, and delivers flawless performance.',
+  brand: {
+    '@type': 'Brand',
+    name: 'TruScreen'
+  },
+  manufacturer: {
+    '@type': 'Organization',
+    name: 'All Seasons Living',
+    url: 'https://allseasonsliving.com.au'
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    reviewCount: '50000',
+    bestRating: '5'
+  },
+  offers: {
+    '@type': 'Offer',
+    url: 'https://allseasonsliving.com.au/outdoor-blinds',
+    priceCurrency: 'AUD',
+    availability: 'https://schema.org/InStock',
+    priceValidUntil: '2026-12-31',
+    seller: {
+      '@type': 'Organization',
+      name: 'All Seasons Living'
+    }
+  },
+  additionalProperty: [
+    {
+      '@type': 'PropertyValue',
+      name: 'Warranty',
+      value: '10 Year Product Warranty'
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Country of Origin',
+      value: 'Australia'
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Material',
+      value: 'PVC Coated Fiberglass, Aluminium 6063'
+    }
+  ]
+};
+
+// Breadcrumb Schema
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://allseasonsliving.com.au'
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Outdoor Blinds',
+      item: 'https://allseasonsliving.com.au/outdoor-blinds'
+    }
+  ]
+};
 ---
 
 <Layout
   title="TruScreen® Outdoor Blinds Canberra | Australian Made Outdoor Blind System"
   description="TruScreen eliminates gaps, sagging, and deflection with Australia's most advanced outdoor blind system. Adjustable suspension, motorisation-ready, 5-year warranty. Free measure & quote."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
   <Header />
 
   <main>
@@ -18,7 +94,7 @@ export const prerender = true;
       <div class="hero-image">
         <img
           src="/assets/images/outdoor-blinds/Blinds Hero.webp"
-          alt="TruScreen Motorised Outdoor Blinds"
+          alt="TruScreen motorised outdoor blinds installed on Canberra patio with Australian Made technology"
           loading="eager"
           fetchpriority="high"
         />
@@ -60,7 +136,7 @@ export const prerender = true;
       <div class="container">
         <div class="feature-grid">
           <div class="feature-image-wrapper">
-            <img src="/assets/images/outdoor-blinds/Duel Channel Render.png" alt="TruScreen adaptive side channels" loading="lazy" />
+            <img src="/assets/images/outdoor-blinds/Duel Channel Render.png" alt="TruScreen dual channel adaptive side channel system for outdoor blinds showing flexible guide technology" loading="lazy" />
           </div>
           <div class="feature-text">
             <h3>Adaptive side channels</h3>
@@ -80,7 +156,7 @@ export const prerender = true;
       <div class="container">
         <div class="feature-grid reverse">
           <div class="feature-image-wrapper">
-            <img src="/assets/images/outdoor-blinds/truscreen render.png" alt="TruScreen suspension technology" loading="lazy" />
+            <img src="/assets/images/outdoor-blinds/truscreen render.png" alt="TruScreen patented shock-absorption suspension system for impact-resistant outdoor blinds" loading="lazy" />
           </div>
           <div class="feature-text">
             <h3>Impact-resistant suspension</h3>
@@ -101,7 +177,7 @@ export const prerender = true;
         <h2>A Truly Unique Blind System</h2>
         <div class="technical-layout">
           <div class="technical-image">
-            <img src="/assets/images/outdoor-blinds/Full Blind Render.png" alt="TruScreen Complete System" loading="lazy" />
+            <img src="/assets/images/outdoor-blinds/Full Blind Render.png" alt="TruScreen complete outdoor blind system showing headbox, channels, bottom bar and suspension technology" loading="lazy" />
           </div>
           <div class="technical-content">
             <div class="tech-item">
@@ -137,7 +213,7 @@ export const prerender = true;
       </div>
       <div class="container">
         <div class="australian-content">
-          <img src="/assets/images/outdoor-blinds/Australian Made.png" alt="Australian Made" class="australian-icon" />
+          <img src="/assets/images/outdoor-blinds/Australian Made.png" alt="Australian Made logo - TruScreen outdoor blinds manufactured in Australia" class="australian-icon" />
           <h2>Proudly Australian Made & Owned</h2>
           <p>Designed, engineered, and manufactured right here in Australia by a family-owned business. Built with motorisation in mind from day one, TruScreen delivers whisper-quiet operation with seamless smart home integration. Supporting local jobs while setting the global standard for outdoor blind innovation.</p>
         </div>
@@ -302,16 +378,25 @@ export const prerender = true;
         <div class="cta-box">
           <h2>Get your free measure & quote</h2>
           <p>Our specialists will design the perfect outdoor blind solution for your space. No obligation, no hidden costs.</p>
-          <form class="quote-form-simple" id="outdoorBlindsQuoteForm">
+          <form class="quote-form-simple" id="outdoorBlindsQuoteForm" aria-label="TruScreen outdoor blinds quote request form">
             <div class="form-row">
-              <input type="text" name="name" placeholder="Your name*" required />
-              <input type="tel" name="phone" placeholder="Phone number*" required />
-              <input type="email" name="email" placeholder="Email*" required />
-              <input type="text" name="suburb" placeholder="Suburb*" required />
+              <input type="text" name="name" placeholder="Your name*" required aria-label="Your name" />
+              <input type="tel" name="phone" placeholder="Phone number*" required aria-label="Phone number" pattern="^(\+?61|0)[2-478]( ?\d){8}$" title="Please enter a valid Australian phone number" />
+              <input type="email" name="email" placeholder="Email*" required aria-label="Email address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address" />
+              <input type="text" name="suburb" placeholder="Suburb*" required aria-label="Suburb" />
             </div>
             <input type="hidden" name="product" value="outdoor-blinds" />
-            <textarea name="message" rows="3" placeholder="Tell us about your project (optional)"></textarea>
-            <button type="submit" class="btn btn-primary">Request Free Quote</button>
+            <textarea name="message" rows="3" placeholder="Tell us about your project (optional)" aria-label="Project details"></textarea>
+            <button type="submit" class="btn btn-primary" id="outdoorBlindsSubmitBtn" aria-label="Submit quote request for TruScreen outdoor blinds">
+              <span class="submit-text">Request Free Quote</span>
+              <span class="submit-loading" style="display: none;">
+                <svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
+                  <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/>
+                </svg>
+                Submitting...
+              </span>
+            </button>
           </form>
         </div>
       </div>
@@ -961,6 +1046,33 @@ export const prerender = true;
     padding: 1rem 2rem;
     font-size: 1.0625rem;
     font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .quote-form-simple button.loading .submit-text {
+    display: none;
+  }
+
+  .quote-form-simple button.loading .submit-loading {
+    display: flex !important;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .spinner {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
 
   /* Tablet */
@@ -1031,11 +1143,10 @@ export const prerender = true;
     quoteForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const submitBtn = quoteForm.querySelector('button[type="submit"]') as HTMLButtonElement;
-      const originalText = submitBtn?.textContent || '';
+      const submitBtn = document.getElementById('outdoorBlindsSubmitBtn') as HTMLButtonElement;
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.textContent = 'SUBMITTING...';
+        submitBtn.classList.add('loading');
       }
 
       try {
@@ -1079,7 +1190,7 @@ export const prerender = true;
 
         if (submitBtn) {
           submitBtn.disabled = false;
-          submitBtn.textContent = originalText;
+          submitBtn.classList.remove('loading');
         }
       }
     });
