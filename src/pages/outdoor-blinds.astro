@@ -120,7 +120,7 @@ export const prerender = true;
       </div>
     </section>
 
-    <!-- Combined Motorisation & Australian Made -->
+    <!-- Australian Made -->
     <section class="combined-info-section">
       <div class="blob-background">
         <svg class="blob blob-1" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -131,16 +131,10 @@ export const prerender = true;
         </svg>
       </div>
       <div class="container">
-        <div class="combined-grid">
-          <div class="info-box motorisation">
-            <h2>Built for effortless control</h2>
-            <p>Whisper-quiet motors with smart home integration. Control via wall switch, remote, app, or voice (Google, Siri, Alexa).</p>
-          </div>
-          <div class="info-box australian-made">
-            <img src="/assets/icons/kangaroo-illustration-3-svgrepo-com.svg" alt="Australian Made" class="kangaroo-icon" />
-            <h2>Australian Made</h2>
-            <p>Locally designed, engineered and manufactured. Six standard colours plus custom options. Premium fabrics from sunscreen mesh to marine-grade PVC.</p>
-          </div>
+        <div class="australian-content">
+          <img src="/assets/images/outdoor-blinds/Australian Made.png" alt="Australian Made" class="australian-icon" />
+          <h2>Australian Made</h2>
+          <p>Locally designed, engineered and manufactured. Six standard colours plus custom options. Premium fabrics from sunscreen mesh to marine-grade PVC.</p>
         </div>
       </div>
     </section>
@@ -540,38 +534,33 @@ export const prerender = true;
     }
   }
 
-  .combined-grid {
+  .australian-content {
     position: relative;
     z-index: 1;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
-  }
-
-  .info-box {
+    text-align: center;
     color: var(--white);
   }
 
-  .info-box h2 {
-    font-size: clamp(1.5rem, 4vw, 2rem);
+  .australian-icon {
+    width: 150px;
+    height: auto;
+    margin: 0 auto 1.5rem;
+    display: block;
+  }
+
+  .australian-content h2 {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
     color: var(--white);
     margin-bottom: 1rem;
     font-weight: 700;
   }
 
-  .info-box p {
-    font-size: 1.0625rem;
-    line-height: 1.7;
+  .australian-content p {
+    font-size: 1.125rem;
+    line-height: 1.8;
     color: rgba(255, 255, 255, 0.95);
-  }
-
-  .kangaroo-icon {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 1rem;
-    filter: brightness(0) saturate(100%) invert(100%);
   }
 
   /* Colours */
@@ -733,22 +722,6 @@ export const prerender = true;
 
     .features-list {
       grid-template-columns: repeat(2, 1fr);
-    }
-
-    .combined-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-      align-items: start;
-    }
-
-    .info-box.motorisation {
-      grid-column: 1;
-      align-self: start;
-    }
-
-    .info-box.australian-made {
-      grid-column: 2;
-      margin-top: 3rem;
     }
 
     .colour-grid {
