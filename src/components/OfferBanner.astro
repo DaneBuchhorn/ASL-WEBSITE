@@ -8,13 +8,32 @@ const { offerBanner } = config;
   <div
     class="offer-banner"
     id="offerBanner"
-    style={`background-color: ${offerBanner.backgroundColor}; color: ${offerBanner.textColor};`}
+    style={`background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);`}
   >
     <div class="container">
       <div class="banner-content">
-        <a href={offerBanner.link} class="offer-content">
-          <span class="offer-text">{offerBanner.text}</span>
+        <div class="offer-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="16 12 12 8 8 12"></polyline>
+            <line x1="12" y1="16" x2="12" y2="8"></line>
+          </svg>
+          <span>LIMITED TIME</span>
+        </div>
+
+        <div class="offer-main">
+          <h3 class="offer-title">Spring Special Now On!</h3>
+          <p class="offer-subtitle">Save up to 30% on all products</p>
+        </div>
+
+        <a href={offerBanner.link} class="offer-cta-btn">
+          Claim Offer
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
         </a>
+
         <button class="close-banner" id="closeBanner" aria-label="Close banner">✕</button>
       </div>
     </div>
@@ -23,14 +42,31 @@ const { offerBanner } = config;
 
 <style>
   .offer-banner {
-    padding: 1rem 0;
-    text-align: center;
-    font-weight: 700;
-    font-size: 1rem;
-    letter-spacing: 0.5px;
+    padding: 1.25rem 0;
     position: relative;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    transition: all var(--transition-base);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    color: #ffffff;
+    overflow: hidden;
+  }
+
+  .offer-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shimmer 3s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
   }
 
   .banner-content {
@@ -39,70 +75,170 @@ const { offerBanner } = config;
     justify-content: center;
     gap: 2rem;
     position: relative;
+    z-index: 1;
   }
 
-  .offer-content {
-    display: inline-flex;
+  .offer-badge {
+    display: flex;
     align-items: center;
-    text-decoration: none;
-    color: inherit;
-    transition: all var(--transition-fast);
-  }
-
-  .offer-text {
+    gap: 0.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     animation: pulse 2s ease-in-out infinite;
   }
 
-  .offer-content:hover {
-    opacity: 0.85;
-    transform: scale(1.02);
-  }
-
-  .close-banner {
-    position: absolute;
-    right: 2rem;
-    background: transparent;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: all var(--transition-fast);
-    color: inherit;
-    padding: 0;
-    line-height: 1;
-    opacity: 0.8;
-  }
-
-  .close-banner:hover {
-    opacity: 1;
-    transform: scale(1.2);
+  .offer-badge svg {
+    animation: bounce 1s ease-in-out infinite;
   }
 
   @keyframes pulse {
     0%, 100% {
-      opacity: 1;
+      transform: scale(1);
     }
     50% {
-      opacity: 0.9;
+      transform: scale(1.05);
     }
   }
 
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-3px);
+    }
+  }
+
+  .offer-main {
+    text-align: center;
+  }
+
+  .offer-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .offer-subtitle {
+    font-size: 0.9375rem;
+    margin: 0.25rem 0 0 0;
+    opacity: 0.95;
+    font-weight: 500;
+  }
+
+  .offer-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #ffffff;
+    color: #f97316;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
+  }
+
+  .offer-cta-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  }
+
+  .offer-cta-btn svg {
+    transition: transform 0.3s ease;
+  }
+
+  .offer-cta-btn:hover svg {
+    transform: translateX(4px);
+  }
+
+  .close-banner {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #ffffff;
+    padding: 0;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .close-banner:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) rotate(90deg);
+  }
+
+  /* Mobile Styles */
   @media (max-width: 768px) {
     .offer-banner {
-      font-size: 0.85rem;
-      padding: 0.875rem 0;
+      padding: 1rem 0;
     }
 
     .banner-content {
-      gap: 1rem;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 0 3rem;
+    }
+
+    .offer-badge {
+      font-size: 0.6875rem;
+      padding: 0.4rem 0.875rem;
+    }
+
+    .offer-badge svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .offer-title {
+      font-size: 1.125rem;
+    }
+
+    .offer-subtitle {
+      font-size: 0.875rem;
+    }
+
+    .offer-cta-btn {
+      font-size: 0.875rem;
+      padding: 0.625rem 1.25rem;
     }
 
     .close-banner {
-      right: 1rem;
-      font-size: 1.25rem;
+      right: 0.5rem;
+      width: 28px;
+      height: 28px;
+      font-size: 1.125rem;
+    }
+  }
+
+  /* Very small mobile */
+  @media (max-width: 380px) {
+    .offer-title {
+      font-size: 1rem;
     }
 
-    .offer-text {
-      padding: 0 2rem;
+    .offer-subtitle {
+      font-size: 0.8125rem;
     }
   }
 </style>
