@@ -1,0 +1,217 @@
+---
+import config from '../../config.json';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Company Info -->
+        <div class="footer-col">
+          <img src="/assets/images/general/Logo.png" alt="All Seasons Living" class="footer-logo" />
+          <p class="footer-contact">
+            <a href={`mailto:${config.contact.email}`}>{config.contact.email}</a>
+          </p>
+          <p class="footer-contact">
+            <a href={`tel:${config.contact.phone.replace(/\s/g, '')}`}>{config.contact.phone}</a>
+          </p>
+
+          <div class="newsletter">
+            <h4>Offers & Updates</h4>
+            <p>Sign up for Latest Offers</p>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Email Address" required />
+              <button type="submit" class="btn btn-primary">→</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Site Map -->
+        <div class="footer-col">
+          <h4>Site Map</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms-and-conditions">Terms & Conditions</a></li>
+          </ul>
+        </div>
+
+        <!-- Products -->
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="/artificial-lawn">Artificial Lawn</a></li>
+            <li><a href="/roller-shutters">Roller Shutters</a></li>
+            <li><span class="coming-soon">Outdoor Blinds (Coming soon)</span></li>
+            <li><span class="coming-soon">Plantation Shutters (Coming soon)</span></li>
+          </ul>
+        </div>
+
+        <!-- Support -->
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="/contact">After Sales</a></li>
+            <li><a href="/contact">Product Enquiries</a></li>
+            <li><a href="/contact">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; {currentYear} All Seasons Living Australia Pty Ltd. | Trading as All Seasons Living Australia | ABN: 61 686 382 263 | ACN: 686 382 263 | <a href="/privacy-policy">Privacy Policy</a> | <a href="/terms-and-conditions">Terms & Conditions</a></p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--olive-green);
+    color: var(--white);
+  }
+
+  .footer-main {
+    padding: var(--spacing-xl) 0 var(--spacing-md);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .footer-logo {
+    height: 60px;
+    width: auto;
+    margin-bottom: var(--spacing-sm);
+    filter: brightness(0) invert(1);
+  }
+
+  .footer-col h4 {
+    color: var(--white);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .footer-col ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer-col ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-col ul li a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .footer-col ul li a:hover {
+    color: var(--yellow);
+  }
+
+  .coming-soon {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+  }
+
+  .footer-contact {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-contact a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+  }
+
+  .footer-contact a:hover {
+    color: var(--yellow);
+  }
+
+  .newsletter {
+    margin-top: var(--spacing-md);
+  }
+
+  .newsletter h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .newsletter p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    border-radius: var(--radius-sm);
+  }
+
+  .newsletter-form button {
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: var(--spacing-md) 0;
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    margin: 0;
+  }
+
+  .footer-bottom a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: underline;
+  }
+
+  .footer-bottom a:hover {
+    color: var(--yellow);
+  }
+
+  @media (max-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .footer-bottom p {
+      font-size: 0.75rem;
+    }
+  }
+</style>
+
+<script>
+  // Newsletter form handler
+  const newsletterForm = document.querySelector('.newsletter-form');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = newsletterForm.querySelector('input').value;
+      console.log('Newsletter signup:', email);
+      // Add CRM integration here
+      alert('Thank you for subscribing!');
+      newsletterForm.reset();
+    });
+  }
+</script>

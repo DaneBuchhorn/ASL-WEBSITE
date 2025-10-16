@@ -1,0 +1,17 @@
+{
+  "offerBanner": {
+    "enabled": true,
+    "text": "Limited Offer! Spring Special Now On – GET UP TO 30% OFF – CLICK HERE NOW! 🎁",
+    "link": "/contact",
+    "backgroundColor": "#ffd166",
+    "textColor": "#000000"
+  },
+  "contact": {
+    "phone": "0448 243 979",
+    "email": "info@allseasonsliving.com.au"
+  },
+  "crm": {
+    "endpoint": "YOUR_CRM_API_ENDPOINT_HERE",
+    "apiKey": "YOUR_API_KEY_HERE"
+  }
+}
