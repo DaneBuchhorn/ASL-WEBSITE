@@ -62,6 +62,12 @@ const {
       gtag('js', new Date());
       gtag('config', 'G-CW5WNR8Z5Y');
     </script>
+
+    <!-- Vercel Speed Insights -->
+    <script>
+      import { injectSpeedInsights } from '@vercel/speed-insights';
+      injectSpeedInsights();
+    </script>
   </head>
   <body>
     <slot />
