@@ -1,9 +1,0 @@
-{
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "framework": "astro",
-  "env": {
-    "CRM_WEBHOOK_URL": "@crm-webhook-url",
-    "CRM_WEBHOOK_API_KEY": "@crm-webhook-api-key"
-  }
-}
