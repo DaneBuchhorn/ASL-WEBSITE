@@ -187,9 +187,36 @@ export const prerender = true;
           <div class="colour"><div class="swatch" style="background: #4A4D49;"></div><span>Woodland Grey</span></div>
         </div>
 
-        <h2>Fabric options</h2>
-        <p class="colours-intro">40+ premium fabrics—sunscreen mesh, privacy weaves, and commercial PVC. All backed by a 10-year warranty.</p>
-        <p class="view-samples"><a href="/contact" class="link-arrow">Request fabric samples →</a></p>
+        <h2>Premium Fabric Options</h2>
+        <div class="fabric-content">
+          <div class="fabric-image">
+            <img src="/assets/images/outdoor-blinds/Fabric Swatches.png" alt="TruScreen Fabric Swatches" loading="lazy" />
+          </div>
+          <div class="fabric-details">
+            <div class="fabric-option">
+              <h3>ViewShade DS95 <span class="openness">5% Openness</span></h3>
+              <p><strong>PVC Coated Fiberglass</strong> with 2x2 weave construction for superior dimensional stability.</p>
+              <ul class="fabric-features">
+                <li>Eliminates up to 95% of solar heat penetration</li>
+                <li>Best choice for large spans with minimal movement</li>
+                <li>Exceptional wind, rain & sun protection</li>
+                <li>Fragrance-free, non-toxic, low odour emissions</li>
+              </ul>
+              <p class="fabric-specs"><strong>Specs:</strong> 560 GSM • Up to 305cm width • 10-year warranty • AS 1530.2 & 3 certified</p>
+            </div>
+            <div class="fabric-option">
+              <h3>ViewShade DS99 <span class="openness">1% Openness</span></h3>
+              <p><strong>Tight weave construction</strong> for maximum privacy and superior wind and rain protection.</p>
+              <ul class="fabric-features">
+                <li>Blocks up to 99% of solar heat penetration</li>
+                <li>Superior privacy without compromising airflow</li>
+                <li>Tight weave reduces glare in direct sunlight</li>
+                <li>Environmentally aware, non-toxic materials</li>
+              </ul>
+              <p class="fabric-specs"><strong>Specs:</strong> 620 GSM • 305cm width • 10-year warranty • AS 1530.2 & 3 certified</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -643,6 +670,83 @@ export const prerender = true;
     color: var(--black);
   }
 
+  .fabric-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin: 3rem auto 2rem;
+    max-width: 1200px;
+    align-items: start;
+  }
+
+  .fabric-image {
+    width: 100%;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+
+  .fabric-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .fabric-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .fabric-option h3 {
+    font-size: 1.25rem;
+    color: var(--olive-green);
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+  }
+
+  .openness {
+    font-size: 0.875rem;
+    background: var(--light-sage);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+  }
+
+  .fabric-option p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .fabric-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+  }
+
+  .fabric-features li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .fabric-features li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--olive-green);
+    font-weight: 700;
+  }
+
+  .fabric-specs {
+    font-size: 0.875rem;
+    color: var(--black);
+    opacity: 0.8;
+    margin-top: 1rem;
+  }
+
   .view-samples {
     margin-top: 1.5rem;
   }
@@ -760,6 +864,11 @@ export const prerender = true;
     .videos-grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 3rem;
+    }
+
+    .fabric-content {
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
     }
 
     .colour-grid {
