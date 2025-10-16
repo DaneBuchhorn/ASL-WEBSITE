@@ -113,9 +113,16 @@
         </div>
       </div>
 
-      <button type="submit" class="offer-submit-btn">
-        <span>Claim My 30% Discount</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <button type="submit" class="offer-submit-btn" id="offerSubmitBtn">
+        <span class="submit-text">Claim My 30% Discount</span>
+        <span class="submit-loading" style="display: none;">
+          <svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
+            <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/>
+          </svg>
+          Submitting...
+        </span>
+        <svg class="submit-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M5 12h14M12 5l7 7-7 7"/>
         </svg>
       </button>
@@ -398,12 +405,47 @@
     transform: translateY(0);
   }
 
-  .offer-submit-btn svg {
+  .offer-submit-btn .submit-text,
+  .offer-submit-btn .submit-loading,
+  .offer-submit-btn .submit-arrow {
+    transition: opacity 0.3s ease;
+  }
+
+  .offer-submit-btn.loading .submit-text,
+  .offer-submit-btn.loading .submit-arrow {
+    display: none;
+  }
+
+  .offer-submit-btn.loading .submit-loading {
+    display: flex !important;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .spinner {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .submit-arrow {
     transition: transform 0.3s ease;
   }
 
-  .offer-submit-btn:hover svg {
+  .offer-submit-btn:hover .submit-arrow {
     transform: translateX(4px);
+  }
+
+  .offer-submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
   }
 
   @media (max-width: 640px) {
@@ -491,6 +533,13 @@
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    const submitBtn = document.getElementById('offerSubmitBtn') as HTMLButtonElement;
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.classList.add('loading');
+    }
+
     const formData = new FormData(form);
     const leadData = {
       name: formData.get('name') as string,
@@ -531,10 +580,18 @@
         window.location.href = '/thank-you';
       } else {
         alert('There was an error submitting your request. Please try again or call us directly.');
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('loading');
+        }
       }
     } catch (error) {
       console.error('Form submission error:', error);
       alert('There was an error submitting your request. Please try again or call us directly.');
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('loading');
+      }
     }
   });
 </script>

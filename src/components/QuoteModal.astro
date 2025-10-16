@@ -56,9 +56,16 @@
         <textarea id="modal-message" name="message" rows="4"></textarea>
       </div>
 
-      <button type="submit" class="modal-submit-btn">
-        Submit Request
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <button type="submit" class="modal-submit-btn" id="quoteSubmitBtn">
+        <span class="submit-text">Submit Request</span>
+        <span class="submit-loading" style="display: none;">
+          <svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
+            <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/>
+          </svg>
+          Submitting...
+        </span>
+        <svg class="submit-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="5" y1="12" x2="19" y2="12"></line>
           <polyline points="12 5 19 12 12 19"></polyline>
         </svg>
@@ -251,12 +258,47 @@
     transform: translateY(0);
   }
 
-  .modal-submit-btn svg {
+  .modal-submit-btn .submit-text,
+  .modal-submit-btn .submit-loading,
+  .modal-submit-btn .submit-arrow {
+    transition: opacity 0.3s ease;
+  }
+
+  .modal-submit-btn.loading .submit-text,
+  .modal-submit-btn.loading .submit-arrow {
+    display: none;
+  }
+
+  .modal-submit-btn.loading .submit-loading {
+    display: flex !important;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .spinner {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .submit-arrow {
     transition: transform 0.3s ease;
   }
 
-  .modal-submit-btn:hover svg {
+  .modal-submit-btn:hover .submit-arrow {
     transform: translateX(4px);
+  }
+
+  .modal-submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
   }
 
   /* Mobile adjustments */
@@ -376,12 +418,11 @@
     modalForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const submitBtn = modalForm.querySelector('button[type="submit"]') as HTMLButtonElement;
-      const originalText = submitBtn?.textContent || '';
+      const submitBtn = document.getElementById('quoteSubmitBtn') as HTMLButtonElement;
 
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.textContent = 'SUBMITTING...';
+        submitBtn.classList.add('loading');
       }
 
       try {
@@ -426,7 +467,7 @@
 
         if (submitBtn) {
           submitBtn.disabled = false;
-          submitBtn.textContent = originalText;
+          submitBtn.classList.remove('loading');
         }
       }
     });
