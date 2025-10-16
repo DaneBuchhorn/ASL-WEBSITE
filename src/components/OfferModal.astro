@@ -1,0 +1,539 @@
+---
+// Offer Modal Component - Special Offer Claim Form
+---
+
+<div id="offerModal" class="offer-modal-overlay">
+  <div class="offer-modal-content">
+    <button class="offer-modal-close" aria-label="Close modal">&times;</button>
+
+    <div class="offer-modal-header">
+      <div class="offer-sparkle">✨</div>
+      <h2>Claim Your Spring Special</h2>
+      <p class="offer-subtitle">Save up to 30% on all products!</p>
+      <div class="offer-timer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <span>Limited time offer</span>
+      </div>
+    </div>
+
+    <form id="offerForm" class="offer-form">
+      <div class="offer-form-row">
+        <div class="offer-form-group">
+          <label for="offer-name">Full Name *</label>
+          <input
+            type="text"
+            id="offer-name"
+            name="name"
+            required
+            placeholder="John Smith"
+          />
+        </div>
+
+        <div class="offer-form-group">
+          <label for="offer-phone">Phone Number *</label>
+          <input
+            type="tel"
+            id="offer-phone"
+            name="phone"
+            required
+            placeholder="0400 000 000"
+          />
+        </div>
+      </div>
+
+      <div class="offer-form-row">
+        <div class="offer-form-group">
+          <label for="offer-email">Email Address *</label>
+          <input
+            type="email"
+            id="offer-email"
+            name="email"
+            required
+            placeholder="john@example.com"
+          />
+        </div>
+
+        <div class="offer-form-group">
+          <label for="offer-suburb">Suburb *</label>
+          <input
+            type="text"
+            id="offer-suburb"
+            name="suburb"
+            required
+            placeholder="Your suburb"
+          />
+        </div>
+      </div>
+
+      <div class="offer-form-group">
+        <label for="offer-product">Product Interest *</label>
+        <select id="offer-product" name="product" required>
+          <option value="">Select a product...</option>
+          <option value="Outdoor Blinds">Outdoor Blinds</option>
+          <option value="Café Blinds">Café Blinds</option>
+          <option value="Zip Track Blinds">Zip Track Blinds</option>
+          <option value="Awnings">Awnings</option>
+          <option value="Outdoor Shutters">Outdoor Shutters</option>
+          <option value="Pergolas">Pergolas</option>
+          <option value="Not Sure Yet">Not Sure Yet</option>
+        </select>
+      </div>
+
+      <div class="offer-form-group">
+        <label for="offer-message">Additional Details (Optional)</label>
+        <textarea
+          id="offer-message"
+          name="message"
+          rows="3"
+          placeholder="Tell us about your project..."
+        ></textarea>
+      </div>
+
+      <div class="offer-benefits">
+        <div class="offer-benefit">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Free on-site measure & quote</span>
+        </div>
+        <div class="offer-benefit">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Exclusive spring pricing</span>
+        </div>
+        <div class="offer-benefit">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>No obligation consultation</span>
+        </div>
+      </div>
+
+      <button type="submit" class="offer-submit-btn">
+        <span>Claim My 30% Discount</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+    </form>
+  </div>
+</div>
+
+<style>
+  .offer-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    overflow-y: auto;
+    padding: 20px;
+  }
+
+  .offer-modal-overlay.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  .offer-modal-content {
+    background: white;
+    border-radius: 20px;
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    animation: slideUp 0.4s ease;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .offer-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    transition: all 0.2s ease;
+    z-index: 1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .offer-modal-close:hover {
+    background: white;
+    transform: rotate(90deg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .offer-modal-header {
+    background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+    padding: 40px 30px 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .offer-modal-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 255, 0.05) 10px,
+      rgba(255, 255, 255, 0.05) 20px
+    );
+    animation: shimmer 20s linear infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+
+  .offer-sparkle {
+    font-size: 48px;
+    margin-bottom: 10px;
+    animation: sparkle 2s ease-in-out infinite;
+    display: inline-block;
+  }
+
+  @keyframes sparkle {
+    0%, 100% {
+      transform: scale(1) rotate(0deg);
+    }
+    50% {
+      transform: scale(1.2) rotate(180deg);
+    }
+  }
+
+  .offer-modal-header h2 {
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+
+  .offer-subtitle {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 18px;
+    margin: 0 0 15px 0;
+    font-weight: 500;
+    position: relative;
+  }
+
+  .offer-timer {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 16px;
+    border-radius: 20px;
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
+    }
+  }
+
+  .offer-form {
+    padding: 30px;
+  }
+
+  .offer-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .offer-form-group {
+    margin-bottom: 20px;
+  }
+
+  .offer-form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .offer-form-group input,
+  .offer-form-group select,
+  .offer-form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: all 0.2s ease;
+    font-family: inherit;
+  }
+
+  .offer-form-group input:focus,
+  .offer-form-group select:focus,
+  .offer-form-group textarea:focus {
+    outline: none;
+    border-color: #f59e0b;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+  }
+
+  .offer-form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  .offer-benefits {
+    background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    border: 2px solid #fbbf24;
+  }
+
+  .offer-benefit {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    color: #92400e;
+    font-weight: 500;
+  }
+
+  .offer-benefit:last-child {
+    margin-bottom: 0;
+  }
+
+  .offer-benefit svg {
+    flex-shrink: 0;
+    stroke: #f59e0b;
+    stroke-width: 3;
+  }
+
+  .offer-submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+  }
+
+  .offer-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+  }
+
+  .offer-submit-btn:active {
+    transform: translateY(0);
+  }
+
+  .offer-submit-btn svg {
+    transition: transform 0.3s ease;
+  }
+
+  .offer-submit-btn:hover svg {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 640px) {
+    .offer-modal-content {
+      margin: 20px 0;
+      border-radius: 16px;
+    }
+
+    .offer-modal-header {
+      padding: 30px 20px 25px;
+    }
+
+    .offer-modal-header h2 {
+      font-size: 26px;
+    }
+
+    .offer-subtitle {
+      font-size: 16px;
+    }
+
+    .offer-sparkle {
+      font-size: 36px;
+    }
+
+    .offer-form {
+      padding: 20px;
+    }
+
+    .offer-form-row {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .offer-submit-btn {
+      font-size: 16px;
+      padding: 14px 28px;
+    }
+  }
+</style>
+
+<script>
+  import { captureFormData } from '../utils/formTracking';
+
+  const modal = document.getElementById('offerModal');
+  const closeBtn = modal?.querySelector('.offer-modal-close');
+  const form = document.getElementById('offerForm') as HTMLFormElement;
+
+  function openModal() {
+    modal?.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal?.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Open modal when clicking "Claim Offer" button
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    const button = target.closest('a.offer-cta-btn');
+
+    if (button) {
+      e.preventDefault();
+      openModal();
+    }
+  });
+
+  // Close modal
+  closeBtn?.addEventListener('click', closeModal);
+
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal?.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+  // Form submission
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const leadData = {
+      name: formData.get('name') as string,
+      phone: formData.get('phone') as string,
+      email: formData.get('email') as string,
+      suburb: formData.get('suburb') as string,
+      product: formData.get('product') as string,
+      message: formData.get('message') as string || undefined,
+    };
+
+    try {
+      // Capture comprehensive tracking data
+      const submissionData = captureFormData(
+        leadData,
+        'offer-modal',
+        'Spring Special Offer'
+      );
+
+      // Add offer-specific metadata
+      const enrichedData = {
+        ...submissionData,
+        lead: {
+          ...submissionData.lead,
+          leadSource: 'Spring Special Offer',
+          offerCode: 'SPRING30'
+        }
+      };
+
+      const response = await fetch('/api/submit-lead', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(enrichedData),
+      });
+
+      if (response.ok) {
+        window.location.href = '/thank-you';
+      } else {
+        alert('There was an error submitting your request. Please try again or call us directly.');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert('There was an error submitting your request. Please try again or call us directly.');
+    }
+  });
+</script>
