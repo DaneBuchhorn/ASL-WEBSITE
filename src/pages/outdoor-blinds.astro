@@ -144,34 +144,30 @@ export const prerender = true;
       </div>
     </section>
 
-    <!-- Features List -->
-    <section class="features-list-section">
+    <!-- Feature Videos -->
+    <section class="feature-videos-section">
       <div class="container">
-        <h2>· FEATURES ·</h2>
-        <div class="features-list">
-          <div class="feature-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span>Obstacle Detection Motor</span>
+        <h2>See TruScreen Innovation in Action</h2>
+        <div class="videos-grid">
+          <div class="video-item">
+            <div class="video-wrapper">
+              <video autoplay loop muted playsinline>
+                <source src="/assets/images/outdoor-blinds/SHOCK-ABSORPTION.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <h3>Exclusive Shock Absorption System</h3>
+            <p>Watch how TruScreen's patented suspension flexes with impacts and automatically returns to position, protecting your investment from wind and accidental bumps.</p>
           </div>
-          <div class="feature-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span>Motor and Manual Crank available</span>
-          </div>
-          <div class="feature-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span>Blocks sunlight and UV rays, enhancing indoor energy efficiency</span>
-          </div>
-          <div class="feature-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span>Maximizes usable space</span>
-          </div>
-          <div class="feature-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span>6 Standard Colors and span width up to 6M</span>
-          </div>
-          <div class="feature-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span>Australian Made</span>
+          <div class="video-item">
+            <div class="video-wrapper">
+              <video autoplay loop muted playsinline>
+                <source src="/assets/images/outdoor-blinds/BOTTOM-BAR-DESIGN-v2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <h3>Unique Bottom Bar Design</h3>
+            <p>See the specially engineered bottom bar that minimizes movement across wide spans while split caps secure the zip more effectively than any other system.</p>
           </div>
         </div>
       </div>
@@ -458,54 +454,60 @@ export const prerender = true;
     opacity: 0.9;
   }
 
-  /* Features List */
-  .features-list-section {
+  /* Feature Videos */
+  .feature-videos-section {
     padding: 4rem 0;
     background: var(--white);
   }
 
-  .features-list-section h2 {
-    font-size: clamp(1.5rem, 4vw, 2rem);
+  .feature-videos-section h2 {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
     color: var(--olive-green);
     text-align: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem;
     font-weight: 700;
-    letter-spacing: 2px;
   }
 
-  .features-list {
+  .videos-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.25rem;
-    max-width: 800px;
+    gap: 3rem;
+    max-width: 1200px;
     margin: 0 auto;
   }
 
-  .feature-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1rem;
-    background: var(--cream);
-    border-radius: var(--radius-sm);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  .video-item {
+    text-align: center;
   }
 
-  .feature-item:hover {
-    transform: translateX(4px);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  .video-wrapper {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    margin-bottom: 1.5rem;
+    background: var(--black);
   }
 
-  .feature-item svg {
-    flex-shrink: 0;
+  .video-wrapper video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .video-item h3 {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
     color: var(--olive-green);
-    margin-top: 2px;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
   }
 
-  .feature-item span {
+  .video-item p {
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.7;
     color: var(--black);
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.9;
   }
 
   /* Combined Info Section */
@@ -749,8 +751,9 @@ export const prerender = true;
       grid-template-columns: 1fr;
     }
 
-    .features-list {
+    .videos-grid {
       grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
     }
 
     .colour-grid {
