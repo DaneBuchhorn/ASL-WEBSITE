@@ -16,7 +16,7 @@
       <p>One of our design specialists will contact you within 24 hours to discuss your project and arrange a free on-site measure & quote.</p>
     </div>
 
-    <form class="modal-form" id="modalQuoteForm">
+    <form class="modal-form" id="modalQuoteForm" novalidate>
       <div class="form-row">
         <div class="form-group">
           <label for="modal-name">Name *</label>
@@ -24,30 +24,14 @@
         </div>
         <div class="form-group">
           <label for="modal-phone">Phone *</label>
-          <input
-            type="tel"
-            id="modal-phone"
-            name="phone"
-            required
-            title="Please enter a valid Australian phone number (e.g., 0400123456)"
-            placeholder="0400 123 456"
-          >
-          <span class="field-error" id="modal-phone-error"></span>
+          <input type="tel" id="modal-phone" name="phone" required placeholder="0400 123 456">
         </div>
       </div>
 
       <div class="form-row">
         <div class="form-group">
           <label for="modal-email">Email *</label>
-          <input
-            type="email"
-            id="modal-email"
-            name="email"
-            required
-            title="Please enter a valid email address"
-            placeholder="john@example.com"
-          >
-          <span class="field-error" id="modal-email-error"></span>
+          <input type="email" id="modal-email" name="email" required placeholder="john@example.com">
         </div>
         <div class="form-group">
           <label for="modal-suburb">Suburb *</label>
@@ -120,12 +104,8 @@
   }
 
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
   .modal-content {
@@ -241,28 +221,6 @@
     box-shadow: 0 0 0 3px rgba(90, 110, 69, 0.1);
   }
 
-  .form-group input:invalid:not(:placeholder-shown),
-  .form-group input.error {
-    border-color: #dc2626;
-  }
-
-  .form-group input:invalid:not(:placeholder-shown):focus,
-  .form-group input.error:focus {
-    border-color: #dc2626;
-    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
-  }
-
-  .field-error {
-    display: none;
-    color: #dc2626;
-    font-size: 0.75rem;
-    margin-top: 0.25rem;
-  }
-
-  .field-error.active {
-    display: block;
-  }
-
   .form-group textarea {
     resize: vertical;
     min-height: 100px;
@@ -296,12 +254,6 @@
     transform: translateY(0);
   }
 
-  .modal-submit-btn .submit-text,
-  .modal-submit-btn .submit-loading,
-  .modal-submit-btn .submit-arrow {
-    transition: opacity 0.3s ease;
-  }
-
   .modal-submit-btn.loading .submit-text,
   .modal-submit-btn.loading .submit-arrow {
     display: none;
@@ -318,12 +270,8 @@
   }
 
   @keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
 
   .submit-arrow {
@@ -339,7 +287,6 @@
     cursor: not-allowed;
   }
 
-  /* Mobile adjustments */
   @media (max-width: 600px) {
     .modal-content {
       max-height: 95vh;
@@ -368,7 +315,6 @@
     }
   }
 
-  /* Prevent body scroll when modal is open */
   body.modal-open {
     overflow: hidden;
   }
@@ -380,39 +326,32 @@
   // Initialize tracking
   initializeSessionTracking();
 
+  // Get elements
   const modal = document.getElementById('quoteModal');
   const modalOverlay = document.getElementById('modalOverlay');
   const modalClose = document.getElementById('modalClose');
   const modalForm = document.getElementById('modalQuoteForm') as HTMLFormElement;
 
-  console.log('QuoteModal initialized:', { modal: !!modal, modalForm: !!modalForm });
+  console.log('[QuoteModal] Initialized', { modal: !!modal, form: !!modalForm });
 
-  // Function to open modal
+  // Modal functions
   function openModal() {
     if (modal) {
       modal.classList.add('active');
       document.body.classList.add('modal-open');
+      console.log('[QuoteModal] Opened');
     }
   }
 
-  // Function to close modal
   function closeModal() {
     if (modal) {
       modal.classList.remove('active');
       document.body.classList.remove('modal-open');
+      console.log('[QuoteModal] Closed');
     }
   }
 
-  // All buttons that should trigger the modal
-  const triggerSelectors = [
-    '#quoteBtn',
-    '#floatingQuoteBtn',
-    '.btn-primary[href*="quote"]',
-    'button:contains("FREE MEASURE & QUOTE")',
-    'a[href="#quote"]'
-  ];
-
-  // Add click listeners to all quote buttons
+  // Open modal on button clicks
   document.addEventListener('click', (e) => {
     const target = e.target as HTMLElement;
     const button = target.closest('button, a') as HTMLElement;
@@ -421,7 +360,11 @@
       const id = button.id;
       const text = button.textContent?.toUpperCase() || '';
 
-      // Check if this is a quote button
+      // Don't intercept the modal's submit button
+      if (id === 'quoteSubmitBtn') {
+        return;
+      }
+
       if (
         id === 'quoteBtn' ||
         id === 'floatingQuoteBtn' ||
@@ -436,31 +379,42 @@
     }
   });
 
-  // Close modal when clicking overlay
+  // Close modal handlers
   if (modalOverlay) {
     modalOverlay.addEventListener('click', closeModal);
   }
 
-  // Close modal when clicking close button
   if (modalClose) {
     modalClose.addEventListener('click', closeModal);
   }
 
-  // Close modal on Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal?.classList.contains('active')) {
       closeModal();
     }
   });
 
-  // Handle form submission
+  // Form submission handler
   if (modalForm) {
+    console.log('[QuoteModal] Form handler attached');
+
     modalForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-
-      console.log('QuoteModal: Form submission started');
+      console.log('[QuoteModal] Form submitted!');
 
       const submitBtn = document.getElementById('quoteSubmitBtn') as HTMLButtonElement;
+
+      // Validate required fields
+      const name = (document.getElementById('modal-name') as HTMLInputElement)?.value.trim();
+      const phone = (document.getElementById('modal-phone') as HTMLInputElement)?.value.trim();
+      const email = (document.getElementById('modal-email') as HTMLInputElement)?.value.trim();
+      const suburb = (document.getElementById('modal-suburb') as HTMLInputElement)?.value.trim();
+      const product = (document.getElementById('modal-product') as HTMLSelectElement)?.value;
+
+      if (!name || !phone || !email || !suburb || !product) {
+        alert('Please fill in all required fields');
+        return;
+      }
 
       if (submitBtn) {
         submitBtn.disabled = true;
@@ -478,7 +432,11 @@
           message: formData.get('message') as string || undefined,
         };
 
+        console.log('[QuoteModal] Lead data:', leadData);
+
         const submission = captureFormData(leadData, 'modalQuoteForm', 'quote-modal-form');
+
+        console.log('[QuoteModal] Submitting to API...');
 
         const response = await fetch('/api/submit-lead', {
           method: 'POST',
@@ -487,6 +445,8 @@
         });
 
         const result = await response.json();
+
+        console.log('[QuoteModal] API response:', result);
 
         if (response.ok && result.success) {
           if (typeof gtag !== 'undefined') {
@@ -498,13 +458,12 @@
           }
 
           closeModal();
-          alert('Thank you! We\'ll contact you within 24 hours.');
           window.location.href = '/thank-you';
         } else {
           throw new Error(result.message || 'Submission failed');
         }
       } catch (error) {
-        console.error('Form submission error:', error);
+        console.error('[QuoteModal] Error:', error);
         alert('There was an error submitting your form. Please try calling us directly at 0448 243 979.');
 
         if (submitBtn) {
@@ -513,5 +472,7 @@
         }
       }
     });
+  } else {
+    console.error('[QuoteModal] Form not found!');
   }
 </script>
