@@ -1,0 +1,901 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import QuoteModal from '../components/QuoteModal.astro';
+import OfferModal from '../components/OfferModal.astro';
+
+const pageTitle = 'Premium Roller Shutters Canberra | Australian Made | All Seasons Living';
+const pageDescription = 'Insulated aluminium roller shutters in Canberra. Australian made & owned. Enhance security, control temperature, and block UV rays. Free measure & quote.';
+
+// Product Schema for SEO
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Insulated Aluminium Roller Shutters',
+  description: pageDescription,
+  brand: {
+    '@type': 'Brand',
+    name: 'All Seasons Living'
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    reviewCount: '50000',
+    bestRating: '5'
+  },
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'AUD',
+    availability: 'https://schema.org/InStock',
+    priceValidUntil: '2025-12-31'
+  }
+};
+
+// Breadcrumb Schema
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://allseasonsliving.com.au/'
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Roller Shutters',
+      item: 'https://allseasonsliving.com.au/roller-shutters'
+    }
+  ]
+};
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <Header />
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-badge">
+      Insulated Aluminium Roller Shutters in Canberra | Australian Made & Owned
+    </div>
+    <div class="hero-image-container">
+      <img
+        src="/assets/images/roller-shutters/All Seasons Living -Roller Shutters.webp"
+        alt="Premium insulated aluminium roller shutters installed on modern Canberra home providing security and temperature control"
+        class="hero-image"
+        loading="eager"
+      />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <div class="container">
+        <h1>Premium Roller Shutters Canberra</h1>
+        <p class="hero-subtitle">
+          Enhance your home's security, comfort, and energy efficiency with premium Australian-made insulated aluminium roller shutters.
+          Professionally installed in Canberra and surrounding regions.
+        </p>
+        <div class="hero-buttons">
+          <button class="btn btn-primary quote-trigger">FREE MEASURE & QUOTE</button>
+          <a href="tel:0448243979" class="btn btn-secondary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            0448 243 979
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Three Key Benefits -->
+  <section class="benefits-icons-section">
+    <div class="container">
+      <div class="benefits-grid-three">
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="12" cy="12" r="4"></circle>
+              <line x1="12" y1="2" x2="12" y2="4"></line>
+              <line x1="12" y1="20" x2="12" y2="22"></line>
+              <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line>
+              <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line>
+            </svg>
+          </div>
+          <h3>UV Protection</h3>
+          <p>Block harmful UV rays and protect your furniture, flooring, and interior from sun damage.</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path>
+            </svg>
+          </div>
+          <h3>Temperature & Heat Control</h3>
+          <p>Insulated design keeps your home cooler in summer and warmer in winter, reducing energy costs.</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          <h3>Enhanced Security</h3>
+          <p>Durable aluminium construction provides superior protection against break-ins and extreme weather.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote Form Section -->
+  <section class="quote-form-section">
+    <div class="container">
+      <div class="quote-form-grid">
+        <div class="quote-form-image">
+          <img
+            src="/assets/images/roller-shutters/Roller Shutter Render.png"
+            alt="3D render of insulated aluminium roller shutters showing modern design and smooth operation"
+            loading="lazy"
+          />
+        </div>
+        <div class="quote-form-content">
+          <div class="form-header">
+            <h2>BOOK A FREE MEASURE CONSULT</h2>
+            <p>Get your free on-site measure and quote. Our design specialists will help you choose the perfect roller shutters for your home.</p>
+          </div>
+          <form class="inline-quote-form" id="rollerShuttersQuoteForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="rs-name">Name *</label>
+                <input type="text" id="rs-name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="rs-phone">Phone *</label>
+                <input type="tel" id="rs-phone" name="phone" required placeholder="0400 123 456">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="rs-email">Email *</label>
+                <input type="email" id="rs-email" name="email" required placeholder="john@example.com">
+              </div>
+              <div class="form-group">
+                <label for="rs-suburb">Suburb *</label>
+                <input type="text" id="rs-suburb" name="suburb" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="rs-message">Tell us about your project (optional)</label>
+              <textarea id="rs-message" name="message" rows="3"></textarea>
+            </div>
+
+            <button type="submit" class="form-submit-btn" id="rsQuoteSubmitBtn">
+              <span class="submit-text">Get Free Quote</span>
+              <span class="submit-loading" style="display: none;">
+                <svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
+                  <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/>
+                </svg>
+                Submitting...
+              </span>
+              <svg class="submit-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits List Section -->
+  <section class="benefits-list-section">
+    <div class="container">
+      <h2 class="section-title">THE BENEFITS OF INSTALLING ROLLER SHUTTERS</h2>
+      <div class="benefits-content-grid">
+        <div class="benefits-list">
+          <div class="benefit-item">
+            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Energy efficient with thermal insulation properties</span>
+          </div>
+          <div class="benefit-item">
+            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Superior security and privacy protection</span>
+          </div>
+          <div class="benefit-item">
+            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Noise reduction and sound insulation</span>
+          </div>
+          <div class="benefit-item">
+            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Weather protection against wind, rain, and hail</span>
+          </div>
+          <div class="benefit-item">
+            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Fire resistance with aluminium construction</span>
+          </div>
+          <div class="benefit-item">
+            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Low maintenance and long-lasting durability</span>
+          </div>
+        </div>
+        <div class="benefits-image">
+          <img
+            src="/assets/images/roller-shutters/ASL Shutters.png"
+            alt="Close-up view of premium insulated aluminium roller shutters showing quality construction and finish"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Color Options Section -->
+  <section class="colors-section">
+    <div class="container">
+      <h2 class="section-title">WIDE RANGE OF COLOURS AND DESIGN OPTIONS</h2>
+      <p class="section-subtitle">Choose from our extensive colour palette to perfectly match your home's aesthetic</p>
+
+      <div class="colors-content-grid">
+        <div class="color-swatches">
+          <div class="color-swatch" style="background-color: #000000;" title="Black"></div>
+          <div class="color-swatch" style="background-color: #2C2C2C;" title="Charcoal"></div>
+          <div class="color-swatch" style="background-color: #FFFFFF; border: 2px solid #ddd;" title="White"></div>
+          <div class="color-swatch" style="background-color: #E8E4DC;" title="Classic Cream"></div>
+          <div class="color-swatch" style="background-color: #9B8B7E;" title="Sandstone"></div>
+          <div class="color-swatch" style="background-color: #4A5D4F;" title="Woodland Grey"></div>
+          <div class="color-swatch" style="background-color: #8B7355;" title="Natural"></div>
+        </div>
+
+        <div class="color-features-list">
+          <div class="color-feature">
+            <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Powder-coated finish</span>
+          </div>
+          <div class="color-feature">
+            <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>UV resistant colours</span>
+          </div>
+          <div class="color-feature">
+            <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Fade-resistant technology</span>
+          </div>
+          <div class="color-feature">
+            <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Custom colour matching available</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Warranty Section -->
+  <section class="warranty-section">
+    <div class="container">
+      <h2 class="section-title">ALL SEASONS LIVING EXTENDED DOUBLE 7 YEAR WARRANTY PLANS</h2>
+      <p class="section-subtitle">We stand behind our products with industry-leading warranty coverage</p>
+
+      <div class="warranty-cards">
+        <div class="warranty-card">
+          <div class="warranty-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <h3>7 Year Motor Warranty</h3>
+          <p>Full coverage on all motorized components and electronic systems</p>
+        </div>
+
+        <div class="warranty-card">
+          <div class="warranty-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <h3>7 Year Product Warranty</h3>
+          <p>Comprehensive protection on aluminium slats, guides, and all hardware</p>
+        </div>
+
+        <div class="warranty-card">
+          <div class="warranty-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </div>
+          <h3>Lifetime Workmanship</h3>
+          <p>Guaranteed professional installation and service for the life of your shutters</p>
+        </div>
+      </div>
+
+      <div class="warranty-cta">
+        <button class="btn btn-primary quote-trigger">REQUEST A QUOTE</button>
+      </div>
+    </div>
+  </section>
+
+  <QuoteModal />
+  <OfferModal />
+  <Footer />
+</Layout>
+
+<script>
+  import { captureFormData, initializeSessionTracking } from '../utils/formTracking';
+
+  // Initialize tracking
+  initializeSessionTracking();
+
+  const form = document.getElementById('rollerShuttersQuoteForm') as HTMLFormElement;
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const submitBtn = document.getElementById('rsQuoteSubmitBtn') as HTMLButtonElement;
+
+      // Get form values
+      const name = (document.getElementById('rs-name') as HTMLInputElement)?.value.trim();
+      const phone = (document.getElementById('rs-phone') as HTMLInputElement)?.value.trim();
+      const email = (document.getElementById('rs-email') as HTMLInputElement)?.value.trim();
+      const suburb = (document.getElementById('rs-suburb') as HTMLInputElement)?.value.trim();
+      const message = (document.getElementById('rs-message') as HTMLTextAreaElement)?.value.trim();
+
+      // Validate required fields
+      if (!name || !phone || !email || !suburb) {
+        alert('Please fill in all required fields');
+        return;
+      }
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.classList.add('loading');
+      }
+
+      try {
+        const formData = new FormData(form);
+        const leadData = {
+          name: formData.get('name') as string,
+          email: formData.get('email') as string,
+          phone: formData.get('phone') as string,
+          suburb: formData.get('suburb') as string,
+          product: 'roller-shutters',
+          message: formData.get('message') as string || undefined,
+        };
+
+        const submission = captureFormData(leadData, 'rollerShuttersQuoteForm', 'roller-shutters-inline-form');
+
+        const response = await fetch('/api/submit-lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(submission),
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'generate_lead', {
+              event_category: 'Form',
+              event_label: 'roller-shutters-inline',
+              value: 1
+            });
+          }
+
+          window.location.href = '/thank-you';
+        } else {
+          throw new Error(result.message || 'Submission failed');
+        }
+      } catch (error) {
+        console.error('Form error:', error);
+        alert('There was an error submitting your form. Please try calling us directly at 0448 243 979.');
+
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('loading');
+        }
+      }
+    });
+  }
+</script>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    position: relative;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--gold);
+    color: var(--black);
+    text-align: center;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    z-index: 3;
+  }
+
+  .hero-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 6rem 0 4rem;
+    color: var(--white);
+  }
+
+  .hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    max-width: 700px;
+    line-height: 1.6;
+    opacity: 0.95;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Benefits Icons Section */
+  .benefits-icons-section {
+    padding: 4rem 0;
+    background: var(--white);
+  }
+
+  .benefits-grid-three {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .benefit-card {
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .benefit-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--light-sage);
+    border-radius: 50%;
+    color: var(--olive-green);
+  }
+
+  .benefit-card h3 {
+    font-size: 1.25rem;
+    color: var(--olive-green);
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+  }
+
+  .benefit-card p {
+    color: var(--black);
+    opacity: 0.8;
+    line-height: 1.6;
+  }
+
+  /* Quote Form Section */
+  .quote-form-section {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, var(--light-sage) 0%, var(--cream) 100%);
+  }
+
+  .quote-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .quote-form-image img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .form-header {
+    margin-bottom: 2rem;
+  }
+
+  .form-header h2 {
+    font-size: 2rem;
+    color: var(--olive-green);
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+  }
+
+  .form-header p {
+    color: var(--black);
+    opacity: 0.8;
+  }
+
+  .inline-quote-form {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-group label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--black);
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 0.875rem;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--olive-green);
+    box-shadow: 0 0 0 3px rgba(90, 110, 69, 0.1);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  .form-submit-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: var(--olive-green);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+  }
+
+  .form-submit-btn:hover {
+    background: #465331;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(90, 110, 69, 0.3);
+  }
+
+  .form-submit-btn.loading .submit-text,
+  .form-submit-btn.loading .submit-arrow {
+    display: none;
+  }
+
+  .form-submit-btn.loading .submit-loading {
+    display: flex !important;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .spinner {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* Benefits List Section */
+  .benefits-list-section {
+    padding: 5rem 0;
+    background: var(--white);
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--olive-green);
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .section-subtitle {
+    text-align: center;
+    color: var(--black);
+    opacity: 0.8;
+    margin-bottom: 3rem;
+    font-size: 1.125rem;
+  }
+
+  .benefits-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .benefits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .check-icon {
+    flex-shrink: 0;
+    color: var(--olive-green);
+    margin-top: 0.125rem;
+  }
+
+  .benefit-item span {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--black);
+  }
+
+  .benefits-image img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Colors Section */
+  .colors-section {
+    padding: 5rem 0;
+    background: var(--cream);
+  }
+
+  .colors-content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+
+  .color-swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .color-swatch {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .color-swatch:hover {
+    transform: scale(1.1);
+  }
+
+  .color-features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .color-feature {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .color-feature span {
+    font-size: 1rem;
+    color: var(--black);
+  }
+
+  /* Warranty Section */
+  .warranty-section {
+    padding: 5rem 0;
+    background: var(--white);
+  }
+
+  .warranty-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .warranty-card {
+    background: var(--light-sage);
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .warranty-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .warranty-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--white);
+    border-radius: 50%;
+    color: var(--olive-green);
+  }
+
+  .warranty-card h3 {
+    font-size: 1.5rem;
+    color: var(--olive-green);
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .warranty-card p {
+    color: var(--black);
+    opacity: 0.8;
+    line-height: 1.6;
+  }
+
+  .warranty-cta {
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .quote-form-grid,
+    .benefits-content-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .colors-content-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .color-swatches {
+      justify-items: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+    }
+
+    .hero-badge {
+      font-size: 0.75rem;
+      padding: 0.5rem;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .hero-buttons {
+      flex-direction: column;
+    }
+
+    .hero-buttons .btn {
+      width: 100%;
+    }
+  }
+</style>
