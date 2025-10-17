@@ -283,19 +283,25 @@ const breadcrumbSchema = {
       <p class="section-subtitle">PU-foam filled, double-wall construction for superior thermal and acoustic performance.</p>
 
       <div class="slat-profile-images">
-        <div class="slat-profile-image">
-          <img
-            src="/assets/images/roller-shutters/Curved Profile.png"
-            alt="EcoTherm curved profile double-wall aluminium slat showing insulated foam core construction"
-            loading="lazy"
-          />
+        <div class="slat-profile-card">
+          <div class="slat-profile-image">
+            <img
+              src="/assets/images/roller-shutters/Curved Profile.png"
+              alt="EcoTherm curved profile double-wall aluminium slat showing insulated foam core construction"
+              loading="lazy"
+            />
+          </div>
+          <h3 class="slat-profile-label">Curved Profile</h3>
         </div>
-        <div class="slat-profile-image">
-          <img
-            src="/assets/images/roller-shutters/Flat Profile.png"
-            alt="EcoTherm flat profile aluminium slat with PU-foam insulation detail"
-            loading="lazy"
-          />
+        <div class="slat-profile-card">
+          <div class="slat-profile-image">
+            <img
+              src="/assets/images/roller-shutters/Flat Profile.png"
+              alt="EcoTherm flat profile aluminium slat with PU-foam insulation detail"
+              loading="lazy"
+            />
+          </div>
+          <h3 class="slat-profile-label">Flat Profile</h3>
         </div>
       </div>
 
@@ -768,6 +774,13 @@ const breadcrumbSchema = {
     margin-right: auto;
   }
 
+  .slat-profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
   .slat-profile-image {
     background: var(--cream);
     padding: 1rem;
@@ -788,6 +801,14 @@ const breadcrumbSchema = {
     width: 100%;
     height: auto;
     max-width: 250px;
+  }
+
+  .slat-profile-label {
+    font-size: 1.125rem;
+    color: var(--olive-green);
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
   }
 
   .slat-cta {
