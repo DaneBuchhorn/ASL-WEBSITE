@@ -774,13 +774,12 @@ const breadcrumbSchema = {
 
   .color-swatch {
     width: 100%;
-    max-width: 150px;
+    max-width: 100px;
     aspect-ratio: 1;
-    border-radius: var(--radius-md);
+    border-radius: 4px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease;
   }
 
   .color-swatch img {
@@ -791,8 +790,8 @@ const breadcrumbSchema = {
   }
 
   .color-swatch:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    opacity: 0.9;
   }
 
   .color-features-list {
