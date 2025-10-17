@@ -98,7 +98,7 @@ const breadcrumbSchema = {
       <div class="benefits-grid-three">
         <div class="benefit-card">
           <div class="benefit-icon">
-            <img src="/assets/icons/guarantee-certificate.svg" alt="15 Year Warranty Icon" width="64" height="64" />
+            <img src="/assets/icons/guarantee-certificate.svg" alt="15 Year Warranty Icon" width="80" height="80" />
           </div>
           <h3>15 Year Warranty</h3>
           <p>Our Roller Shutters are backed by a full manufacturer's warranty, giving you peace of mind that your investment is protected with reliable quality and long-lasting performance.</p>
@@ -106,7 +106,7 @@ const breadcrumbSchema = {
 
         <div class="benefit-card">
           <div class="benefit-icon">
-            <img src="/assets/icons/measure.svg" alt="Professional Design & Measure Icon" width="64" height="64" />
+            <img src="/assets/icons/measure.svg" alt="Professional Design & Measure Icon" width="80" height="80" />
           </div>
           <h3>Professional Design & Measure</h3>
           <p>Every solution is carefully measured, designed, and installed by licensed specialists, ensuring a perfect fit, seamless finish, and long-lasting results for your home.</p>
@@ -114,7 +114,7 @@ const breadcrumbSchema = {
 
         <div class="benefit-card">
           <div class="benefit-icon">
-            <img src="/assets/icons/australia.svg" alt="Australian Made & Manufactured Icon" width="64" height="64" />
+            <img src="/assets/icons/australia.svg" alt="Australian Made & Manufactured Icon" width="80" height="80" />
           </div>
           <h3>Australian Made & Manufactured</h3>
           <p>Our Roller Shutters are proudly made and manufactured in Australia, supporting local jobs and guaranteeing premium quality tailored to withstand tough Australian conditions.</p>
@@ -506,7 +506,7 @@ const breadcrumbSchema = {
 
   .benefits-grid-three {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
   }
 
@@ -516,8 +516,8 @@ const breadcrumbSchema = {
   }
 
   .benefit-icon {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     margin: 0 auto 1.5rem;
     display: flex;
     align-items: center;
@@ -527,11 +527,17 @@ const breadcrumbSchema = {
     color: var(--olive-green);
   }
 
+  .benefit-icon img {
+    width: 80px;
+    height: 80px;
+  }
+
   .benefit-card h3 {
-    font-size: 1.25rem;
+    font-size: 1.1875rem;
     color: var(--olive-green);
     margin-bottom: 0.75rem;
     font-weight: 700;
+    white-space: nowrap;
   }
 
   .benefit-card p {
