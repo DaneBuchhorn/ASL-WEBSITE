@@ -768,7 +768,7 @@ const breadcrumbSchema = {
 
   .color-swatches {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
   }
 
@@ -981,6 +981,10 @@ const breadcrumbSchema = {
       font-size: 0.75rem;
       padding: 0.5rem;
     }
+
+    .color-swatches {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   @media (max-width: 500px) {
@@ -990,6 +994,10 @@ const breadcrumbSchema = {
 
     .hero-buttons .btn {
       width: 100%;
+    }
+
+    .color-swatches {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>
