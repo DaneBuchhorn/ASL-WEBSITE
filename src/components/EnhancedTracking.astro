@@ -1,13 +1,276 @@
-<!-- Enhanced Conversion Tracking Initializer -->
-<script>
-  import { initAllEnhancedTracking } from '../utils/enhancedTracking.ts';
+<!-- Enhanced Conversion Tracking - Inline Implementation -->
+<script is:inline>
+(function() {
+  'use strict';
+
+  // Track phone number clicks
+  function initPhoneTracking() {
+    document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        var phoneNumber = e.currentTarget.href.replace('tel:', '');
+        var location = e.currentTarget.getAttribute('data-location') || 'unknown';
+
+        if (typeof window.gtag !== 'undefined') {
+          window.gtag('event', 'phone_call_click', {
+            event_category: 'Contact',
+            event_label: phoneNumber,
+            phone_location: location,
+            value: 1
+          });
+        }
+
+        console.log('📞 Phone Click:', { phoneNumber: phoneNumber, location: location });
+      });
+    });
+  }
+
+  // Track CTA button clicks
+  function initCTATracking() {
+    var ctaSelectors = ['.btn-primary', '.btn-secondary', '.quote-trigger', '.form-submit-btn'];
+
+    ctaSelectors.forEach(function(selector) {
+      document.querySelectorAll(selector).forEach(function(button) {
+        button.addEventListener('click', function(e) {
+          var target = e.currentTarget;
+          var buttonText = target.textContent.trim() || '';
+          var buttonType = target.className;
+          var pageUrl = window.location.pathname;
+
+          if (typeof window.gtag !== 'undefined') {
+            window.gtag('event', 'cta_click', {
+              event_category: 'Engagement',
+              event_label: buttonText,
+              button_type: buttonType,
+              page_location: pageUrl,
+              value: 1
+            });
+          }
+
+          console.log('🎯 CTA Click:', { buttonText: buttonText, buttonType: buttonType, pageUrl: pageUrl });
+        });
+      });
+    });
+  }
+
+  // Track scroll depth
+  function initScrollTracking() {
+    var scrollDepths = [25, 50, 75, 100];
+    var reached = {};
+
+    function checkScrollDepth() {
+      var windowHeight = window.innerHeight;
+      var documentHeight = document.documentElement.scrollHeight;
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      var scrollPercent = ((scrollTop + windowHeight) / documentHeight) * 100;
+
+      scrollDepths.forEach(function(depth) {
+        if (scrollPercent >= depth && !reached[depth]) {
+          reached[depth] = true;
+
+          if (typeof window.gtag !== 'undefined') {
+            window.gtag('event', 'scroll_depth', {
+              event_category: 'Engagement',
+              event_label: depth + '%',
+              scroll_depth: depth,
+              page_location: window.location.pathname,
+              value: depth / 100
+            });
+          }
+
+          console.log('📜 Scroll Depth:', depth + '%', window.location.pathname);
+        }
+      });
+    }
+
+    // Throttle scroll events
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          checkScrollDepth();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  }
+
+  // Track form interactions (start & abandon)
+  function initFormInteractionTracking(formId, formName) {
+    var form = document.getElementById(formId);
+    if (!form) return;
+
+    var formStarted = false;
+    var formAbandoned = false;
+    var fieldsCompleted = 0;
+
+    // Track form start
+    var inputs = form.querySelectorAll('input, textarea, select');
+    inputs.forEach(function(input) {
+      input.addEventListener('focus', function() {
+        if (!formStarted) {
+          formStarted = true;
+
+          if (typeof window.gtag !== 'undefined') {
+            window.gtag('event', 'form_start', {
+              event_category: 'Form',
+              event_label: formName,
+              form_name: formName,
+              form_location: window.location.pathname,
+              value: 1
+            });
+          }
+
+          console.log('📝 Form Start:', formName);
+        }
+      });
+
+      // Track field completion
+      input.addEventListener('blur', function() {
+        var value = input.value.trim();
+        if (value.length > 0) {
+          fieldsCompleted++;
+        }
+      });
+    });
+
+    // Track form abandonment
+    var isSubmitting = false;
+
+    form.addEventListener('submit', function() {
+      isSubmitting = true;
+    });
+
+    window.addEventListener('beforeunload', function() {
+      if (formStarted && !isSubmitting && !formAbandoned) {
+        formAbandoned = true;
+        var totalFields = inputs.length;
+
+        if (typeof window.gtag !== 'undefined') {
+          window.gtag('event', 'form_abandon', {
+            event_category: 'Form',
+            event_label: formName,
+            form_name: formName,
+            fields_completed: fieldsCompleted,
+            total_fields: totalFields,
+            completion_rate: Math.round((fieldsCompleted / totalFields) * 100),
+            value: 0
+          });
+        }
+
+        console.log('⚠️ Form Abandoned:', formName, fieldsCompleted + '/' + totalFields + ' fields');
+      }
+    });
+  }
+
+  // Track product icon clicks
+  function initProductIconTracking() {
+    document.querySelectorAll('.product-icon-card').forEach(function(card) {
+      card.addEventListener('click', function(e) {
+        var target = e.currentTarget;
+        var spanElement = target.querySelector('span');
+        var productName = spanElement ? spanElement.textContent.trim() : '';
+        var href = target.href || '';
+
+        if (typeof window.gtag !== 'undefined') {
+          window.gtag('event', 'product_icon_click', {
+            event_category: 'Navigation',
+            event_label: productName,
+            product_name: productName,
+            destination_url: href,
+            value: 1
+          });
+        }
+
+        console.log('🔲 Product Icon Click:', productName);
+      });
+    });
+  }
+
+  // Track time on site milestones
+  function initTimeOnSiteTracking() {
+    var milestones = [30, 60, 120, 300]; // seconds
+    var reached = {};
+
+    milestones.forEach(function(milestone) {
+      setTimeout(function() {
+        if (!reached[milestone]) {
+          reached[milestone] = true;
+
+          if (typeof window.gtag !== 'undefined') {
+            window.gtag('event', 'time_on_site', {
+              event_category: 'Engagement',
+              event_label: milestone + ' seconds',
+              time_seconds: milestone,
+              page_location: window.location.pathname,
+              value: milestone
+            });
+          }
+
+          console.log('⏱️ Time on Site:', milestone + 's');
+        }
+      }, milestone * 1000);
+    });
+  }
+
+  // Track external link clicks
+  function initExternalLinkTracking() {
+    document.querySelectorAll('a[href^="http"]').forEach(function(link) {
+      var href = link.href;
+      var currentDomain = window.location.hostname;
+
+      // Check if it's external
+      if (!href.includes(currentDomain)) {
+        link.addEventListener('click', function() {
+          if (typeof window.gtag !== 'undefined') {
+            window.gtag('event', 'external_link_click', {
+              event_category: 'Outbound',
+              event_label: href,
+              destination_url: href,
+              value: 1
+            });
+          }
+
+          console.log('🔗 External Link:', href);
+        });
+      }
+    });
+  }
+
+  // Setup all tracking
+  function setupTracking() {
+    console.log('🚀 Initializing Enhanced Tracking...');
+
+    // Core tracking
+    initPhoneTracking();
+    initCTATracking();
+    initScrollTracking();
+    initProductIconTracking();
+    initExternalLinkTracking();
+    initTimeOnSiteTracking();
+
+    // Form-specific tracking
+    var forms = [
+      { id: 'mainQuoteForm', name: 'homepage-quote-form' },
+      { id: 'artificialLawnQuoteForm', name: 'artificial-lawn-inline-form' },
+      { id: 'rollerShuttersQuoteForm', name: 'roller-shutters-inline-form' },
+      { id: 'contactForm', name: 'contact-page-form' }
+    ];
+
+    forms.forEach(function(formConfig) {
+      if (document.getElementById(formConfig.id)) {
+        initFormInteractionTracking(formConfig.id, formConfig.name);
+      }
+    });
+
+    console.log('✅ Enhanced Tracking Initialized');
+  }
 
   // Initialize when DOM is ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      initAllEnhancedTracking();
-    });
+    document.addEventListener('DOMContentLoaded', setupTracking);
   } else {
-    initAllEnhancedTracking();
+    setupTracking();
   }
+})();
 </script>
