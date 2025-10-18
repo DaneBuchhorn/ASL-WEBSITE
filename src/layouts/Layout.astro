@@ -4,6 +4,7 @@ import SEO from '../components/SEO.astro';
 import FloatingCTA from '../components/FloatingCTA.astro';
 import QuoteModal from '../components/QuoteModal.astro';
 import OfferModal from '../components/OfferModal.astro';
+import EnhancedTracking from '../components/EnhancedTracking.astro';
 
 interface Props {
   title: string;
@@ -74,17 +75,12 @@ const {
       import { injectSpeedInsights } from '@vercel/speed-insights';
       injectSpeedInsights();
     </script>
-
-    <!-- Enhanced Conversion Tracking -->
-    <script>
-      import { initAllEnhancedTracking } from '../utils/enhancedTracking';
-      initAllEnhancedTracking();
-    </script>
   </head>
   <body>
     <slot />
     <FloatingCTA />
     <QuoteModal />
     <OfferModal />
+    <EnhancedTracking />
   </body>
 </html>

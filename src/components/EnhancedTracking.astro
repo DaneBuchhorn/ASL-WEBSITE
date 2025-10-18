@@ -1,0 +1,13 @@
+<!-- Enhanced Conversion Tracking Initializer -->
+<script>
+  import { initAllEnhancedTracking } from '../utils/enhancedTracking.ts';
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initAllEnhancedTracking();
+    });
+  } else {
+    initAllEnhancedTracking();
+  }
+</script>
