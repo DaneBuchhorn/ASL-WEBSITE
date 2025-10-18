@@ -74,6 +74,12 @@ const {
       import { injectSpeedInsights } from '@vercel/speed-insights';
       injectSpeedInsights();
     </script>
+
+    <!-- Enhanced Conversion Tracking -->
+    <script>
+      import { initAllEnhancedTracking } from '../utils/enhancedTracking';
+      initAllEnhancedTracking();
+    </script>
   </head>
   <body>
     <slot />

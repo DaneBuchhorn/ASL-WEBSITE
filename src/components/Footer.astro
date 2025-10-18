@@ -15,7 +15,7 @@ const currentYear = new Date().getFullYear();
             <a href={`mailto:${config.contact.email}`}>{config.contact.email}</a>
           </p>
           <p class="footer-contact">
-            <a href={`tel:${config.contact.phone.replace(/\s/g, '')}`}>{config.contact.phone}</a>
+            <a href={`tel:${config.contact.phone.replace(/\s/g, '')}`} data-location="footer">{config.contact.phone}</a>
           </p>
 
           <div class="newsletter">
