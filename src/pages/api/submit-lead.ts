@@ -7,6 +7,7 @@
 
 import type { APIRoute } from 'astro';
 import type { FormSubmission } from '../../utils/formTracking';
+import { Resend } from 'resend';
 
 export const POST: APIRoute = async ({ request, clientAddress }) => {
   try {
@@ -127,6 +128,29 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
     const crmResult = await crmResponse.json();
     console.log('✅ Successfully sent to CRM:', crmResult);
+
+    // Send email notification
+    try {
+      const resendApiKey = import.meta.env.RESEND_API_KEY;
+
+      if (resendApiKey) {
+        const resend = new Resend(resendApiKey);
+
+        await resend.emails.send({
+          from: 'All Seasons Living <leads@allseasonsliving.com.au>',
+          to: ['dane@allseasonsliving.com.au'],
+          subject: `🎯 New Lead: ${enrichedSubmission.lead.name} - ${enrichedSubmission.lead.product}`,
+          html: formatLeadEmail(enrichedSubmission)
+        });
+
+        console.log('✅ Email notification sent to dane@allseasonsliving.com.au');
+      } else {
+        console.warn('⚠️  RESEND_API_KEY not configured - skipping email notification');
+      }
+    } catch (emailError) {
+      console.error('❌ Failed to send email notification:', emailError);
+      // Don't fail the entire request if email fails
+    }
 
     // Return success response
     return new Response(
