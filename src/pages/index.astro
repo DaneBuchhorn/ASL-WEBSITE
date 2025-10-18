@@ -31,22 +31,22 @@ export const prerender = true;
     <section class="product-icons-section">
       <div class="container">
         <div class="hero-products">
-          <div class="product-icon-card">
+          <a href="/artificial-lawn" class="product-icon-card">
             <img src="/assets/icons/Artificial_Lawn_inline_image.svg" alt="Artificial Lawn" class="product-icon" />
             <span>Artificial Lawn</span>
-          </div>
-          <div class="product-icon-card">
+          </a>
+          <a href="/roller-shutters" class="product-icon-card">
             <img src="/assets/icons/roller-shutters.svg" alt="Roller Shutters" class="product-icon" />
             <span>Roller Shutters</span>
-          </div>
-          <div class="product-icon-card">
+          </a>
+          <a href="#" class="product-icon-card">
             <img src="/assets/icons/plantation-shutters.svg" alt="Plantation Shutters" class="product-icon" />
             <span>Plantation Shutters</span>
-          </div>
-          <div class="product-icon-card">
+          </a>
+          <a href="/outdoor-blinds" class="product-icon-card">
             <img src="/assets/icons/outdoor-blinds.svg" alt="Outdoor Blinds" class="product-icon" />
             <span>Outdoor Blinds</span>
-          </div>
+          </a>
         </div>
       </div>
     </section>
@@ -104,14 +104,14 @@ export const prerender = true;
 
     <!-- TrueScreen Outdoor Blinds Feature Section -->
     <section class="outdoor-blinds-section">
-      <div class="container">
-        <div class="blinds-content-wrapper">
-          <div class="blinds-visual-content">
-            <div class="blinds-hero-image">
-              <img src="/assets/images/outdoor-blinds/Outdoor Motorised Blinds.webp" alt="Motorised Outdoor Blinds" loading="lazy" />
-            </div>
+      <div class="blinds-content-wrapper">
+        <div class="blinds-visual-content">
+          <div class="blinds-hero-image">
+            <img src="/assets/images/outdoor-blinds/Outdoor Motorised Blinds.webp" alt="Motorised Outdoor Blinds" loading="lazy" />
           </div>
-          <div class="blinds-text-content">
+        </div>
+        <div class="blinds-text-content">
+          <div class="container">
             <h2>TrueScreen<span class="trademark">®</span> Outdoor Blinds</h2>
             <p class="blinds-tagline">Australia's Premium Outdoor Blind System</p>
 
@@ -176,11 +176,56 @@ export const prerender = true;
       </div>
     </section>
 
+    <!-- Why Choose Section -->
+    <section class="why-choose">
+      <div class="container">
+        <h2 class="section-title">Why Choose All Seasons Living?</h2>
+        <div class="benefits-grid">
+          <div class="benefit-item-check">
+            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Free On-Site Consultations & Quotes</span>
+          </div>
+          <div class="benefit-item-check">
+            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>100% Australian Owned & Operated</span>
+          </div>
+          <div class="benefit-item-check">
+            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Over 15 Years Industry Experience</span>
+          </div>
+          <div class="benefit-item-check">
+            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Quality Products with Warranties</span>
+          </div>
+          <div class="benefit-item-check">
+            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Licensed & Trained Installers</span>
+          </div>
+          <div class="benefit-item-check">
+            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Personalised Service from Start to Finish</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Roller Shutters Feature Section -->
     <section class="roller-shutters-section">
-      <div class="container">
-        <div class="shutters-content-wrapper">
-          <div class="shutters-text-content">
+      <div class="shutters-content-wrapper">
+        <div class="shutters-text-content">
+          <div class="container">
             <h2>Roller Shutters</h2>
             <p class="shutters-subtitle">Canberra's Leading Roller Shutter Experts</p>
 
@@ -225,11 +270,11 @@ export const prerender = true;
 
             <a href="/roller-shutters" class="btn btn-primary btn-lg">DISCOVER MORE</a>
           </div>
+        </div>
 
-          <div class="shutters-visual-content">
-            <div class="shutters-image">
-              <img src="/assets/images/roller-shutters/All Seasons Living -Roller Shutters.webp" alt="Roller Shutters Installation" loading="lazy" />
-            </div>
+        <div class="shutters-visual-content">
+          <div class="shutters-image">
+            <img src="/assets/images/roller-shutters/All Seasons Living -Roller Shutters.webp" alt="Roller Shutters Installation" loading="lazy" />
           </div>
         </div>
       </div>
@@ -250,10 +295,10 @@ export const prerender = true;
 
         <form class="quote-form" id="mainQuoteForm">
           <div class="form-grid">
-            <input type="text" id="name" name="name" placeholder="Name*" required />
-            <input type="tel" id="phone" name="phone" placeholder="Phone*" required />
-            <input type="email" id="email" name="email" placeholder="Email*" required />
-            <input type="text" id="suburb" name="suburb" placeholder="Suburb*" required />
+            <input type="text" id="name" name="name" placeholder="Name* (e.g. John Doe)" required />
+            <input type="tel" id="phone" name="phone" placeholder="Phone* (e.g. 0412 345 678)" required />
+            <input type="email" id="email" name="email" placeholder="Email* (e.g. john.doe@email.com)" required />
+            <input type="text" id="suburb" name="suburb" placeholder="Suburb* (e.g. Belconnen)" required />
             <select id="product" name="product" required>
               <option value="">Select Product*</option>
               <option value="artificial-lawn">Artificial Lawn</option>
@@ -277,14 +322,14 @@ export const prerender = true;
 
     <!-- Artificial Lawn Feature Section -->
     <section class="lawn-section">
-      <div class="container">
-        <div class="lawn-content-wrapper">
-          <div class="lawn-visual-content">
-            <div class="lawn-image">
-              <img src="/assets/images/artificial-lawn/Artificial-lawn-asl-media.webp" alt="Puppy on Artificial Lawn" loading="lazy" />
-            </div>
+      <div class="lawn-content-wrapper">
+        <div class="lawn-visual-content">
+          <div class="lawn-image">
+            <img src="/assets/images/artificial-lawn/Artificial-lawn-asl-media.webp" alt="Puppy on Artificial Lawn" loading="lazy" />
           </div>
-          <div class="lawn-text-content">
+        </div>
+        <div class="lawn-text-content">
+          <div class="container">
             <h2>Artificial Lawn</h2>
             <p class="lawn-tagline">Premium Artificial Grass Installation in Canberra</p>
 
@@ -441,11 +486,17 @@ export const prerender = true;
     text-align: center;
     border: 1px solid rgba(84, 101, 61, 0.1);
     min-height: 48px; /* Touch-friendly */
+    text-decoration: none;
+    color: inherit;
   }
 
   .product-icon-card:active {
     transform: scale(0.98);
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  }
+
+  .product-icon-card:visited {
+    color: inherit;
   }
 
   .product-icon {
@@ -488,7 +539,7 @@ export const prerender = true;
   /* Trust/Credibility Section - Mobile First */
   .trust-section {
     padding: 2.5rem 0;
-    background: var(--white);
+    background: #f5f1e7;
     position: relative;
     z-index: 10;
     border-top: 1px solid rgba(84, 101, 61, 0.1);
@@ -581,30 +632,36 @@ export const prerender = true;
   /* TrueScreen Outdoor Blinds Section - Mobile First */
   .outdoor-blinds-section {
     padding: 2.5rem 0;
-    background: linear-gradient(135deg, var(--cream) 0%, var(--white) 100%);
+    background: #e2e8d9;
     position: relative;
   }
 
   .blinds-content-wrapper {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-    align-items: start;
+    gap: 0;
+    align-items: stretch;
   }
 
   .blinds-visual-content {
     order: -1;
+    height: 100%;
+    min-height: 400px;
+  }
+
+  .blinds-text-content {
+    padding: 2.5rem 0;
   }
 
   .blinds-hero-image {
-    border-radius: var(--radius-md);
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
   }
 
   .blinds-hero-image img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
     display: block;
   }
@@ -674,18 +731,24 @@ export const prerender = true;
   /* Roller Shutters Section - Mobile First */
   .roller-shutters-section {
     padding: 2.5rem 0;
-    background: var(--white);
+    background: #f5f1e7;
   }
 
   .shutters-content-wrapper {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-    align-items: start;
+    gap: 0;
+    align-items: stretch;
   }
 
   .shutters-visual-content {
     order: -1;
+    height: 100%;
+    min-height: 400px;
+  }
+
+  .shutters-text-content {
+    padding: 2.5rem 0;
   }
 
   .shutters-text-content h2 {
@@ -735,14 +798,14 @@ export const prerender = true;
   }
 
   .shutters-image {
-    border-radius: var(--radius-md);
     overflow: hidden;
     width: 100%;
+    height: 100%;
   }
 
   .shutters-image img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
     display: block;
   }
@@ -810,8 +873,9 @@ export const prerender = true;
   .feature-large-image,
   .feature-small-image,
   .feature-image-single {
-    border-radius: var(--radius-lg);
     overflow: hidden;
+    width: 100%;
+    height: 100%;
   }
 
   .feature-images img,
@@ -910,29 +974,35 @@ export const prerender = true;
   /* Artificial Lawn Section - Mobile First */
   .lawn-section {
     padding: 2.5rem 0;
-    background: var(--light-sage);
+    background: #e2e8d9;
   }
 
   .lawn-content-wrapper {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-    align-items: start;
+    gap: 0;
+    align-items: stretch;
   }
 
   .lawn-visual-content {
     order: -1;
+    height: 100%;
+    min-height: 400px;
+  }
+
+  .lawn-text-content {
+    padding: 2.5rem 0;
   }
 
   .lawn-image {
-    border-radius: var(--radius-md);
     overflow: hidden;
     width: 100%;
+    height: 100%;
   }
 
   .lawn-image img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
     display: block;
   }
@@ -985,6 +1055,57 @@ export const prerender = true;
 
   .lawn-icon[src] {
     filter: brightness(0) saturate(100%) invert(29%) sepia(14%) saturate(1158%) hue-rotate(52deg) brightness(95%) contrast(89%);
+  }
+
+  /* Why Choose Section - Mobile First */
+  .why-choose {
+    padding: 2.5rem 0;
+    background: #e2e8d9;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    color: var(--olive-green);
+    margin-bottom: 2rem;
+    font-weight: 700;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .benefit-item-check {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--white);
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+  }
+
+  .benefit-item-check:active {
+    transform: scale(0.98);
+  }
+
+  .check-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    color: var(--olive-green);
+  }
+
+  .benefit-item-check span {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--black);
+    font-weight: 500;
   }
 
   /* Tablet Breakpoint (768px - 1024px) */
@@ -1043,7 +1164,7 @@ export const prerender = true;
     .blinds-content-wrapper,
     .shutters-content-wrapper,
     .lawn-content-wrapper {
-      gap: 2rem;
+      gap: 0;
     }
 
     .form-grid {
@@ -1064,6 +1185,15 @@ export const prerender = true;
     .lawn-benefits,
     .benefits-list {
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    .benefits-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    .why-choose {
+      padding: 3rem 0;
     }
   }
 
@@ -1146,22 +1276,60 @@ export const prerender = true;
       box-shadow: 0 6px 16px rgba(84, 101, 61, 0.15);
     }
 
+    .outdoor-blinds-section,
+    .roller-shutters-section,
+    .lawn-section {
+      padding: 0;
+    }
+
     .blinds-content-wrapper {
-      grid-template-columns: 1.2fr 1fr;
+      grid-template-columns: 50% 50%;
+      min-height: 600px;
     }
 
     .blinds-visual-content {
       order: 0;
+      min-height: 600px;
+    }
+
+    .blinds-text-content {
+      display: flex;
+      align-items: center;
+      padding: 4rem 0;
+    }
+
+    .blinds-text-content .container {
+      margin-left: 4rem;
+      max-width: 80%;
     }
 
     .shutters-content-wrapper,
     .lawn-content-wrapper {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 50% 50%;
+      min-height: 600px;
     }
 
     .shutters-visual-content,
     .lawn-visual-content {
       order: 0;
+      min-height: 600px;
+    }
+
+    .shutters-text-content,
+    .lawn-text-content {
+      display: flex;
+      align-items: center;
+      padding: 4rem 0;
+    }
+
+    .shutters-text-content .container {
+      margin-right: 4rem;
+      max-width: 80%;
+    }
+
+    .lawn-text-content .container {
+      margin-left: 4rem;
+      max-width: 80%;
     }
 
     .feature-grid {
@@ -1285,22 +1453,10 @@ export const prerender = true;
       height: 24px;
     }
 
-    .blinds-content-wrapper {
-      grid-template-columns: 1.2fr 1fr;
-      gap: var(--spacing-xl);
-    }
-
     .blinds-text-content h2 {
       font-size: clamp(2.25rem, 5vw, 3.5rem);
     }
 
-    .blinds-hero-image {
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    }
-
-    .outdoor-blinds-section,
-    .roller-shutters-section,
-    .lawn-section,
     .feature-section {
       padding: var(--spacing-xl) 0;
     }
@@ -1315,6 +1471,23 @@ export const prerender = true;
 
     .quote-form {
       max-width: 900px;
+    }
+
+    .benefits-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .benefit-item-check {
+      padding: 1.25rem 1.5rem;
+    }
+
+    .benefit-item-check span {
+      font-size: 1rem;
+    }
+
+    .why-choose {
+      padding: var(--spacing-xl) 0;
     }
   }
 </style>

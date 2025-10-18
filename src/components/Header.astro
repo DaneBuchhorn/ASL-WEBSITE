@@ -11,6 +11,28 @@ import OfferBanner from './OfferBanner.astro';
           <img src="/assets/images/general/All Seasons Living SVG Logo.svg" alt="All Seasons Living" />
         </a>
 
+        <nav class="nav">
+          <ul class="nav-menu">
+            <li><a href="/">Home</a></li>
+            <li class="has-dropdown">
+              <a href="#" class="dropdown-toggle">
+                Our Products
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                  <path d="M6 9L1 4h10L6 9z"/>
+                </svg>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="/outdoor-blinds">Outdoor Blinds</a></li>
+                <li><a href="/artificial-lawn">Artificial Lawn</a></li>
+                <li><a href="/roller-shutters">Roller Shutters</a></li>
+                <li><a href="#" class="coming-soon">Plantation Shutters <span>(Coming Soon)</span></a></li>
+              </ul>
+            </li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+
         <div class="header-actions">
           <button class="btn btn-primary" id="quoteBtn">
             FREE MEASURE & QUOTE
@@ -33,30 +55,6 @@ import OfferBanner from './OfferBanner.astro';
     </div>
   </div>
 
-  <nav class="nav">
-    <div class="container">
-      <ul class="nav-menu">
-        <li><a href="/">Home</a></li>
-        <li class="has-dropdown">
-          <a href="#" class="dropdown-toggle">
-            Our Products
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
-              <path d="M6 9L1 4h10L6 9z"/>
-            </svg>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a href="/outdoor-blinds">Outdoor Blinds</a></li>
-            <li><a href="/artificial-lawn">Artificial Lawn</a></li>
-            <li><a href="/roller-shutters">Roller Shutters</a></li>
-            <li><a href="#" class="coming-soon">Plantation Shutters <span>(Coming Soon)</span></a></li>
-          </ul>
-        </li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-
   <OfferBanner />
 </header>
 
@@ -67,6 +65,7 @@ import OfferBanner from './OfferBanner.astro';
     z-index: 1000;
     background: var(--white);
     box-shadow: var(--shadow-sm);
+    contain: layout;
   }
 
   .header-top {
@@ -84,6 +83,7 @@ import OfferBanner from './OfferBanner.astro';
     justify-content: center;
     padding: 0;
     width: 100%;
+    position: relative;
   }
 
   /* Mobile-first logo - centered at top */
@@ -182,11 +182,16 @@ import OfferBanner from './OfferBanner.astro';
 
   /* Mobile navigation - hidden by default */
   .nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
     background: var(--white);
     border-top: 1px solid var(--gray-border);
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
+    width: 100%;
   }
 
   .nav.active {
@@ -316,22 +321,39 @@ import OfferBanner from './OfferBanner.astro';
     .header {
       position: sticky;
       top: 0;
+      transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .header-top {
+      transition: border-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .header-content {
       flex-direction: row;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
+      transition: padding 0.5s cubic-bezier(0.4, 0, 0.2, 1), gap 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 0.5rem 0;
+      /* NO transition on flex-wrap - instant change to prevent reflow */
     }
 
     .logo {
       width: auto;
-      padding: 0;
+      flex-shrink: 0;
+      order: 1;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: center;
+      /* NO transition on order - instant change */
     }
 
     .logo img {
-      height: 120px;
-      padding: 20px;
+      height: 70px;
+      margin-bottom: 42px;
+      transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1), margin-bottom 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      display: block;
     }
 
     .header-actions {
@@ -340,7 +362,11 @@ import OfferBanner from './OfferBanner.astro';
       align-items: center;
       gap: 1.5rem;
       width: auto;
-      padding: 0;
+      opacity: 1;
+      transition: gap 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+      flex-shrink: 0;
+      order: 2;
+      /* NO transition on order - instant change */
     }
 
     .header-actions .btn {
@@ -351,6 +377,7 @@ import OfferBanner from './OfferBanner.astro';
       font-weight: 700;
       padding: 0.875rem 1.75rem;
       min-height: 50px;
+      transition: font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.5s cubic-bezier(0.4, 0, 0.2, 1), min-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s ease, transform 0.2s ease;
     }
 
     .header-actions .btn svg {
@@ -363,14 +390,27 @@ import OfferBanner from './OfferBanner.astro';
     }
 
     .nav {
+      position: static;
       max-height: none;
       overflow: visible;
+      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), flex 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+      background: transparent;
+      border: none;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      order: 3;
+      opacity: 1;
+      /* NO transition on order - instant change */
     }
 
     .nav-menu {
       flex-direction: row;
       justify-content: center;
-      gap: 3rem;
+      gap: 2rem;
+      padding: 0.5rem 0;
+      transition: gap 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .nav-menu > li {
@@ -380,6 +420,9 @@ import OfferBanner from './OfferBanner.astro';
     .nav-menu > li > a {
       border-radius: var(--radius-sm);
       position: relative;
+      padding: 0.75rem 1.25rem;
+      transition: padding 0.5s cubic-bezier(0.4, 0, 0.2, 1), font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease, background 0.2s ease;
+      white-space: nowrap;
     }
 
     .nav-menu > li > a:hover {
@@ -430,6 +473,64 @@ import OfferBanner from './OfferBanner.astro';
     .dropdown-menu li a:hover {
       background: var(--light-sage);
       color: var(--olive-green);
+    }
+
+    /* Transitioning class for smooth fade */
+    .header.transitioning .logo,
+    .header.transitioning .header-actions,
+    .header.transitioning .nav {
+      opacity: 0.7;
+    }
+
+    /* Condensed header on scroll - single line layout */
+    .header.scrolled {
+      box-shadow: var(--shadow-md);
+    }
+
+    .header.scrolled .header-top {
+      border-bottom: none;
+    }
+
+    .header.scrolled .header-content {
+      padding: 0.4rem 0;
+      flex-wrap: nowrap;
+      gap: 2rem;
+    }
+
+    .header.scrolled .logo {
+      order: 1;
+    }
+
+    .header.scrolled .logo img {
+      height: 55px;
+      margin-bottom: 12px;
+    }
+
+    .header.scrolled .nav {
+      order: 2;
+      width: auto;
+      flex: 1;
+    }
+
+    .header.scrolled .header-actions {
+      gap: 1rem;
+      order: 3;
+    }
+
+    .header.scrolled .header-actions .btn {
+      font-size: 14px;
+      padding: 0.625rem 1.25rem;
+      min-height: 42px;
+    }
+
+    .header.scrolled .nav-menu {
+      gap: 1rem;
+      padding: 0;
+    }
+
+    .header.scrolled .nav-menu > li > a {
+      padding: 0.5rem 0.875rem;
+      font-size: 14px;
     }
   }
 </style>
@@ -502,4 +603,98 @@ import OfferBanner from './OfferBanner.astro';
       link.classList.add('active');
     }
   });
+
+  // Condensed header on scroll (desktop only)
+  const header = document.querySelector('.header');
+  let ticking = false;
+  let isScrolled = false;
+  let scrollTimeout = null;
+  let lastStateChange = 0;
+  const SCROLL_THRESHOLD_DOWN = 200; // Scroll down this much to condense
+  const SCROLL_THRESHOLD_UP = 50;    // Scroll up to this point to expand
+  const MIN_STATE_CHANGE_INTERVAL = 300; // Minimum ms between state changes
+
+  function handleScroll() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const now = Date.now();
+
+    // Only apply on desktop
+    if (window.innerWidth >= 1025) {
+      // Prevent state changes too close together
+      const timeSinceLastChange = now - lastStateChange;
+
+      // Use hysteresis to prevent flickering with wider gap
+      if (!isScrolled && scrollTop > SCROLL_THRESHOLD_DOWN && timeSinceLastChange > MIN_STATE_CHANGE_INTERVAL) {
+        // Transition to condensed state
+        isScrolled = true;
+        lastStateChange = now;
+
+        // Add transitioning class for smooth fade
+        header?.classList.add('transitioning');
+
+        // Wait a tiny bit for fade out, then change layout
+        requestAnimationFrame(() => {
+          header?.classList.add('scrolled');
+
+          // Remove transitioning class after layout change
+          setTimeout(() => {
+            header?.classList.remove('transitioning');
+          }, 100);
+        });
+      } else if (isScrolled && scrollTop < SCROLL_THRESHOLD_UP && timeSinceLastChange > MIN_STATE_CHANGE_INTERVAL) {
+        // Transition to expanded state
+        isScrolled = false;
+        lastStateChange = now;
+
+        // Add transitioning class for smooth fade
+        header?.classList.add('transitioning');
+
+        // Wait a tiny bit for fade out, then change layout
+        requestAnimationFrame(() => {
+          header?.classList.remove('scrolled');
+
+          // Remove transitioning class after layout change
+          setTimeout(() => {
+            header?.classList.remove('transitioning');
+          }, 100);
+        });
+      }
+    } else {
+      isScrolled = false;
+      header?.classList.remove('scrolled');
+    }
+
+    ticking = false;
+  }
+
+  // Debounced scroll handler
+  function debouncedScroll() {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+        });
+        ticking = true;
+      }
+    }, 10); // Small debounce delay
+  }
+
+  // Use passive listener for better scroll performance
+  window.addEventListener('scroll', debouncedScroll, { passive: true });
+
+  // Handle resize to remove scrolled class on mobile
+  window.addEventListener('resize', () => {
+    if (window.innerWidth < 1025) {
+      isScrolled = false;
+      header?.classList.remove('scrolled');
+    } else {
+      handleScroll();
+    }
+  });
+
+  // Initial check on page load
+  if (window.innerWidth >= 1025) {
+    handleScroll();
+  }
 </script>
