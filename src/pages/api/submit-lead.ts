@@ -187,52 +187,234 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 };
 
 /**
- * Format lead data into HTML email
+ * Format lead data into HTML email with logo and structured layout
  */
 function formatLeadEmail(submission: FormSubmission): string {
   return `
-    <h2>🎯 New Lead Submission</h2>
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <style>
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+          background-color: #f5f5f5;
+        }
+        .email-container {
+          max-width: 600px;
+          margin: 0 auto;
+          background-color: #ffffff;
+        }
+        .header {
+          background: linear-gradient(135deg, #5a6e45 0%, #4a5c38 100%);
+          padding: 30px 20px;
+          text-align: center;
+        }
+        .logo {
+          max-width: 200px;
+          height: auto;
+        }
+        .title {
+          background-color: #5a6e45;
+          color: white;
+          padding: 20px;
+          text-align: center;
+          font-size: 24px;
+          font-weight: 700;
+          margin: 0;
+        }
+        .section {
+          padding: 0 20px 10px;
+        }
+        .section-title {
+          color: #5a6e45;
+          font-size: 18px;
+          font-weight: 700;
+          margin: 20px 0 12px;
+          padding-bottom: 8px;
+          border-bottom: 2px solid #e5e8e0;
+        }
+        .data-row {
+          display: flex;
+          padding: 12px 15px;
+          margin-bottom: 2px;
+          border-radius: 4px;
+        }
+        .data-row:nth-child(odd) {
+          background-color: #f8f9f6;
+        }
+        .data-row:nth-child(even) {
+          background-color: #ffffff;
+        }
+        .data-label {
+          font-weight: 600;
+          color: #333;
+          min-width: 140px;
+          flex-shrink: 0;
+        }
+        .data-value {
+          color: #666;
+          flex-grow: 1;
+        }
+        .footer {
+          background-color: #f8f9f6;
+          padding: 20px;
+          text-align: center;
+          font-size: 12px;
+          color: #666;
+          margin-top: 20px;
+        }
+        .highlight {
+          background-color: #fff4e6;
+          border-left: 4px solid #5a6e45;
+          padding: 12px 15px;
+          margin: 10px 0;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="email-container">
+        <!-- Header with Logo -->
+        <div class="header">
+          <img src="https://allseasonsliving.com.au/assets/logos/asl-logo-light.svg" alt="All Seasons Living" class="logo">
+        </div>
 
-    <h3>Contact Information</h3>
-    <ul>
-      <li><strong>Name:</strong> ${submission.lead.name}</li>
-      <li><strong>Email:</strong> ${submission.lead.email}</li>
-      <li><strong>Phone:</strong> ${submission.lead.phone}</li>
-      <li><strong>Suburb:</strong> ${submission.lead.suburb}</li>
-      <li><strong>Product:</strong> ${submission.lead.product}</li>
-      <li><strong>Best Time:</strong> ${submission.lead.bestTime || 'Not specified'}</li>
-      <li><strong>Message:</strong> ${submission.lead.message || 'None'}</li>
-    </ul>
+        <!-- Title -->
+        <h1 class="title">New Lead Submission</h1>
 
-    <h3>📊 Marketing Attribution</h3>
-    <ul>
-      <li><strong>Source:</strong> ${submission.tracking.utmSource || 'Direct'}</li>
-      <li><strong>Medium:</strong> ${submission.tracking.utmMedium || 'None'}</li>
-      <li><strong>Campaign:</strong> ${submission.tracking.utmCampaign || 'None'}</li>
-      <li><strong>Google Click ID:</strong> ${submission.tracking.gclid || 'N/A'}</li>
-      <li><strong>Facebook Click ID:</strong> ${submission.tracking.fbclid || 'N/A'}</li>
-    </ul>
+        <!-- Contact Information -->
+        <div class="section">
+          <h2 class="section-title">Contact Information</h2>
+          <div class="data-row">
+            <span class="data-label">Name</span>
+            <span class="data-value">${submission.lead.name}</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Email</span>
+            <span class="data-value"><a href="mailto:${submission.lead.email}" style="color: #5a6e45; text-decoration: none;">${submission.lead.email}</a></span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Phone</span>
+            <span class="data-value"><a href="tel:${submission.lead.phone}" style="color: #5a6e45; text-decoration: none;">${submission.lead.phone}</a></span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Suburb</span>
+            <span class="data-value">${submission.lead.suburb}</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Product Interest</span>
+            <span class="data-value"><strong>${submission.lead.product}</strong></span>
+          </div>
+          ${submission.lead.bestTime ? `
+          <div class="data-row">
+            <span class="data-label">Best Time to Call</span>
+            <span class="data-value">${submission.lead.bestTime}</span>
+          </div>
+          ` : ''}
+          ${submission.lead.message ? `
+          <div class="highlight">
+            <strong>Message:</strong><br>
+            ${submission.lead.message}
+          </div>
+          ` : ''}
+        </div>
 
-    <h3>🕐 Timing</h3>
-    <ul>
-      <li><strong>Date:</strong> ${submission.tracking.submissionDate}</li>
-      <li><strong>Time:</strong> ${submission.tracking.submissionTime}</li>
-      <li><strong>Day:</strong> ${submission.tracking.submissionDayOfWeek}</li>
-    </ul>
+        <!-- Marketing Attribution -->
+        <div class="section">
+          <h2 class="section-title">Marketing Attribution</h2>
+          <div class="data-row">
+            <span class="data-label">Source</span>
+            <span class="data-value">${submission.tracking.utmSource || 'Direct'}</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Medium</span>
+            <span class="data-value">${submission.tracking.utmMedium || 'None'}</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Campaign</span>
+            <span class="data-value">${submission.tracking.utmCampaign || 'None'}</span>
+          </div>
+          ${submission.tracking.gclid ? `
+          <div class="data-row">
+            <span class="data-label">Google Click ID</span>
+            <span class="data-value">${submission.tracking.gclid}</span>
+          </div>
+          ` : ''}
+          ${submission.tracking.fbclid ? `
+          <div class="data-row">
+            <span class="data-label">Facebook Click ID</span>
+            <span class="data-value">${submission.tracking.fbclid}</span>
+          </div>
+          ` : ''}
+        </div>
 
-    <h3>📱 Device Information</h3>
-    <ul>
-      <li><strong>Device:</strong> ${submission.tracking.deviceType}</li>
-      <li><strong>OS:</strong> ${submission.tracking.operatingSystem}</li>
-      <li><strong>Browser:</strong> ${submission.tracking.browser} ${submission.tracking.browserVersion}</li>
-    </ul>
+        <!-- Timing -->
+        <div class="section">
+          <h2 class="section-title">Submission Timing</h2>
+          <div class="data-row">
+            <span class="data-label">Date</span>
+            <span class="data-value">${submission.tracking.submissionDate}</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Time</span>
+            <span class="data-value">${submission.tracking.submissionTime}</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Day of Week</span>
+            <span class="data-value">${submission.tracking.submissionDayOfWeek}</span>
+          </div>
+        </div>
 
-    <h3>🌐 Page Information</h3>
-    <ul>
-      <li><strong>Submitted From:</strong> ${submission.tracking.sourcePage}</li>
-      <li><strong>Referrer:</strong> ${submission.tracking.referrer}</li>
-      <li><strong>Time on Page:</strong> ${submission.tracking.timeOnPage}s</li>
-      <li><strong>Scroll Depth:</strong> ${submission.tracking.scrollDepth}%</li>
-    </ul>
+        <!-- Device & Browser -->
+        <div class="section">
+          <h2 class="section-title">Device & Browser</h2>
+          <div class="data-row">
+            <span class="data-label">Device Type</span>
+            <span class="data-value">${submission.tracking.deviceType}</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Operating System</span>
+            <span class="data-value">${submission.tracking.operatingSystem}</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Browser</span>
+            <span class="data-value">${submission.tracking.browser} ${submission.tracking.browserVersion}</span>
+          </div>
+        </div>
+
+        <!-- Page Information -->
+        <div class="section">
+          <h2 class="section-title">Page Information</h2>
+          <div class="data-row">
+            <span class="data-label">Submitted From</span>
+            <span class="data-value">${submission.tracking.sourcePage}</span>
+          </div>
+          ${submission.tracking.referrer ? `
+          <div class="data-row">
+            <span class="data-label">Referrer</span>
+            <span class="data-value">${submission.tracking.referrer}</span>
+          </div>
+          ` : ''}
+          <div class="data-row">
+            <span class="data-label">Time on Page</span>
+            <span class="data-value">${submission.tracking.timeOnPage}s</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Scroll Depth</span>
+            <span class="data-value">${submission.tracking.scrollDepth}%</span>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+          <p>This lead was submitted via allseasonsliving.com.au</p>
+          <p>&copy; ${new Date().getFullYear()} All Seasons Living Australia</p>
+        </div>
+      </div>
+    </body>
+    </html>
   `;
 }

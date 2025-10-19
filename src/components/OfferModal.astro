@@ -7,16 +7,9 @@
     <button class="offer-modal-close" aria-label="Close modal">&times;</button>
 
     <div class="offer-modal-header">
-      <div class="offer-sparkle">✨</div>
-      <h2>Claim Your Spring Special</h2>
-      <p class="offer-subtitle">Save up to 30% on all products!</p>
-      <div class="offer-timer">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10"/>
-          <polyline points="12 6 12 12 16 14"/>
-        </svg>
-        <span>Limited time offer</span>
-      </div>
+      <div class="offer-badge">Exclusive Offer</div>
+      <h2>Spring Special<br>Save Up To 30%</h2>
+      <p class="offer-subtitle">Premium outdoor living at exceptional value</p>
     </div>
 
     <form id="offerForm" class="offer-form">
@@ -213,101 +206,46 @@
   }
 
   .offer-modal-header {
-    background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
-    padding: 25px 30px 20px;
+    background: linear-gradient(135deg, #5a6e45 0%, #4a5c38 100%);
+    padding: 30px 30px 25px;
     text-align: center;
     position: relative;
-    overflow: hidden;
   }
 
-  .offer-modal-header::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 10px,
-      rgba(255, 255, 255, 0.05) 10px,
-      rgba(255, 255, 255, 0.05) 20px
-    );
-    animation: shimmer 20s linear infinite;
-  }
-
-  @keyframes shimmer {
-    0% {
-      transform: translate(-50%, -50%) rotate(0deg);
-    }
-    100% {
-      transform: translate(-50%, -50%) rotate(360deg);
-    }
-  }
-
-  .offer-sparkle {
-    font-size: 36px;
-    margin-bottom: 5px;
-    animation: sparkle 2s ease-in-out infinite;
+  .offer-badge {
     display: inline-block;
-  }
-
-  @keyframes sparkle {
-    0%, 100% {
-      transform: scale(1) rotate(0deg);
-    }
-    50% {
-      transform: scale(1.2) rotate(180deg);
-    }
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
   }
 
   .offer-modal-header h2 {
     color: white;
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 700;
-    margin: 0 0 6px 0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    position: relative;
+    margin: 0 0 8px 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    line-height: 1.3;
   }
 
   .offer-subtitle {
-    color: rgba(255, 255, 255, 0.95);
-    font-size: 15px;
-    margin: 0 0 10px 0;
-    font-weight: 500;
-    position: relative;
-  }
-
-  .offer-timer {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 4px 12px;
-    border-radius: 20px;
-    color: white;
-    font-size: 12px;
-    font-weight: 600;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    position: relative;
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
-    }
-    50% {
-      transform: scale(1.05);
-      box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
-    }
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: 0.3px;
   }
 
   .offer-form {
-    padding: 20px 25px;
+    padding: 25px 30px;
   }
 
   .offer-form-row {
@@ -345,8 +283,8 @@
   .offer-form-group select:focus,
   .offer-form-group textarea:focus {
     outline: none;
-    border-color: #f59e0b;
-    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+    border-color: #5a6e45;
+    box-shadow: 0 0 0 3px rgba(90, 110, 69, 0.1);
   }
 
   .offer-form-group input:invalid:not(:placeholder-shown),
@@ -378,19 +316,19 @@
   }
 
   .offer-benefits {
-    background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 18px;
-    border: 2px solid #fbbf24;
+    background: #f8f9f6;
+    padding: 18px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #e5e8e0;
   }
 
   .offer-benefit {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
-    color: #92400e;
+    gap: 12px;
+    margin-bottom: 10px;
+    color: #333;
     font-weight: 500;
     font-size: 14px;
   }
@@ -401,16 +339,16 @@
 
   .offer-benefit svg {
     flex-shrink: 0;
-    stroke: #f59e0b;
+    stroke: #5a6e45;
     stroke-width: 3;
   }
 
   .offer-submit-btn {
     width: 100%;
-    background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+    background: linear-gradient(135deg, #5a6e45 0%, #4a5c38 100%);
     color: white;
     border: none;
-    padding: 14px 28px;
+    padding: 15px 28px;
     border-radius: 10px;
     font-size: 16px;
     font-weight: 700;
@@ -420,12 +358,13 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+    box-shadow: 0 4px 16px rgba(90, 110, 69, 0.25);
   }
 
   .offer-submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+    box-shadow: 0 6px 24px rgba(90, 110, 69, 0.35);
+    background: linear-gradient(135deg, #4a5c38 0%, #3d4d2f 100%);
   }
 
   .offer-submit-btn:active {
@@ -493,8 +432,8 @@
       font-size: 14px;
     }
 
-    .offer-sparkle {
-      font-size: 28px;
+    .offer-modal-header h2 {
+      font-size: 22px;
     }
 
     .offer-form {
