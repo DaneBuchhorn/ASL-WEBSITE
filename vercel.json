@@ -1,0 +1,76 @@
+{
+  "redirects": [
+    {
+      "source": "/roller-shutters/",
+      "destination": "/roller-shutters",
+      "permanent": true
+    },
+    {
+      "source": "/artificial-lawn/",
+      "destination": "/artificial-lawn",
+      "permanent": true
+    },
+    {
+      "source": "/outdoor-blinds/",
+      "destination": "/outdoor-blinds",
+      "permanent": true
+    },
+    {
+      "source": "/about/",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/contact/",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy/",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/terms-and-conditions/",
+      "destination": "/terms-and-conditions",
+      "permanent": true
+    },
+    {
+      "source": "/thank-you/",
+      "destination": "/thank-you",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}

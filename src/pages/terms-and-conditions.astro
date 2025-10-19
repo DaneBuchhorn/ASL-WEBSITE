@@ -1,0 +1,253 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+export const prerender = true;
+---
+
+<Layout
+  title="Terms & Conditions"
+  description="All Seasons Living Australia's Terms & Conditions - Review our terms for products, services, and promotions."
+  noindex={true}
+>
+  <Header />
+
+  <main>
+    <section class="terms-conditions">
+      <div class="container">
+        <h1>Terms & Conditions</h1>
+        <p class="company-name">All Seasons Living Australia Pty Ltd</p>
+        <p class="effective-date"><strong>Effective Date:</strong> 01/09/2025</p>
+
+        <div class="terms-content">
+          <p class="intro">
+            These Terms & Conditions ("Terms") apply to all contracts, sales, and promotions offered by All Seasons Living Australia Pty Ltd ("we," "our," or "us"). By engaging our services or purchasing our products, you agree to the following:
+          </p>
+
+          <h2>1. Application of Terms</h2>
+          <ul>
+            <li>These Terms govern all agreements for the supply of our products and services.</li>
+            <li>Any quotation, order form, or written agreement provided by us forms part of the contract.</li>
+            <li>If there is any inconsistency, the written contract or order form takes priority over these Terms.</li>
+          </ul>
+
+          <h2>2. Products & Services</h2>
+          <ul>
+            <li>Samples provided are for guidance only. Variations in colour, finish, and materials may occur.</li>
+            <li>We are not responsible for rectifying existing site issues (e.g. structural defects, underground obstructions, prior poor workmanship) discovered during installation. Additional costs may apply if such issues affect delivery or installation.</li>
+            <li>Estimated delivery and installation dates are indicative only. While we use best efforts to meet them, delays may occur. Time is not "of the essence" unless agreed in writing.</li>
+          </ul>
+
+          <h2>3. Customer Responsibilities</h2>
+          <p>You agree to:</p>
+          <ul>
+            <li>Provide clear and safe access to the site for delivery and installation.</li>
+            <li>Ensure all required approvals, permits, or strata/council permissions are obtained before works commence.</li>
+            <li>Advise us of the location of underground services and utilities prior to installation.</li>
+            <li>Provide access to power and water if required.</li>
+            <li>Ensure children, pets, and visitors are kept clear of the work area for safety.</li>
+          </ul>
+          <p>We will not be liable for damage, delay, or extra cost caused by failure to meet these obligations.</p>
+
+          <h2>4. Pricing & Payment</h2>
+          <ul>
+            <li>Prices include GST unless otherwise stated.</li>
+            <li>Deposits must be paid at contract signing.</li>
+            <li>Progress or final payments are due as specified in your agreement.</li>
+            <li>Late payments may result in suspension of works and interest being charged on outstanding amounts.</li>
+            <li>Title in goods remains with us until payment is received in full. Risk passes to you upon delivery or completion of installation.</li>
+          </ul>
+
+          <h2>5. Orders & Cancellations</h2>
+          <ul>
+            <li>An order is only binding once accepted in writing by us.</li>
+            <li>Deposits are non-refundable if you cancel after acceptance, except where required by law.</li>
+            <li>Changes to products or services must be agreed in writing and may affect price and delivery time.</li>
+          </ul>
+
+          <h2>6. Promotions & Discounts</h2>
+          <ul>
+            <li>Promotional offers are available to new customers only and apply for a limited time.</li>
+            <li>Discounts apply to product only unless otherwise specified. Installation and extras are excluded.</li>
+            <li>Promotions cannot be applied retrospectively to previous purchases.</li>
+            <li>Offers cannot be combined with any other discount, finance arrangement, or promotion unless explicitly stated.</li>
+            <li>Promotions may be altered or withdrawn at any time at our discretion without prior notice.</li>
+          </ul>
+
+          <h2>7. Defects & Warranty</h2>
+          <ul>
+            <li>You must inspect goods and works immediately upon delivery or completion and notify us of any defects within 10 business days.</li>
+            <li>Our liability for defects is limited to repair, replacement, or re-supply in accordance with the Australian Consumer Law.</li>
+            <li>Normal wear and tear, environmental damage, or misuse are not covered.</li>
+          </ul>
+
+          <h2>8. Liability</h2>
+          <ul>
+            <li>Nothing in these Terms excludes rights under the Australian Consumer Law.</li>
+            <li>To the extent permitted by law, we are not liable for indirect, consequential, or financial loss (including lost profit, lost opportunity, or delays) arising from the supply of products or services.</li>
+            <li>Our maximum liability is limited to the amount paid for the products or services in question.</li>
+          </ul>
+
+          <h2>9. Force Majeure</h2>
+          <p>We are not liable for delays or failure to perform due to events beyond our reasonable control (e.g. extreme weather, supplier shortages, industrial action).</p>
+
+          <h2>10. Governing Law</h2>
+          <ul>
+            <li>These Terms are governed by the laws of the State or Territory where the services are performed.</li>
+            <li>Any disputes will be subject to the jurisdiction of the courts in that State or Territory.</li>
+          </ul>
+
+          <h2>11. Contact Us</h2>
+          <p>For any queries about these Terms & Conditions, please contact:</p>
+          <div class="contact-info">
+            <p><strong>All Seasons Living Australia Pty Ltd</strong></p>
+            <p>Email: <a href="mailto:info@allseasonsliving.com.au">info@allseasonsliving.com.au</a></p>
+            <p>Phone: <a href="tel:0448243979">0448 243 979</a></p>
+            <p>Website: <a href="https://www.allseasonsliving.com.au">www.allseasonsliving.com.au</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .terms-conditions {
+    padding: var(--spacing-xl) 0;
+    background: var(--cream);
+    min-height: 60vh;
+  }
+
+  .terms-conditions .container {
+    max-width: 900px;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--olive-green);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .company-name {
+    font-size: 1.125rem;
+    color: var(--black);
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+  }
+
+  .effective-date {
+    font-size: 0.9375rem;
+    color: var(--black);
+    opacity: 0.8;
+    margin-bottom: 2rem;
+  }
+
+  .terms-content {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: var(--radius-md);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .intro {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--light-sage);
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    color: var(--olive-green);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  h2:first-of-type {
+    margin-top: 0;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--black);
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    margin: 1rem 0 1.5rem 1.5rem;
+    padding: 0;
+  }
+
+  li {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--black);
+    margin-bottom: 0.75rem;
+  }
+
+  li::marker {
+    color: var(--olive-green);
+  }
+
+  .contact-info {
+    background: var(--light-sage);
+    padding: 1.5rem;
+    border-radius: var(--radius-sm);
+    margin-top: 1.5rem;
+    border-left: 4px solid var(--olive-green);
+  }
+
+  .contact-info p {
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-info p:last-child {
+    margin-bottom: 0;
+  }
+
+  .contact-info a {
+    color: var(--olive-green);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+  }
+
+  .contact-info a:hover {
+    color: var(--rust);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .terms-conditions {
+      padding: var(--spacing-lg) 0;
+    }
+
+    .terms-content {
+      padding: 1.5rem;
+    }
+
+    h1 {
+      font-size: clamp(1.75rem, 8vw, 2.5rem);
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    ul {
+      margin-left: 1.25rem;
+    }
+
+    .contact-info {
+      padding: 1.25rem;
+    }
+  }
+</style>
