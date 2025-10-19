@@ -1,0 +1,471 @@
+---
+---
+
+<div class="exit-intent-popup" id="exitIntentPopup">
+  <div class="exit-popup-overlay" id="exitPopupOverlay"></div>
+  <div class="exit-popup-content">
+    <button class="exit-popup-close" id="exitPopupClose" aria-label="Close popup">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <div class="exit-popup-header">
+      <h2>Wait! Before You Go...</h2>
+      <p>Get your <strong>FREE design consultation</strong> and quote today!</p>
+      <div class="exit-popup-benefits">
+        <div class="exit-benefit">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <span>No obligation</span>
+        </div>
+        <div class="exit-benefit">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <span>Free measure & quote</span>
+        </div>
+        <div class="exit-benefit">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <span>Expert advice</span>
+        </div>
+      </div>
+    </div>
+
+    <form class="exit-popup-form" id="exitIntentForm" novalidate>
+      <div class="exit-form-group">
+        <input type="text" id="exit-name" name="name" required placeholder="Your name*" autocomplete="name">
+      </div>
+      <div class="exit-form-group">
+        <input type="tel" id="exit-phone" name="phone" required placeholder="Phone number*" pattern="[0-9]{10}" autocomplete="tel">
+      </div>
+      <div class="exit-form-group">
+        <select id="exit-product" name="product" required>
+          <option value="">Select product interest*</option>
+          <option value="artificial-lawn">Artificial Lawn</option>
+          <option value="roller-shutters">Roller Shutters</option>
+          <option value="outdoor-blinds">Outdoor Blinds</option>
+          <option value="plantation-shutters">Plantation Shutters</option>
+          <option value="multiple">Multiple Products</option>
+        </select>
+      </div>
+
+      <button type="submit" class="exit-submit-btn" id="exitSubmitBtn">
+        <span class="submit-text">Get Free Quote</span>
+        <span class="submit-loading" style="display: none;">
+          <svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
+            <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/>
+          </svg>
+          Submitting...
+        </span>
+        <svg class="submit-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+    </form>
+  </div>
+</div>
+
+<style>
+  .exit-intent-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .exit-intent-popup.active {
+    display: flex;
+  }
+
+  .exit-popup-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    animation: exitFadeIn 0.3s ease;
+  }
+
+  @keyframes exitFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .exit-popup-content {
+    position: relative;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    max-width: 500px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    animation: exitSlideDown 0.4s ease;
+  }
+
+  @keyframes exitSlideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-50px) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .exit-popup-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    color: var(--black);
+    z-index: 1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .exit-popup-close:hover {
+    background: var(--light-sage);
+    transform: rotate(90deg);
+  }
+
+  .exit-popup-header {
+    padding: 2.5rem 2rem 1.5rem;
+    text-align: center;
+    background: linear-gradient(135deg, var(--olive-green) 0%, #3d4a29 100%);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    color: var(--white);
+  }
+
+  .exit-popup-header h2 {
+    font-size: 2rem;
+    margin: 0 0 0.75rem 0;
+    font-weight: 700;
+  }
+
+  .exit-popup-header p {
+    font-size: 1.125rem;
+    margin: 0 0 1.5rem 0;
+    line-height: 1.5;
+  }
+
+  .exit-popup-header strong {
+    color: var(--gold);
+  }
+
+  .exit-popup-benefits {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .exit-benefit {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+  }
+
+  .exit-benefit svg {
+    flex-shrink: 0;
+    color: var(--gold);
+  }
+
+  .exit-popup-form {
+    padding: 2rem;
+  }
+
+  .exit-form-group {
+    margin-bottom: 1rem;
+  }
+
+  .exit-form-group input,
+  .exit-form-group select {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-sm);
+    font-size: 16px;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: var(--white);
+  }
+
+  .exit-form-group input:focus,
+  .exit-form-group select:focus {
+    outline: none;
+    border-color: var(--olive-green);
+    box-shadow: 0 0 0 3px rgba(90, 110, 69, 0.1);
+  }
+
+  .exit-submit-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.125rem 2rem;
+    background: var(--olive-green);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 1.125rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+  }
+
+  .exit-submit-btn:hover {
+    background: #465331;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(90, 110, 69, 0.4);
+  }
+
+  .exit-submit-btn:active {
+    transform: translateY(0);
+  }
+
+  .exit-submit-btn.loading .submit-text,
+  .exit-submit-btn.loading .submit-arrow {
+    display: none;
+  }
+
+  .exit-submit-btn.loading .submit-loading {
+    display: flex !important;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .spinner {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .submit-arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .exit-submit-btn:hover .submit-arrow {
+    transform: translateX(4px);
+  }
+
+  .exit-submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 600px) {
+    .exit-popup-content {
+      max-height: 95vh;
+      border-radius: var(--radius-md);
+    }
+
+    .exit-popup-header {
+      padding: 2rem 1.5rem 1.25rem;
+    }
+
+    .exit-popup-header h2 {
+      font-size: 1.5rem;
+    }
+
+    .exit-popup-header p {
+      font-size: 1rem;
+    }
+
+    .exit-popup-benefits {
+      gap: 1rem;
+    }
+
+    .exit-benefit {
+      font-size: 0.875rem;
+    }
+
+    .exit-popup-form {
+      padding: 1.5rem;
+    }
+
+    .exit-submit-btn {
+      font-size: 1rem;
+      padding: 1rem 1.5rem;
+    }
+  }
+
+  body.exit-popup-open {
+    overflow: hidden;
+  }
+</style>
+
+<script>
+  import { captureFormData, initializeSessionTracking } from '../utils/formTracking';
+
+  // Initialize tracking
+  initializeSessionTracking();
+
+  const popup = document.getElementById('exitIntentPopup');
+  const popupOverlay = document.getElementById('exitPopupOverlay');
+  const popupClose = document.getElementById('exitPopupClose');
+  const exitForm = document.getElementById('exitIntentForm') as HTMLFormElement;
+
+  let exitIntentShown = false;
+  const sessionKey = 'exitIntentShown';
+
+  // Check if already shown in this session
+  if (sessionStorage.getItem(sessionKey)) {
+    exitIntentShown = true;
+  }
+
+  function showExitIntent() {
+    if (!exitIntentShown && popup) {
+      popup.classList.add('active');
+      document.body.classList.add('exit-popup-open');
+      exitIntentShown = true;
+      sessionStorage.setItem(sessionKey, 'true');
+      console.log('[ExitIntent] Popup shown');
+    }
+  }
+
+  function hideExitIntent() {
+    if (popup) {
+      popup.classList.remove('active');
+      document.body.classList.remove('exit-popup-open');
+      console.log('[ExitIntent] Popup hidden');
+    }
+  }
+
+  // Exit intent detection - mouse leaving viewport at top
+  document.addEventListener('mouseleave', (e) => {
+    // Only trigger if mouse is leaving through top of viewport
+    if (e.clientY <= 0 && !exitIntentShown) {
+      showExitIntent();
+    }
+  });
+
+  // Close handlers
+  if (popupOverlay) {
+    popupOverlay.addEventListener('click', hideExitIntent);
+  }
+
+  if (popupClose) {
+    popupClose.addEventListener('click', hideExitIntent);
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && popup?.classList.contains('active')) {
+      hideExitIntent();
+    }
+  });
+
+  // Form submission
+  if (exitForm) {
+    exitForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const submitBtn = document.getElementById('exitSubmitBtn') as HTMLButtonElement;
+
+      // Get form values
+      const name = (document.getElementById('exit-name') as HTMLInputElement)?.value.trim();
+      const phone = (document.getElementById('exit-phone') as HTMLInputElement)?.value.trim();
+      const product = (document.getElementById('exit-product') as HTMLSelectElement)?.value;
+
+      // Validate required fields
+      if (!name || !phone || !product) {
+        alert('Please fill in all required fields');
+        return;
+      }
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.classList.add('loading');
+      }
+
+      try {
+        // Generate reCAPTCHA token
+        let recaptchaToken = '';
+        if (typeof grecaptcha !== 'undefined') {
+          try {
+            recaptchaToken = await grecaptcha.execute('6LdAqNUrAAAAAAcglbSVCbhSGRd-kLE8fTtCbmbO', { action: 'submit_exit_intent' });
+          } catch (recaptchaError) {
+            console.error('[ExitIntent] reCAPTCHA error:', recaptchaError);
+          }
+        }
+
+        const formData = new FormData(exitForm);
+        const leadData = {
+          name: formData.get('name') as string,
+          phone: formData.get('phone') as string,
+          product: formData.get('product') as string,
+          email: undefined,
+          suburb: undefined,
+          message: undefined,
+        };
+
+        const submission = captureFormData(leadData, 'exitIntentForm', 'exit-intent-popup');
+
+        const submissionWithToken = {
+          ...submission,
+          recaptchaToken
+        };
+
+        const response = await fetch('/api/submit-lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(submissionWithToken),
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'generate_lead', {
+              event_category: 'Form',
+              event_label: 'exit-intent-popup',
+              value: 1
+            });
+          }
+
+          hideExitIntent();
+          window.location.href = '/thank-you';
+        } else {
+          throw new Error(result.message || 'Submission failed');
+        }
+      } catch (error) {
+        console.error('[ExitIntent] Error:', error);
+        alert('There was an error submitting your form. Please try calling us directly at 0448 243 979.');
+
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('loading');
+        }
+      }
+    });
+  }
+</script>
