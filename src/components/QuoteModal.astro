@@ -422,6 +422,21 @@
       }
 
       try {
+        // Generate reCAPTCHA token
+        console.log('[QuoteModal] Generating reCAPTCHA token...');
+        let recaptchaToken = '';
+
+        if (typeof grecaptcha !== 'undefined') {
+          try {
+            recaptchaToken = await grecaptcha.execute('6LdAqNUrAAAAAAcglbSVCbhSGRd-kLE8fTtCbmbO', { action: 'submit_quote' });
+            console.log('[QuoteModal] reCAPTCHA token generated');
+          } catch (recaptchaError) {
+            console.error('[QuoteModal] reCAPTCHA error:', recaptchaError);
+          }
+        } else {
+          console.warn('[QuoteModal] reCAPTCHA not loaded');
+        }
+
         const formData = new FormData(modalForm);
         const leadData = {
           name: formData.get('name') as string,
@@ -436,12 +451,18 @@
 
         const submission = captureFormData(leadData, 'modalQuoteForm', 'quote-modal-form');
 
+        // Add reCAPTCHA token to submission
+        const submissionWithToken = {
+          ...submission,
+          recaptchaToken
+        };
+
         console.log('[QuoteModal] Submitting to API...');
 
         const response = await fetch('/api/submit-lead', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(submission),
+          body: JSON.stringify(submissionWithToken),
         });
 
         const result = await response.json();

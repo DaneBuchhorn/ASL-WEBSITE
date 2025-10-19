@@ -517,6 +517,17 @@
     };
 
     try {
+      // Generate reCAPTCHA token
+      let recaptchaToken = '';
+
+      if (typeof grecaptcha !== 'undefined') {
+        try {
+          recaptchaToken = await grecaptcha.execute('6LdAqNUrAAAAAAcglbSVCbhSGRd-kLE8fTtCbmbO', { action: 'submit_offer' });
+        } catch (recaptchaError) {
+          console.error('[OfferModal] reCAPTCHA error:', recaptchaError);
+        }
+      }
+
       // Capture comprehensive tracking data
       const submissionData = captureFormData(
         leadData,
@@ -524,14 +535,15 @@
         'Spring Special Offer'
       );
 
-      // Add offer-specific metadata
+      // Add offer-specific metadata and reCAPTCHA token
       const enrichedData = {
         ...submissionData,
         lead: {
           ...submissionData.lead,
           leadSource: 'Spring Special Offer',
           offerCode: 'SPRING30'
-        }
+        },
+        recaptchaToken
       };
 
       const response = await fetch('/api/submit-lead', {

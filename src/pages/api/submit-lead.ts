@@ -12,7 +12,39 @@ import { Resend } from 'resend';
 export const POST: APIRoute = async ({ request, clientAddress }) => {
   try {
     // Parse the request body
-    const submission: FormSubmission = await request.json();
+    const submission: FormSubmission & { recaptchaToken?: string } = await request.json();
+
+    // Verify reCAPTCHA token
+    const recaptchaToken = submission.recaptchaToken;
+    const recaptchaSecret = import.meta.env.RECAPTCHA_SECRET_KEY;
+
+    if (recaptchaSecret && recaptchaToken) {
+      try {
+        const recaptchaResponse = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: `secret=${recaptchaSecret}&response=${recaptchaToken}`,
+        });
+
+        const recaptchaResult = await recaptchaResponse.json();
+
+        // Check if reCAPTCHA verification passed
+        if (!recaptchaResult.success || recaptchaResult.score < 0.5) {
+          console.error('reCAPTCHA verification failed:', recaptchaResult);
+          throw new Error('reCAPTCHA verification failed. Please try again.');
+        }
+
+        console.log('✅ reCAPTCHA verification passed. Score:', recaptchaResult.score);
+      } catch (recaptchaError) {
+        console.error('reCAPTCHA verification error:', recaptchaError);
+        // Continue processing even if reCAPTCHA fails (fallback)
+        console.warn('⚠️  Continuing without reCAPTCHA verification');
+      }
+    } else {
+      console.warn('⚠️  reCAPTCHA not configured or token missing');
+    }
 
     // Add server-side data
     const enrichedSubmission = {
