@@ -360,8 +360,8 @@
       const id = button.id;
       const text = button.textContent?.toUpperCase() || '';
 
-      // Don't intercept the modal's submit button
-      if (id === 'quoteSubmitBtn') {
+      // Don't intercept form submit buttons
+      if (id === 'quoteSubmitBtn' || id === 'outdoorBlindsSubmitBtn') {
         return;
       }
 
