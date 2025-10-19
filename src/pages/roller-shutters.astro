@@ -160,8 +160,8 @@ const breadcrumbSchema = {
                 <input type="email" id="rs-email" name="email" placeholder="john.doe@email.com" autocomplete="email">
               </div>
               <div class="form-group">
-                <label for="rs-suburb">Suburb (optional)</label>
-                <input type="text" id="rs-suburb" name="suburb" placeholder="Belconnen" autocomplete="address-level2">
+                <label for="rs-suburb">Suburb *</label>
+                <input type="text" id="rs-suburb" name="suburb" required placeholder="Belconnen" autocomplete="address-level2">
               </div>
             </div>
 
@@ -415,7 +415,7 @@ const breadcrumbSchema = {
       const message = (document.getElementById('rs-message') as HTMLTextAreaElement)?.value.trim();
 
       // Validate required fields
-      if (!name || !phone) {
+      if (!name || !phone || !suburb) {
         alert('Please fill in all required fields');
         return;
       }
