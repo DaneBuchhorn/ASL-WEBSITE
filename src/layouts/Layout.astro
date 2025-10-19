@@ -88,6 +88,12 @@ const {
       import { injectSpeedInsights } from '@vercel/speed-insights';
       injectSpeedInsights();
     </script>
+
+    <!-- Vercel Web Analytics -->
+    <script>
+      import { inject } from '@vercel/analytics';
+      inject();
+    </script>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
