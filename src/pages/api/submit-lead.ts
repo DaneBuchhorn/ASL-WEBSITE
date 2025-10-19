@@ -137,7 +137,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
         const resend = new Resend(resendApiKey);
 
         await resend.emails.send({
-          from: 'All Seasons Living <dane@allseasonsliving.com.au>',
+          from: 'All Seasons Living <leads@allseasonsliving.com.au>',
           to: ['dane@allseasonsliving.com.au'],
           subject: `🎯 New Lead: ${enrichedSubmission.lead.name} - ${enrichedSubmission.lead.product}`,
           html: formatLeadEmail(enrichedSubmission)
