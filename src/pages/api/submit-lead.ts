@@ -311,7 +311,7 @@ function formatLeadEmail(submission: FormSubmission): string {
       <div class="email-container">
         <!-- Header with Logo -->
         <div class="header">
-          <img src="https://allseasonsliving.com.au/assets/logos/asl-logo-light.svg" alt="All Seasons Living" class="logo">
+          <img src="https://allseasonsliving.com.au/assets/images/general/Logo.png" alt="All Seasons Living" class="logo">
         </div>
 
         <!-- Title -->
