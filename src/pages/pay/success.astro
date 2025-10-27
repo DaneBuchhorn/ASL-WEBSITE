@@ -1,0 +1,265 @@
+---
+import '../../styles/global.css';
+import SEO from '../../components/SEO.astro';
+import HeaderCompact from '../../components/HeaderCompact.astro';
+import Footer from '../../components/Footer.astro';
+
+const pageTitle = 'Payment Successful | All Seasons Living';
+const pageDescription = 'Your payment has been processed successfully';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <script is:inline>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-NFH69VZZ');
+    </script>
+
+    <SEO title={pageTitle} description={pageDescription} />
+
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CW5WNR8Z5Y"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CW5WNR8Z5Y');
+    </script>
+  </head>
+  <body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NFH69VZZ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <HeaderCompact />
+
+  <main class="success-page">
+    <div class="container">
+      <div class="success-card">
+        <div class="success-icon">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+
+        <h1>Payment Successful!</h1>
+        <p class="success-message">
+          Thank you for your payment. Your transaction has been completed successfully.
+        </p>
+
+        <div class="info-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          <p>A receipt will be sent to your email address if you provided one during checkout.</p>
+        </div>
+
+        <div class="action-buttons">
+          <a href="/pay" class="btn-secondary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="1 4 1 10 7 10"></polyline>
+              <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+            </svg>
+            Make Another Payment
+          </a>
+          <a href="/" class="btn-primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            Return to Home
+          </a>
+        </div>
+
+        <p class="contact-text">
+          If you have any questions about this payment, please <a href="/contact">contact us</a>.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+  </body>
+</html>
+
+<style>
+  .success-page {
+    min-height: calc(100vh - 200px);
+    padding: var(--spacing-lg) 0;
+    background: linear-gradient(135deg, var(--light-sage) 0%, var(--cream) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+  }
+
+  .success-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-xl);
+    text-align: center;
+  }
+
+  .success-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto var(--spacing-md);
+    background: var(--olive-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .success-icon svg {
+    color: white;
+  }
+
+  .success-card h1 {
+    font-size: 2rem;
+    color: var(--olive-green);
+    margin: 0 0 var(--spacing-md) 0;
+    font-weight: 700;
+  }
+
+  .success-message {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 0 0 var(--spacing-lg) 0;
+    line-height: 1.6;
+  }
+
+  .info-box {
+    background: var(--light-sage);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-sm);
+    margin: var(--spacing-lg) 0;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    text-align: left;
+  }
+
+  .info-box svg {
+    color: var(--olive-green);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .info-box p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #333;
+  }
+
+  .action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 1rem 2rem;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+  }
+
+  .btn-primary {
+    background: var(--olive-green);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #465331;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(84, 101, 61, 0.3);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--olive-green);
+    border: 2px solid var(--olive-green);
+  }
+
+  .btn-secondary:hover {
+    background: var(--light-sage);
+  }
+
+  .contact-text {
+    margin-top: var(--spacing-lg);
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .contact-text a {
+    color: var(--olive-green);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .contact-text a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .success-page {
+      padding: var(--spacing-md) 0;
+    }
+
+    .success-card {
+      padding: var(--spacing-lg);
+    }
+
+    .success-card h1 {
+      font-size: 1.5rem;
+    }
+
+    .success-icon {
+      width: 80px;
+      height: 80px;
+    }
+
+    .success-icon svg {
+      width: 60px;
+      height: 60px;
+    }
+  }
+</style>
+
+<script>
+  // Track payment success event
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'purchase', {
+      event_category: 'Payment',
+      event_label: 'payment-success',
+      value: 1
+    });
+  }
+</script>

@@ -1,0 +1,100 @@
+---
+import config from '../../config.json';
+---
+
+<header class="header-compact">
+  <div class="container">
+    <div class="header-content">
+      <a href="/" class="logo">
+        <img src="/assets/images/general/All Seasons Living SVG Logo.svg" alt="All Seasons Living" />
+      </a>
+
+      <a href={`tel:${config.contact.phone.replace(/\s/g, '')}`} class="phone-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+        </svg>
+        <span class="phone-number">{config.contact.phone}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .header-compact {
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+    padding: 0.75rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo img {
+    height: 45px;
+    width: auto;
+    transition: transform 0.3s ease;
+  }
+
+  .logo:hover img {
+    transform: scale(1.05);
+  }
+
+  .phone-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--olive-green);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+  }
+
+  .phone-link:hover {
+    background: #465331;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(84, 101, 61, 0.3);
+  }
+
+  .phone-link svg {
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 600px) {
+    .header-compact {
+      padding: 0.5rem 0;
+    }
+
+    .logo img {
+      height: 35px;
+    }
+
+    .phone-number {
+      display: none;
+    }
+
+    .phone-link {
+      padding: 0.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,721 @@
+---
+import '../styles/global.css';
+import SEO from '../components/SEO.astro';
+import HeaderCompact from '../components/HeaderCompact.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = 'Make a Payment | All Seasons Living';
+const pageDescription = 'Make a secure payment online for your All Seasons Living project';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+    <script is:inline>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-NFH69VZZ');
+    </script>
+
+    <SEO
+      title={pageTitle}
+      description={pageDescription}
+    />
+
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CW5WNR8Z5Y"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CW5WNR8Z5Y');
+    </script>
+  </head>
+  <body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NFH69VZZ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <HeaderCompact />
+
+  <main class="payment-page">
+    <div class="container">
+      <div class="payment-wrapper">
+        <div class="payment-header">
+          <h1>Secure Payment</h1>
+          <div class="trust-badges">
+            <div class="badge">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              <span>256-bit SSL</span>
+            </div>
+            <div class="badge stripe-badge">
+              <svg width="50" height="20" viewBox="0 0 60 25" fill="currentColor">
+                <path d="M59.64 14.28h-8.06c.19 1.93 1.6 2.55 3.2 2.55 1.64 0 2.96-.37 4.05-.95v3.32a8.33 8.33 0 0 1-4.56 1.1c-4.01 0-6.83-2.5-6.83-7.48 0-4.19 2.39-7.52 6.3-7.52 3.92 0 5.96 3.28 5.96 7.5 0 .4-.04 1.26-.06 1.48zm-5.92-5.62c-1.03 0-2.17.73-2.17 2.58h4.25c0-1.85-1.07-2.58-2.08-2.58zM40.95 20.3c-1.44 0-2.32-.6-2.9-1.04l-.02 4.63-4.12.87V5.57h3.76l.08 1.02a4.7 4.7 0 0 1 3.23-1.29c2.9 0 5.62 2.6 5.62 7.4 0 5.23-2.7 7.6-5.65 7.6zM40 8.95c-.95 0-1.54.34-1.97.81l.02 6.12c.4.44.98.78 1.95.78 1.52 0 2.54-1.65 2.54-3.87 0-2.15-1.04-3.84-2.54-3.84zM28.24 5.57h4.13v14.44h-4.13V5.57zm0-4.7L32.37 0v3.36l-4.13.88V.88zm-4.32 9.35v9.79H19.8V5.57h3.7l.12 1.22c1-1.77 3.07-1.41 3.62-1.22v3.79c-.52-.17-2.29-.43-3.32.86zm-8.55 4.72c0 2.43 2.6 1.68 3.12 1.46v3.36c-.55.3-1.54.54-2.89.54a4.15 4.15 0 0 1-4.27-4.24l.01-13.17 4.02-.86v3.54h3.14V9.1h-3.13v5.85zm-4.91.7c0 2.97-2.31 4.66-5.73 4.66a11.2 11.2 0 0 1-4.46-.93v-3.93c1.38.75 3.1 1.31 4.46 1.31.92 0 1.53-.24 1.53-1C6.26 13.77 0 14.51 0 9.95 0 7.04 2.28 5.3 5.62 5.3c1.36 0 2.72.2 4.09.75v3.88a9.23 9.23 0 0 0-4.1-1.06c-.86 0-1.44.25-1.44.9 0 1.85 6.29.97 6.29 5.88z"/>
+              </svg>
+            </div>
+            <div class="badge">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              <span>PCI Compliant</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="payment-form-container">
+          <!-- Step 1: Customer Information -->
+          <form id="customerInfoForm" class="payment-form">
+            <div class="compact-row">
+              <div class="form-group">
+                <label for="customerName">Full Name *</label>
+                <input
+                  type="text"
+                  id="customerName"
+                  name="customerName"
+                  required
+                  placeholder="John Smith"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="contractNumber">Contract # *</label>
+                <input
+                  type="text"
+                  id="contractNumber"
+                  name="contractNumber"
+                  required
+                  placeholder="12345"
+                />
+              </div>
+            </div>
+
+            <div class="compact-row">
+              <div class="form-group">
+                <label for="email">Email (Optional)</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="john@example.com"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone (Optional)</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="0412 345 678"
+                />
+              </div>
+            </div>
+
+            <div class="form-group amount-group">
+              <label for="amount">Payment Amount (AUD) *</label>
+              <div class="amount-input-wrapper">
+                <span class="currency-symbol">$</span>
+                <input
+                  type="number"
+                  id="amount"
+                  name="amount"
+                  required
+                  min="0.01"
+                  step="0.01"
+                  placeholder="0.00"
+                />
+              </div>
+            </div>
+
+            <!-- Error/Success Messages -->
+            <div id="formMessage" class="form-message" style="display: none;"></div>
+
+            <button type="submit" id="continueBtn" class="btn-primary">
+              <span id="btnText">Continue to Payment</span>
+              <span id="btnSpinner" class="spinner" style="display: none;"></span>
+            </button>
+
+            <!-- Trust Footer -->
+            <div class="trust-footer">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              <span>Your payment information is encrypted and secure</span>
+            </div>
+          </form>
+
+          <!-- Step 2: Stripe Payment (will be shown after step 1) -->
+          <div id="stripePaymentContainer" style="display: none;">
+            <div class="payment-summary">
+              <div class="summary-header">
+                <h3>Payment Summary</h3>
+                <button type="button" id="editDetails" class="edit-btn">Edit</button>
+              </div>
+              <div class="summary-content">
+                <div class="summary-row">
+                  <span>Customer:</span>
+                  <strong id="summaryName"></strong>
+                </div>
+                <div class="summary-row">
+                  <span>Contract #:</span>
+                  <strong id="summaryContract"></strong>
+                </div>
+                <div class="summary-row total">
+                  <span>Total Amount:</span>
+                  <strong id="summaryAmount" class="amount-large"></strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stripe Elements will be inserted here -->
+            <div id="payment-element"></div>
+
+            <div id="paymentMessage" class="form-message" style="display: none;"></div>
+
+            <button id="submitPayment" class="btn-primary">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                <line x1="2" y1="10" x2="22" y2="10"></line>
+              </svg>
+              <span id="payBtnText">Complete Payment</span>
+              <span id="payBtnSpinner" class="spinner" style="display: none;"></span>
+            </button>
+
+            <div class="security-footer">
+              <div class="security-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <span>Encrypted</span>
+              </div>
+              <div class="security-item">
+                <span class="powered-by">Powered by</span>
+                <svg width="40" height="16" viewBox="0 0 60 25" fill="currentColor" style="opacity: 0.7;">
+                  <path d="M59.64 14.28h-8.06c.19 1.93 1.6 2.55 3.2 2.55 1.64 0 2.96-.37 4.05-.95v3.32a8.33 8.33 0 0 1-4.56 1.1c-4.01 0-6.83-2.5-6.83-7.48 0-4.19 2.39-7.52 6.3-7.52 3.92 0 5.96 3.28 5.96 7.5 0 .4-.04 1.26-.06 1.48zm-5.92-5.62c-1.03 0-2.17.73-2.17 2.58h4.25c0-1.85-1.07-2.58-2.08-2.58zM40.95 20.3c-1.44 0-2.32-.6-2.9-1.04l-.02 4.63-4.12.87V5.57h3.76l.08 1.02a4.7 4.7 0 0 1 3.23-1.29c2.9 0 5.62 2.6 5.62 7.4 0 5.23-2.7 7.6-5.65 7.6zM40 8.95c-.95 0-1.54.34-1.97.81l.02 6.12c.4.44.98.78 1.95.78 1.52 0 2.54-1.65 2.54-3.87 0-2.15-1.04-3.84-2.54-3.84zM28.24 5.57h4.13v14.44h-4.13V5.57zm0-4.7L32.37 0v3.36l-4.13.88V.88zm-4.32 9.35v9.79H19.8V5.57h3.7l.12 1.22c1-1.77 3.07-1.41 3.62-1.22v3.79c-.52-.17-2.29-.43-3.32.86zm-8.55 4.72c0 2.43 2.6 1.68 3.12 1.46v3.36c-.55.3-1.54.54-2.89.54a4.15 4.15 0 0 1-4.27-4.24l.01-13.17 4.02-.86v3.54h3.14V9.1h-3.13v5.85zm-4.91.7c0 2.97-2.31 4.66-5.73 4.66a11.2 11.2 0 0 1-4.46-.93v-3.93c1.38.75 3.1 1.31 4.46 1.31.92 0 1.53-.24 1.53-1C6.26 13.77 0 14.51 0 9.95 0 7.04 2.28 5.3 5.62 5.3c1.36 0 2.72.2 4.09.75v3.88a9.23 9.23 0 0 0-4.1-1.06c-.86 0-1.44.25-1.44.9 0 1.85 6.29.97 6.29 5.88z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+  </body>
+</html>
+
+<style>
+  .payment-page {
+    min-height: calc(100vh - 200px);
+    padding: 1.5rem 0;
+    background: linear-gradient(135deg, var(--light-sage) 0%, var(--cream) 100%);
+  }
+
+  .container {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+  }
+
+  .payment-wrapper {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+  }
+
+  .payment-header {
+    background: var(--olive-green);
+    color: white;
+    padding: 1.25rem 1.5rem;
+    text-align: center;
+  }
+
+  .payment-header h1 {
+    font-size: 1.6rem;
+    margin: 0 0 0.75rem 0;
+    font-weight: 700;
+  }
+
+  .trust-badges {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .stripe-badge {
+    padding: 6px 10px;
+  }
+
+  .badge svg {
+    flex-shrink: 0;
+  }
+
+  .payment-form-container {
+    padding: 1.5rem;
+  }
+
+  .payment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .compact-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .amount-group {
+    margin-top: 0.25rem;
+  }
+
+  .form-group label {
+    font-weight: 600;
+    color: var(--olive-green);
+    font-size: 0.875rem;
+  }
+
+  .form-group input {
+    padding: 0.75rem;
+    border: 2px solid #e2e8d9;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    font-family: var(--font-body);
+    transition: all 0.2s ease;
+  }
+
+  .form-group input:focus {
+    outline: none;
+    border-color: var(--olive-green);
+    box-shadow: 0 0 0 3px rgba(84, 101, 61, 0.1);
+  }
+
+  .amount-input-wrapper {
+    position: relative;
+  }
+
+  .currency-symbol {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--olive-green);
+  }
+
+  .amount-input-wrapper input {
+    padding-left: 2rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .form-message {
+    padding: 0.875rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+  }
+
+  .form-message.error {
+    background: #fee;
+    color: #c33;
+    border: 1px solid #fcc;
+  }
+
+  .form-message.success {
+    background: #efe;
+    color: #3c3;
+    border: 1px solid #cfc;
+  }
+
+  .btn-primary {
+    background: var(--olive-green);
+    color: white;
+    padding: 0.875rem 1.5rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    font-family: var(--font-body);
+    margin-top: 0.5rem;
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    background: #465331;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(84, 101, 61, 0.3);
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .trust-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    color: #666;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8d9;
+  }
+
+  .trust-footer svg {
+    color: var(--olive-green);
+    flex-shrink: 0;
+  }
+
+  .payment-summary {
+    background: var(--light-sage);
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1rem;
+  }
+
+  .summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .payment-summary h3 {
+    margin: 0;
+    color: var(--olive-green);
+    font-size: 1.1rem;
+  }
+
+  .edit-btn {
+    background: transparent;
+    border: 1px solid var(--olive-green);
+    color: var(--olive-green);
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .edit-btn:hover {
+    background: var(--olive-green);
+    color: white;
+  }
+
+  .summary-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+  }
+
+  .summary-row.total {
+    border-top: 2px solid var(--olive-green);
+    padding-top: 0.75rem;
+    margin-top: 4px;
+    font-size: 1rem;
+  }
+
+  .amount-large {
+    color: var(--olive-green);
+    font-size: 1.5rem;
+  }
+
+  #payment-element {
+    margin: 1rem 0;
+  }
+
+  .security-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8d9;
+    font-size: 0.8rem;
+    color: #666;
+  }
+
+  .security-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .powered-by {
+    margin-right: 4px;
+  }
+
+  @media (max-width: 600px) {
+    .payment-page {
+      padding: var(--spacing-sm) 0;
+    }
+
+    .payment-header {
+      padding: var(--spacing-md);
+    }
+
+    .payment-header h1 {
+      font-size: 1.5rem;
+    }
+
+    .trust-badges {
+      gap: var(--spacing-xs);
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      padding: 4px 8px;
+    }
+
+    .compact-row {
+      grid-template-columns: 1fr;
+    }
+
+    .payment-form-container {
+      padding: var(--spacing-md);
+    }
+
+    .container {
+      padding: 0 var(--spacing-sm);
+    }
+
+    .security-footer {
+      flex-direction: column;
+      gap: var(--spacing-xs);
+    }
+  }
+</style>
+
+<script>
+  // Load Stripe.js
+  const stripe = window.Stripe(import.meta.env.PUBLIC_STRIPE_PUBLISHABLE_KEY);
+  let elements;
+  let clientSecret;
+
+  const form = document.getElementById('customerInfoForm');
+  const continueBtn = document.getElementById('continueBtn');
+  const btnText = document.getElementById('btnText');
+  const btnSpinner = document.getElementById('btnSpinner');
+  const formMessage = document.getElementById('formMessage');
+
+  // Step 1: Handle customer info form submission
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const customerName = document.getElementById('customerName').value;
+    const contractNumber = document.getElementById('contractNumber').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const amount = parseFloat(document.getElementById('amount').value);
+
+    if (!amount || amount <= 0) {
+      showMessage('Please enter a valid amount', 'error');
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      // Call your website's API endpoint which will proxy to CRM
+      const response = await fetch('/api/create-payment-intent', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          customerName,
+          contractNumber,
+          email,
+          phone,
+          amount
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to create payment');
+      }
+
+      clientSecret = data.clientSecret;
+
+      // Show payment form
+      showStripePaymentForm({
+        customerName,
+        contractNumber,
+        amount
+      });
+
+    } catch (error) {
+      showMessage(error.message, 'error');
+      setLoading(false);
+    }
+  });
+
+  function showStripePaymentForm(formData) {
+    // Hide customer info form
+    form.style.display = 'none';
+
+    // Update summary
+    document.getElementById('summaryName').textContent = formData.customerName;
+    document.getElementById('summaryContract').textContent = formData.contractNumber;
+    document.getElementById('summaryAmount').textContent = `$${formData.amount.toFixed(2)} AUD`;
+
+    // Show Stripe payment container
+    document.getElementById('stripePaymentContainer').style.display = 'block';
+
+    // Initialize Stripe Elements
+    elements = stripe.elements({
+      clientSecret,
+      appearance: {
+        theme: 'stripe',
+        variables: {
+          colorPrimary: '#54653d',
+          colorBackground: '#ffffff',
+          colorText: '#1a1a1a',
+          colorDanger: '#c33',
+          fontFamily: 'DM Sans, system-ui, sans-serif',
+          borderRadius: '8px',
+          spacingUnit: '4px'
+        }
+      }
+    });
+
+    const paymentElement = elements.create('payment');
+    paymentElement.mount('#payment-element');
+
+    setLoading(false);
+  }
+
+  // Edit details button
+  document.getElementById('editDetails').addEventListener('click', () => {
+    document.getElementById('stripePaymentContainer').style.display = 'none';
+    form.style.display = 'flex';
+  });
+
+  // Step 2: Handle payment submission
+  document.getElementById('submitPayment').addEventListener('click', async (e) => {
+    e.preventDefault();
+    setPaymentLoading(true);
+
+    try {
+      const { error, paymentIntent } = await stripe.confirmPayment({
+        elements,
+        confirmParams: {
+          return_url: `${window.location.origin}/pay/success`
+        },
+        redirect: 'if_required'
+      });
+
+      if (error) {
+        showPaymentMessage(error.message, 'error');
+        setPaymentLoading(false);
+      } else if (paymentIntent && paymentIntent.status === 'succeeded') {
+        // Payment successful
+        window.location.href = '/pay/success';
+      }
+    } catch (error) {
+      showPaymentMessage(error.message, 'error');
+      setPaymentLoading(false);
+    }
+  });
+
+  function setLoading(loading) {
+    continueBtn.disabled = loading;
+    btnText.style.display = loading ? 'none' : 'inline';
+    btnSpinner.style.display = loading ? 'inline-block' : 'none';
+  }
+
+  function setPaymentLoading(loading) {
+    const btn = document.getElementById('submitPayment');
+    const btnText = document.getElementById('payBtnText');
+    const spinner = document.getElementById('payBtnSpinner');
+
+    btn.disabled = loading;
+    btnText.style.display = loading ? 'none' : 'inline';
+    spinner.style.display = loading ? 'inline-block' : 'none';
+  }
+
+  function showMessage(message, type) {
+    formMessage.textContent = message;
+    formMessage.className = `form-message ${type}`;
+    formMessage.style.display = 'block';
+  }
+
+  function showPaymentMessage(message, type) {
+    const paymentMessage = document.getElementById('paymentMessage');
+    paymentMessage.textContent = message;
+    paymentMessage.className = `form-message ${type}`;
+    paymentMessage.style.display = 'block';
+  }
+</script>
+
+<!-- Load Stripe.js -->
+<script src="https://js.stripe.com/v3/" is:inline></script>
