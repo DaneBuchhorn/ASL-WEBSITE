@@ -77,14 +77,12 @@ const breadcrumbSchema = {
             </div>
 
             <div class="form-group">
-              <label for="contact-product">Product Interest</label>
-              <select id="contact-product" name="product">
-                <option value="">Select a product (optional)</option>
-                <option value="artificial-lawn">Artificial Lawn</option>
-                <option value="roller-shutters">Roller Shutters</option>
-                <option value="plantation-shutters">Plantation Shutters</option>
-                <option value="outdoor-blinds">Outdoor Blinds</option>
-                <option value="other">Other / General Enquiry</option>
+              <label for="contact-product">Product Interest *</label>
+              <select id="contact-product" name="product" required>
+                <option value="">Select a product</option>
+                <option value="Outdoor Blinds">Outdoor Blinds</option>
+                <option value="Roller Shutters">Roller Shutters</option>
+                <option value="Artificial Lawn">Artificial Lawn</option>
               </select>
             </div>
 
@@ -275,7 +273,7 @@ const breadcrumbSchema = {
           email: formData.get('email') as string,
           phone: formData.get('phone') as string,
           suburb: formData.get('suburb') as string,
-          product: (formData.get('product') as string) || 'contact-enquiry',
+          product: formData.get('product') as string,
           message: formData.get('message') as string,
         };
 

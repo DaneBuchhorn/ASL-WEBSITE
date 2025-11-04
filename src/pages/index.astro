@@ -291,10 +291,9 @@ export const prerender = true;
             <input type="text" id="suburb" name="suburb" placeholder="Suburb* (e.g. Belconnen)" required />
             <select id="product" name="product" required>
               <option value="">Select Product*</option>
-              <option value="artificial-lawn">Artificial Lawn</option>
-              <option value="roller-shutters">Roller Shutters</option>
-              <option value="outdoor-blinds">Outdoor Blinds</option>
-              <option value="plantation-shutters">Plantation Shutters</option>
+              <option value="Outdoor Blinds">Outdoor Blinds</option>
+              <option value="Roller Shutters">Roller Shutters</option>
+              <option value="Artificial Lawn">Artificial Lawn</option>
             </select>
             <select id="best-time" name="best-time">
               <option value="">Best Time to Call</option>
@@ -1564,7 +1563,7 @@ export const prerender = true;
     blindsBtn.addEventListener('click', () => {
       const form = document.getElementById('mainQuoteForm');
       const productSelect = document.getElementById('product') as HTMLSelectElement;
-      if (productSelect) productSelect.value = 'outdoor-blinds';
+      if (productSelect) productSelect.value = 'Outdoor Blinds';
       if (form) form.scrollIntoView({ behavior: 'smooth' });
     });
   }
