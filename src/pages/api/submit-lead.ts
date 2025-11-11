@@ -61,6 +61,59 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     console.log(JSON.stringify(enrichedSubmission, null, 2));
     console.log('===========================');
 
+    // Determine the source based on tracking data
+    const determineSource = (tracking: any): string => {
+      // Google Ads (highest priority for paid traffic)
+      if (tracking.gclid || tracking.gbraid || tracking.wbraid) {
+        return 'Google Ads';
+      }
+
+      // Facebook/Instagram Ads
+      if (tracking.fbclid || tracking.fbc) {
+        return 'Facebook/Instagram';
+      }
+
+      // UTM Source (for other campaigns)
+      if (tracking.utmSource) {
+        const source = tracking.utmSource.toLowerCase();
+
+        // Map common utm_source values to friendly names
+        if (source.includes('google')) return 'Google';
+        if (source.includes('facebook') || source.includes('fb')) return 'Facebook';
+        if (source.includes('instagram') || source.includes('ig')) return 'Instagram';
+        if (source.includes('linkedin')) return 'LinkedIn';
+        if (source.includes('twitter') || source.includes('x.com')) return 'Twitter/X';
+        if (source.includes('email')) return 'Email';
+        if (source.includes('youtube')) return 'YouTube';
+
+        // Return the utm_source value capitalized if no match
+        return tracking.utmSource.charAt(0).toUpperCase() + tracking.utmSource.slice(1);
+      }
+
+      // Check referrer
+      if (tracking.referrer && tracking.referrer !== 'Direct') {
+        try {
+          const referrerUrl = new URL(tracking.referrer);
+          const domain = referrerUrl.hostname.toLowerCase();
+
+          if (domain.includes('google')) return 'Google (Organic)';
+          if (domain.includes('facebook')) return 'Facebook';
+          if (domain.includes('instagram')) return 'Instagram';
+          if (domain.includes('linkedin')) return 'LinkedIn';
+          if (domain.includes('twitter') || domain.includes('x.com')) return 'Twitter/X';
+          if (domain.includes('youtube')) return 'YouTube';
+
+          // Return the domain as source
+          return referrerUrl.hostname.replace('www.', '');
+        } catch (e) {
+          // Invalid URL, ignore
+        }
+      }
+
+      // Default to Website Direct
+      return 'Website (Direct)';
+    };
+
     // Transform data to match CRM webhook expected format
     const crmPayload = {
       // Contact Information
@@ -76,8 +129,8 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
         enrichedSubmission.lead.message || null
       ].filter(Boolean).join('\n\n') || null,
 
-      // Source identification
-      source: 'New Website',
+      // Source identification (dynamically determined)
+      source: determineSource(enrichedSubmission.tracking),
 
       // Lead Source Tracking (mapped to CRM fields)
       campaign: enrichedSubmission.tracking.utmCampaign || null,
