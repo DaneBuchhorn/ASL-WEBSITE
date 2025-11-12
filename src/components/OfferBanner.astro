@@ -8,7 +8,7 @@ const { offerBanner } = config;
   <div
     class="offer-banner"
     id="offerBanner"
-    style={`background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);`}
+    style={`background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);`}
   >
     <div class="container">
       <div class="banner-content">
@@ -21,11 +21,11 @@ const { offerBanner } = config;
         </div>
 
         <div class="offer-main">
-          <h3 class="offer-title">Spring Special: Save up to 30% on all products!</h3>
+          <h3 class="offer-title">Black November Sales: Save Up to <span class="highlight">30%!</span></h3>
         </div>
 
         <a href={offerBanner.link} class="offer-cta-btn">
-          Claim Offer
+          Claim Your Spot
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <line x1="5" y1="12" x2="19" y2="12"></line>
             <polyline points="12 5 19 12 12 19"></polyline>
@@ -42,9 +42,11 @@ const { offerBanner } = config;
   .offer-banner {
     padding: 0.875rem 0;
     position: relative;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
     color: #ffffff;
     overflow: hidden;
+    border-top: 2px solid #ffd700;
+    border-bottom: 2px solid #ffd700;
   }
 
   .offer-banner::before {
@@ -54,8 +56,8 @@ const { offerBanner } = config;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    animation: shimmer 3s infinite;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+    animation: shimmer 2s infinite;
   }
 
   @keyframes shimmer {
@@ -80,7 +82,8 @@ const { offerBanner } = config;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: #000000;
     padding: 0.5rem 1rem;
     border-radius: 2rem;
     font-weight: 700;
@@ -88,6 +91,7 @@ const { offerBanner } = config;
     letter-spacing: 1px;
     text-transform: uppercase;
     animation: pulse 2s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
   }
 
   .offer-badge svg {
@@ -124,25 +128,32 @@ const { offerBanner } = config;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 
+  .offer-title .highlight {
+    color: #ffd700;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6);
+    font-size: 1.2em;
+  }
+
   .offer-cta-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: #ffffff;
-    color: #f97316;
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: #000000;
     padding: 0.625rem 1.25rem;
     border-radius: 2rem;
     font-weight: 700;
     font-size: 0.875rem;
     text-decoration: none;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.6);
     white-space: nowrap;
   }
 
   .offer-cta-btn:hover {
     transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 6px 30px rgba(255, 215, 0, 0.8);
+    background: linear-gradient(135deg, #ffed4e, #ffd700);
   }
 
   .offer-cta-btn svg {
