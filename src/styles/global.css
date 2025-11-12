@@ -282,3 +282,9 @@ label {
 .blob-sage {
   fill: var(--light-sage);
 }
+
+
+/* Hide reCAPTCHA badge (disclosure added to privacy policy) */
+.grecaptcha-badge {
+  visibility: hidden !important;
+}
