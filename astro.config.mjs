@@ -7,6 +7,7 @@ import vercel from '@astrojs/vercel';
 export default defineConfig({
   site: 'https://allseasonsliving.com.au',
   output: 'server', // Enables server-side rendering for API routes
+  trailingSlash: 'never', // Ensures URLs in sitemap don't have trailing slashes
   adapter: vercel({
     webAnalytics: {
       enabled: true
