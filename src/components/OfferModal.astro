@@ -7,9 +7,8 @@
     <button class="offer-modal-close" aria-label="Close modal">&times;</button>
 
     <div class="offer-modal-header">
-      <div class="offer-badge">Exclusive Offer</div>
-      <h2>Black November Sales<br>Save Up To 30%</h2>
-      <p class="offer-subtitle">Premium outdoor living at exceptional value</p>
+      <div class="offer-badge">New Year Special 2025</div>
+      <h2>FREE Installation<br>On All Products</h2>
     </div>
 
     <form id="offerForm" class="offer-form">
@@ -90,13 +89,13 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
             <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <span>Free on-site measure & quote</span>
+          <span>FREE professional installation</span>
         </div>
         <div class="offer-benefit">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
             <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <span>Exclusive Black November pricing</span>
+          <span>Free on-site measure & quote</span>
         </div>
         <div class="offer-benefit">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -107,7 +106,7 @@
       </div>
 
       <button type="submit" class="offer-submit-btn" id="offerSubmitBtn">
-        <span class="submit-text">Claim My 30% Discount</span>
+        <span class="submit-text">Claim FREE Installation</span>
         <span class="submit-loading" style="display: none;">
           <svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
@@ -202,17 +201,17 @@
   }
 
   .offer-modal-header {
-    background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+    background: linear-gradient(135deg, #059669 0%, #10b981 50%, #059669 100%);
     padding: 30px 30px 25px;
     text-align: center;
     position: relative;
-    border-bottom: 2px solid #ffd700;
+    border-bottom: 2px solid #34d399;
   }
 
   .offer-badge {
     display: inline-block;
-    background: linear-gradient(135deg, #ffd700, #ffed4e);
-    color: #000000;
+    background: linear-gradient(135deg, #ffffff, #f0fdf4);
+    color: #059669;
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
@@ -220,9 +219,9 @@
     padding: 6px 16px;
     border-radius: 20px;
     margin-bottom: 12px;
-    border: 1px solid #ffd700;
+    border: 1px solid #34d399;
     backdrop-filter: blur(10px);
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
   }
 
   .offer-modal-header h2 {
@@ -281,8 +280,8 @@
   .offer-form-group select:focus,
   .offer-form-group textarea:focus {
     outline: none;
-    border-color: #ffd700;
-    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
   }
 
   .offer-form-group input:invalid:not(:placeholder-shown),
@@ -337,14 +336,14 @@
 
   .offer-benefit svg {
     flex-shrink: 0;
-    stroke: #ffd700;
+    stroke: #10b981;
     stroke-width: 3;
   }
 
   .offer-submit-btn {
     width: 100%;
-    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-    color: #000000;
+    background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+    color: #ffffff;
     border: none;
     padding: 15px 28px;
     border-radius: 10px;
@@ -356,13 +355,13 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.6);
+    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
   }
 
   .offer-submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 30px rgba(255, 215, 0, 0.8);
-    background: linear-gradient(135deg, #ffed4e 0%, #ffd700 100%);
+    box-shadow: 0 6px 30px rgba(16, 185, 129, 0.6);
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   }
 
   .offer-submit-btn:active {
@@ -530,7 +529,7 @@
       const submissionData = captureFormData(
         leadData,
         'offer-modal',
-        'Black November Sales'
+        'New Year Free Installation'
       );
 
       // Add offer-specific metadata and reCAPTCHA token
@@ -538,8 +537,8 @@
         ...submissionData,
         lead: {
           ...submissionData.lead,
-          leadSource: 'Black November Sales',
-          offerCode: 'BLACKNOV30'
+          leadSource: 'New Year Free Installation',
+          offerCode: 'NEWYEAR2025'
         },
         recaptchaToken
       };
