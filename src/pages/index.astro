@@ -2,6 +2,26 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+import heroImage from '../../public/assets/images/general/Modern Home All Seasons Living.webp';
+import artificialLawnIcon from '../../public/assets/icons/Artificial_Lawn_inline_image.svg';
+import rollerShuttersIcon from '../../public/assets/icons/roller-shutters.svg';
+import plantationShuttersIcon from '../../public/assets/icons/plantation-shutters.svg';
+import outdoorBlindsIcon from '../../public/assets/icons/outdoor-blinds.svg';
+import canberraIcon from '../../public/assets/icons/canberra-svgrepo-com.svg';
+import licenseIcon from '../../public/assets/icons/license-svgrepo-com.svg';
+import premiumIcon from '../../public/assets/icons/premium-svgrepo-com.svg';
+import warrantyIcon from '../../public/assets/icons/warranty-svgrepo-com.svg';
+import outdoorBlindsImage from '../../public/assets/images/outdoor-blinds/Outdoor Motorised Blinds.webp';
+import windIcon from '../../public/assets/icons/wind-svgrepo-com.svg';
+import smartHomeIcon from '../../public/assets/icons/smart-home-svgrepo-com.svg';
+import stackIcon from '../../public/assets/icons/stack-svgrepo-com.svg';
+import sparklesIcon from '../../public/assets/icons/sparkles-outline-svgrepo-com.svg';
+import kangarooIcon from '../../public/assets/icons/kangaroo-illustration-3-svgrepo-com.svg';
+import rollerShuttersImage from '../../public/assets/images/roller-shutters/All Seasons Living -Roller Shutters.webp';
+import artificialLawnImage from '../../public/assets/images/artificial-lawn/Artificial-lawn-asl-media.webp';
+import diamondIcon from '../../public/assets/icons/diamond-svgrepo-com.svg';
+import pawIcon from '../../public/assets/icons/paw-svgrepo-com.svg';
 
 export const prerender = true;
 ---
@@ -13,11 +33,11 @@ export const prerender = true;
     <!-- Hero Section -->
     <section class="hero">
       <div class="hero-background">
-        <img
-          src="/assets/images/general/Modern Home All Seasons Living.webp"
+        <Image
+          src={heroImage}
           alt="Modern Australian home with outdoor blinds and roller shutters installed by All Seasons Living Canberra"
-          width="1920"
-          height="1080"
+          width={1920}
+          height={1080}
           loading="eager"
           fetchpriority="high"
         />
@@ -34,19 +54,19 @@ export const prerender = true;
       <div class="container">
         <div class="hero-products">
           <a href="/artificial-lawn" class="product-icon-card">
-            <img src="/assets/icons/Artificial_Lawn_inline_image.svg" alt="Artificial Lawn" class="product-icon" />
+            <Image src={artificialLawnIcon} alt="Artificial Lawn" class="product-icon" />
             <span>Artificial Lawn</span>
           </a>
           <a href="/roller-shutters" class="product-icon-card">
-            <img src="/assets/icons/roller-shutters.svg" alt="Roller Shutters" class="product-icon" />
+            <Image src={rollerShuttersIcon} alt="Roller Shutters" class="product-icon" />
             <span>Roller Shutters</span>
           </a>
           <a href="#" class="product-icon-card">
-            <img src="/assets/icons/plantation-shutters.svg" alt="Plantation Shutters" class="product-icon" />
+            <Image src={plantationShuttersIcon} alt="Plantation Shutters" class="product-icon" />
             <span>Plantation Shutters</span>
           </a>
           <a href="/outdoor-blinds" class="product-icon-card">
-            <img src="/assets/icons/outdoor-blinds.svg" alt="Outdoor Blinds" class="product-icon" />
+            <Image src={outdoorBlindsIcon} alt="Outdoor Blinds" class="product-icon" />
             <span>Outdoor Blinds</span>
           </a>
         </div>
@@ -64,28 +84,28 @@ export const prerender = true;
 
         <div class="trust-badges">
           <div class="trust-badge">
-            <img src="/assets/icons/canberra-svgrepo-com.svg" alt="Locally Owned" class="trust-icon" />
+            <Image src={canberraIcon} alt="Locally Owned" class="trust-icon" />
             <div>
               <strong>Locally Owned</strong>
             </div>
           </div>
 
           <div class="trust-badge">
-            <img src="/assets/icons/license-svgrepo-com.svg" alt="Licensed & Insured" class="trust-icon" />
+            <Image src={licenseIcon} alt="Licensed & Insured" class="trust-icon" />
             <div>
               <strong>Licensed & Insured</strong>
             </div>
           </div>
 
           <div class="trust-badge">
-            <img src="/assets/icons/premium-svgrepo-com.svg" alt="Premium Materials" class="trust-icon" />
+            <Image src={premiumIcon} alt="Premium Materials" class="trust-icon" />
             <div>
               <strong>Premium Materials</strong>
             </div>
           </div>
 
           <div class="trust-badge">
-            <img src="/assets/icons/warranty-svgrepo-com.svg" alt="15 Years Experience" class="trust-icon" />
+            <Image src={warrantyIcon} alt="15 Years Experience" class="trust-icon" />
             <div>
               <strong>15 Years Experience</strong>
             </div>
@@ -99,7 +119,7 @@ export const prerender = true;
       <div class="blinds-content-wrapper">
         <div class="blinds-visual-content">
           <div class="blinds-hero-image">
-            <img src="/assets/images/outdoor-blinds/Outdoor Motorised Blinds.webp" alt="TruScreen motorised outdoor blinds installed on Canberra patio" width="800" height="600" loading="lazy" />
+            <Image src={outdoorBlindsImage} alt="TruScreen motorised outdoor blinds installed on Canberra patio" width={800} height={600} />
           </div>
         </div>
         <div class="blinds-text-content">
@@ -126,35 +146,35 @@ export const prerender = true;
                 </div>
               </div>
               <div class="blinds-feature">
-                <img src="/assets/icons/wind-svgrepo-com.svg" alt="Wind Rated" class="blinds-icon" />
+                <Image src={windIcon} alt="Wind Rated" class="blinds-icon" />
                 <div>
                   <strong>Wind Rated</strong>
                   <p>Engineered for Australian conditions</p>
                 </div>
               </div>
               <div class="blinds-feature">
-                <img src="/assets/icons/smart-home-svgrepo-com.svg" alt="Smart Automation" class="blinds-icon" />
+                <Image src={smartHomeIcon} alt="Smart Automation" class="blinds-icon" />
                 <div>
                   <strong>Smart Automation</strong>
                   <p>Zigbee motor with app control</p>
                 </div>
               </div>
               <div class="blinds-feature">
-                <img src="/assets/icons/stack-svgrepo-com.svg" alt="Dual Channel Track" class="blinds-icon" />
+                <Image src={stackIcon} alt="Dual Channel Track" class="blinds-icon" />
                 <div>
                   <strong>Dual Channel Track</strong>
                   <p>Smooth & reliable operation</p>
                 </div>
               </div>
               <div class="blinds-feature">
-                <img src="/assets/icons/sparkles-outline-svgrepo-com.svg" alt="Scratch Resistant Finish" class="blinds-icon" />
+                <Image src={sparklesIcon} alt="Scratch Resistant Finish" class="blinds-icon" />
                 <div>
                   <strong>Scratch Resistant Finish</strong>
                   <p>Long-lasting durability</p>
                 </div>
               </div>
               <div class="blinds-feature">
-                <img src="/assets/icons/kangaroo-illustration-3-svgrepo-com.svg" alt="Australian Made & Owned" class="blinds-icon" />
+                <Image src={kangarooIcon} alt="Australian Made & Owned" class="blinds-icon" />
                 <div>
                   <strong>Australian Made & Owned</strong>
                   <p>Supporting local manufacturing</p>
@@ -266,7 +286,7 @@ export const prerender = true;
 
         <div class="shutters-visual-content">
           <div class="shutters-image">
-            <img src="/assets/images/roller-shutters/All Seasons Living -Roller Shutters.webp" alt="Premium roller shutters installation on Canberra home for security and insulation" width="800" height="600" loading="lazy" />
+            <Image src={rollerShuttersImage} alt="Premium roller shutters installation on Canberra home for security and insulation" width={800} height={600} />
           </div>
         </div>
       </div>
@@ -316,7 +336,7 @@ export const prerender = true;
       <div class="lawn-content-wrapper">
         <div class="lawn-visual-content">
           <div class="lawn-image">
-            <img src="/assets/images/artificial-lawn/Artificial-lawn-asl-media.webp" alt="Pet-friendly artificial lawn installation in Canberra backyard" width="800" height="600" loading="lazy" />
+            <Image src={artificialLawnImage} alt="Pet-friendly artificial lawn installation in Canberra backyard" width={800} height={600} />
           </div>
         </div>
         <div class="lawn-text-content">
@@ -335,11 +355,11 @@ export const prerender = true;
                 <span>No More Mowing</span>
               </div>
               <div class="lawn-benefit">
-                <img src="/assets/icons/diamond-svgrepo-com.svg" alt="Year Round Beauty" class="lawn-icon" />
+                <Image src={diamondIcon} alt="Year Round Beauty" class="lawn-icon" />
                 <span>All-Weather Beauty</span>
               </div>
               <div class="lawn-benefit">
-                <img src="/assets/icons/paw-svgrepo-com.svg" alt="Pet Friendly" class="lawn-icon" />
+                <Image src={pawIcon} alt="Pet Friendly" class="lawn-icon" />
                 <span>Pet & Kid Friendly</span>
               </div>
               <div class="lawn-benefit">
@@ -365,7 +385,7 @@ export const prerender = true;
             <button class="btn btn-primary btn-lg" id="plantationQuoteBtn">GET A QUOTE</button>
           </div>
           <div class="feature-image-single">
-            <img src="/assets/images/general/Modern Home All Seasons Living.webp" alt="Plantation shutters on modern Canberra home interior" width="800" height="600" loading="lazy" />
+            <Image src={heroImage} alt="Plantation shutters on modern Canberra home interior" width={800} height={600} />
           </div>
         </div>
       </div>
