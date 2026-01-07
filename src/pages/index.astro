@@ -1540,12 +1540,14 @@ export const prerender = true;
         const result = await response.json();
 
         if (response.ok && result.success) {
-          // Track conversion in Google Analytics
-          if (typeof gtag !== 'undefined') {
-            gtag('event', 'generate_lead', {
+          // Push event to GTM dataLayer with beacon transport
+          if (typeof window.dataLayer !== 'undefined') {
+            window.dataLayer.push({
+              event: 'generate_lead',
               event_category: 'Form',
-              event_label: leadData.product,
-              value: 1
+              event_label: 'mainQuoteForm',
+              value: 1,
+              transport_type: 'beacon'
             });
           }
 
