@@ -1225,15 +1225,18 @@ const breadcrumbSchema = {
         const result = await response.json();
 
         if (response.ok && result.success) {
-          if (typeof gtag !== 'undefined') {
-            gtag('event', 'generate_lead', {
+          // Push event to GTM dataLayer with beacon transport
+          if (typeof window.dataLayer !== 'undefined') {
+            window.dataLayer.push({
+              event: 'generate_lead',
               event_category: 'Form',
               event_label: 'outdoor-blinds',
-              value: 1
+              value: 1,
+              transport_type: 'beacon'
             });
           }
 
-          alert('Thank you! We\'ll contact you within 24 hours.');
+          // Success - redirect to thank you page
           window.location.href = '/thank-you';
         } else {
           throw new Error(result.message || 'Submission failed');

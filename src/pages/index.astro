@@ -1550,7 +1550,6 @@ export const prerender = true;
           }
 
           // Success - redirect to thank you page
-          alert('Thank you! We\'ll contact you within 24 hours.');
           window.location.href = '/thank-you';
         } else {
           throw new Error(result.message || 'Submission failed');
