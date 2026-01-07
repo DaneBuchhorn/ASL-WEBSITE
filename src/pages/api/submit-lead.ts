@@ -63,17 +63,16 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
     // Determine the source based on tracking data
     const determineSource = (tracking: any): string => {
-      // Google Ads (highest priority for paid traffic)
+      // Priority 1: URL click IDs (most reliable - indicates current session source)
       if (tracking.gclid || tracking.gbraid || tracking.wbraid) {
         return 'Google Ads';
       }
 
-      // Facebook/Instagram Ads
-      if (tracking.fbclid || tracking.fbc) {
+      if (tracking.fbclid) {
         return 'Facebook/Instagram';
       }
 
-      // UTM Source (for other campaigns)
+      // Priority 2: UTM Parameters (intentional campaign tracking)
       if (tracking.utmSource) {
         const source = tracking.utmSource.toLowerCase();
 
@@ -90,7 +89,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
         return tracking.utmSource.charAt(0).toUpperCase() + tracking.utmSource.slice(1);
       }
 
-      // Check referrer
+      // Priority 3: Referrer (shows where user came from)
       if (tracking.referrer && tracking.referrer !== 'Direct') {
         try {
           const referrerUrl = new URL(tracking.referrer);
@@ -108,6 +107,12 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
         } catch (e) {
           // Invalid URL, ignore
         }
+      }
+
+      // Priority 4: Facebook cookies (lowest priority - persistent browser cookies)
+      // Only use fbc if we have no other source information
+      if (tracking.fbc || tracking.fbp) {
+        return 'Facebook/Instagram (Cookie)';
       }
 
       // Default to Website Direct
