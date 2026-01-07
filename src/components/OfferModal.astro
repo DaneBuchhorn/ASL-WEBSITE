@@ -552,6 +552,17 @@
       });
 
       if (response.ok) {
+        // Push event to GTM dataLayer with beacon transport
+        if (typeof window.dataLayer !== 'undefined') {
+          window.dataLayer.push({
+            event: 'generate_lead',
+            event_category: 'Form',
+            event_label: 'offer-modal',
+            value: 1,
+            transport_type: 'beacon'
+          });
+        }
+
         window.location.href = '/thank-you';
       } else {
         alert('There was an error submitting your request. Please try again or call us directly.');
