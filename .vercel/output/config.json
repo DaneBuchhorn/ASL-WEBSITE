@@ -2,6 +2,13 @@
 	"version": 3,
 	"routes": [
 		{
+			"src": "^/(.*)/$",
+			"headers": {
+				"Location": "/$1"
+			},
+			"status": 308
+		},
+		{
 			"handle": "filesystem"
 		},
 		{
@@ -12,19 +19,43 @@
 			"continue": true
 		},
 		{
-			"src": "^/_server-islands/([^/]+?)/?$",
+			"src": "^/_server-islands/([^/]+?)$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/_image/?$",
+			"src": "^/_image$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/api/submit-lead/?$",
+			"src": "^/about$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/roller-shutters/?$",
+			"src": "^/api/create-payment-intent$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/api/submit-lead$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/artificial-lawn$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/contact$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/pay/success$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/pay$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/roller-shutters$",
 			"dest": "_render"
 		}
 	]
