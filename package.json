@@ -17,6 +17,7 @@
     "resend": "^6.2.0"
   },
   "devDependencies": {
+    "sharp": "^0.34.5",
     "terser": "^5.44.0"
   }
 }
