@@ -1542,25 +1542,9 @@ export const prerender = true;
         console.log('[mainQuoteForm] API response:', response.status, result);
 
         if (response.ok && result.success) {
-          console.log('[mainQuoteForm] API call successful, pushing to dataLayer');
-          console.log('[mainQuoteForm] window.dataLayer exists?', typeof window.dataLayer !== 'undefined');
-
-          // Push event to GTM dataLayer with beacon transport
-          if (typeof window.dataLayer !== 'undefined') {
-            window.dataLayer.push({
-              event: 'generate_lead',
-              event_category: 'Form',
-              event_label: 'mainQuoteForm',
-              value: 1,
-              transport_type: 'beacon'
-            });
-            console.log('[mainQuoteForm] dataLayer.push() executed successfully');
-          } else {
-            console.error('[mainQuoteForm] window.dataLayer is undefined!');
-          }
-
+          console.log('[mainQuoteForm] API call successful');
+          // Conversion tracking happens on thank-you page (no race condition)
           console.log('[mainQuoteForm] Redirecting to thank-you page...');
-          // Success - redirect to thank you page
           window.location.href = '/thank-you';
         } else {
           throw new Error(result.message || 'Submission failed');

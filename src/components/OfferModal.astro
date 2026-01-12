@@ -559,23 +559,8 @@
       console.log('[OfferModal] API response status:', response.status);
 
       if (response.ok) {
-        console.log('[OfferModal] API call successful, pushing to dataLayer');
-        console.log('[OfferModal] window.dataLayer exists?', typeof window.dataLayer !== 'undefined');
-
-        // Push event to GTM dataLayer with beacon transport
-        if (typeof window.dataLayer !== 'undefined') {
-          window.dataLayer.push({
-            event: 'generate_lead',
-            event_category: 'Form',
-            event_label: 'offer-modal',
-            value: 1,
-            transport_type: 'beacon'
-          });
-          console.log('[OfferModal] dataLayer.push() executed successfully');
-        } else {
-          console.error('[OfferModal] window.dataLayer is undefined!');
-        }
-
+        console.log('[OfferModal] API call successful');
+        // Conversion tracking happens on thank-you page (no race condition)
         console.log('[OfferModal] Redirecting to thank-you page...');
         window.location.href = '/thank-you';
       } else {

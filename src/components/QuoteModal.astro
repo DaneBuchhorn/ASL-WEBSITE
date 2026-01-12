@@ -519,17 +519,7 @@
         console.log('[QuoteModal] API response:', result);
 
         if (response.ok && result.success) {
-          // Push event to GTM dataLayer with beacon transport
-          if (typeof window.dataLayer !== 'undefined') {
-            window.dataLayer.push({
-              event: 'generate_lead',
-              event_category: 'Form',
-              event_label: 'quote-modal',
-              value: 1,
-              transport_type: 'beacon'
-            });
-          }
-
+          // Conversion tracking happens on thank-you page (no race condition)
           closeModal();
           window.location.href = '/thank-you';
         } else {

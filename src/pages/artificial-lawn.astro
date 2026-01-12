@@ -692,17 +692,7 @@ const breadcrumbSchema = {
         const result = await response.json();
 
         if (response.ok && result.success) {
-          // Push event to GTM dataLayer with beacon transport
-          if (typeof window.dataLayer !== 'undefined') {
-            window.dataLayer.push({
-              event: 'generate_lead',
-              event_category: 'Form',
-              event_label: 'artificial-lawn-inline',
-              value: 1,
-              transport_type: 'beacon'
-            });
-          }
-
+          // Conversion tracking happens on thank-you page (no race condition)
           window.location.href = '/thank-you';
         } else {
           throw new Error(result.message || 'Submission failed');
