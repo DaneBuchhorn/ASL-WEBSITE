@@ -95,15 +95,20 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
           const referrerUrl = new URL(tracking.referrer);
           const domain = referrerUrl.hostname.toLowerCase();
 
-          if (domain.includes('google')) return 'Google (Organic)';
-          if (domain.includes('facebook')) return 'Facebook';
-          if (domain.includes('instagram')) return 'Instagram';
-          if (domain.includes('linkedin')) return 'LinkedIn';
-          if (domain.includes('twitter') || domain.includes('x.com')) return 'Twitter/X';
-          if (domain.includes('youtube')) return 'YouTube';
+          // Ignore self-referrals (navigating within own site)
+          if (domain.includes('allseasonsliving.com.au')) {
+            // Fall through to next priority level
+          } else {
+            if (domain.includes('google')) return 'Google (Organic)';
+            if (domain.includes('facebook')) return 'Facebook';
+            if (domain.includes('instagram')) return 'Instagram';
+            if (domain.includes('linkedin')) return 'LinkedIn';
+            if (domain.includes('twitter') || domain.includes('x.com')) return 'Twitter/X';
+            if (domain.includes('youtube')) return 'YouTube';
 
-          // Return the domain as source
-          return referrerUrl.hostname.replace('www.', '');
+            // Return the domain as source (external referrer)
+            return referrerUrl.hostname.replace('www.', '');
+          }
         } catch (e) {
           // Invalid URL, ignore
         }
