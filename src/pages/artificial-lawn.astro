@@ -89,6 +89,10 @@ const breadcrumbSchema = {
             0448 243 979
           </a>
         </div>
+        <a href="https://tigerturf.com/au/" target="_blank" rel="noopener noreferrer" class="hero-badge">
+          <span class="badge-text">Authorized TigerTurf Provider</span>
+          <img src="/assets/images/artificial-lawn/tigerturf-logo-green.svg" alt="TigerTurf Logo" class="badge-logo" />
+        </a>
       </div>
     </div>
   </section>
@@ -300,6 +304,10 @@ const breadcrumbSchema = {
             <img src="/assets/images/artificial-lawn/asl-artificial-lawn-family.png" alt="Oasis Blend premium artificial lawn Canberra - pet friendly synthetic grass with UV protection" loading="lazy" width="400" height="300" />
           </div>
           <h3 class="product-name">Oasis Blend</h3>
+          <a href="https://tigerturf.com/au/" target="_blank" rel="noopener noreferrer" class="supplier-badge">
+            <span class="supplier-text">Proud supplier of</span>
+            <img src="/assets/images/artificial-lawn/tigerturf-logo-green.svg" alt="TigerTurf Logo" class="supplier-logo" />
+          </a>
           <p class="product-description">Oasis Blend offers a lush, natural looking lawn with soft feel, UV stability, and durability. Perfect for families and light commercial spaces.</p>
 
           <div class="product-ratings">
@@ -352,7 +360,7 @@ const breadcrumbSchema = {
             </div>
             <div class="spec-item">
               <span class="spec-label">Pile Weight</span>
-              <span class="spec-value">1,187 g/sqm</span>
+              <span class="spec-value">2,036 g/sq m</span>
             </div>
             <div class="spec-item">
               <span class="spec-label">Yarn</span>
@@ -386,6 +394,10 @@ const breadcrumbSchema = {
             <img src="/assets/images/artificial-lawn/asl-artificial-lawn-picnic2.png" alt="Retreat Blend artificial lawn Canberra - cooling technology synthetic grass for Australian climate" loading="lazy" width="400" height="300" />
           </div>
           <h3 class="product-name">Retreat Blend</h3>
+          <a href="https://tigerturf.com/au/" target="_blank" rel="noopener noreferrer" class="supplier-badge">
+            <span class="supplier-text">Proud supplier of</span>
+            <img src="/assets/images/artificial-lawn/tigerturf-logo-green.svg" alt="TigerTurf Logo" class="supplier-logo" />
+          </a>
           <p class="product-description">Retreat Blend offers a natural olive-green lawn with a soft, non-shiny finish and advanced cooling technology for year-round comfort.</p>
 
           <div class="product-ratings">
@@ -438,7 +450,7 @@ const breadcrumbSchema = {
             </div>
             <div class="spec-item">
               <span class="spec-label">Pile Weight</span>
-              <span class="spec-value">1,280 g/sqm</span>
+              <span class="spec-value">1,305 g/sq m</span>
             </div>
             <div class="spec-item">
               <span class="spec-label">Yarn</span>
@@ -476,6 +488,10 @@ const breadcrumbSchema = {
             <img src="/assets/images/artificial-lawn/Pro Sport Golf Green.png" alt="Pro Sport artificial putting green Canberra - professional grade synthetic turf for golf and sports" loading="lazy" width="400" height="300" />
           </div>
           <h3 class="product-name">Pro Sport</h3>
+          <a href="https://tigerturf.com/au/" target="_blank" rel="noopener noreferrer" class="supplier-badge">
+            <span class="supplier-text">Proud supplier of</span>
+            <img src="/assets/images/artificial-lawn/tigerturf-logo-green.svg" alt="TigerTurf Logo" class="supplier-logo" />
+          </a>
           <p class="product-description">Pro Sport delivers a premium, low-maintenance sporting surface with true ball roll and accurate speed, perfect for residential sport surfaces.</p>
 
           <div class="product-ratings">
@@ -750,6 +766,39 @@ const breadcrumbSchema = {
     width: 100%;
     padding: 6rem 0 4rem;
     color: var(--white);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0.625rem 1.25rem;
+    border-radius: var(--radius-full);
+    margin-top: 1.5rem;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .hero-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 1);
+  }
+
+  .badge-text {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--olive-green);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-logo {
+    height: 22px;
+    width: auto;
   }
 
   .hero-content h1 {
@@ -1105,8 +1154,48 @@ const breadcrumbSchema = {
     font-size: 1.375rem;
     color: var(--black);
     font-weight: 700;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     text-align: center;
+  }
+
+  .supplier-badge {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem 0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .supplier-badge:hover {
+    transform: translateY(-2px);
+  }
+
+  .supplier-badge:hover .supplier-text {
+    color: #465331;
+  }
+
+  .supplier-badge:hover .supplier-logo {
+    opacity: 1;
+  }
+
+  .supplier-text {
+    font-size: 0.75rem;
+    color: var(--olive-green);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+  }
+
+  .supplier-logo {
+    height: 20px;
+    width: auto;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
   }
 
   .product-description {
@@ -1317,6 +1406,19 @@ const breadcrumbSchema = {
   }
 
   @media (max-width: 768px) {
+    .hero-badge {
+      padding: 0.5rem 1rem;
+      margin-top: 1rem;
+    }
+
+    .badge-text {
+      font-size: 0.75rem;
+    }
+
+    .badge-logo {
+      height: 18px;
+    }
+
     .hero-content h1 {
       font-size: 2.5rem;
     }
