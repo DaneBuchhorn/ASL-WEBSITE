@@ -172,7 +172,7 @@ In Vercel Dashboard:
 If critical issues:
 - Disable form on website temporarily
 - Add banner: "Form submissions temporarily unavailable"
-- Direct users to call: 6188 9606
+- Direct users to call: (02) 6188 9606
 
 ---
 
@@ -319,7 +319,7 @@ If critical issues:
 - Vercel Dashboard: https://vercel.com/dashboard
 
 **Support:**
-- Phone: 6188 9606
+- Phone: (02) 6188 9606
 - Email: info@allseasonsliving.com.au
 
 ---
