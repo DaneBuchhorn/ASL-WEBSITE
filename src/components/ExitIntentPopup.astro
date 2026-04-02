@@ -47,7 +47,8 @@
         <input type="tel" id="exit-phone" name="phone" required placeholder="Phone number*" pattern="[0-9]{10}" autocomplete="tel">
       </div>
       <div class="exit-form-group">
-        <select id="exit-product" name="product" required>
+        <label for="exit-product" class="sr-only">Product Interest</label>
+        <select id="exit-product" name="product" required aria-label="Product Interest">
           <option value="">Select product interest*</option>
           <option value="Outdoor Blinds">Outdoor Blinds</option>
           <option value="Roller Shutters">Roller Shutters</option>
@@ -141,7 +142,7 @@
     border-radius: 50%;
     transition: all 0.3s ease;
     color: var(--black);
-    z-index: 1;
+    z-index: 10;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
@@ -285,6 +286,19 @@
     .exit-popup-content {
       max-height: 95vh;
       border-radius: var(--radius-md);
+    }
+
+    .exit-popup-close {
+      top: 0.75rem;
+      right: 0.75rem;
+      padding: 0.625rem;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .exit-popup-close svg {
+      width: 28px;
+      height: 28px;
     }
 
     .exit-popup-header {

@@ -80,8 +80,8 @@ const breadcrumbSchema = {
 ---
 
 <Layout
-  title="TruScreen® Outdoor Blinds Canberra | Australian Made Outdoor Blind System"
-  description="TruScreen eliminates gaps, sagging, and deflection with Australia's most advanced outdoor blind system. Adjustable suspension, motorisation-ready, 10-year warranty. Free measure & quote."
+  title="Outdoor Blinds Canberra | TruScreen® & Straight Drop | Australian Made"
+  description="Premium outdoor blinds for Canberra homes. Choose TruScreen® gap-free zip blinds or affordable Straight Drop blinds. Australian made, 10-year warranty. Free measure & quote."
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
@@ -91,170 +91,404 @@ const breadcrumbSchema = {
 
   <main>
     <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-image">
+    <section class="hero-section">
+      <div class="hero-image-container">
         <img
           src="/assets/images/outdoor-blinds/Blinds Hero.webp"
-          alt="TruScreen motorised outdoor blinds installed on Canberra patio with Australian Made technology"
+          alt="Premium outdoor blinds installed on Canberra patio - Australian made TruScreen and Straight Drop systems"
+          width="1920"
+          height="1080"
           loading="eager"
           fetchpriority="high"
         />
         <div class="hero-overlay"></div>
       </div>
-      <div class="container hero-container">
-        <h1>TruScreen<span class="trademark">®</span> Outdoor Blinds Canberra | Australian Made Zip Blinds</h1>
-        <p class="hero-lead">Australia's most advanced outdoor blind system—engineered to eliminate gaps, prevent sagging, and deliver flawless performance in any weather.</p>
-        <div class="hero-stats">
-          <div class="stat">
-            <strong>50,000+</strong>
-            <span>Happy Customers</span>
+      <div class="hero-content">
+        <div class="container">
+          <h1>Outdoor Blinds Canberra</h1>
+          <p class="hero-subtitle">Transform your outdoor space with Australian-made blinds engineered for performance, privacy, and year-round comfort. Two systems, one goal — the perfect fit for your home.</p>
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>50,000+</strong>
+              <span>Happy Customers</span>
+            </div>
+            <div class="stat">
+              <strong>10-Year</strong>
+              <span>Product Warranty</span>
+            </div>
+            <div class="stat">
+              <strong>Local</strong>
+              <span>Owned & Manufactured</span>
+            </div>
           </div>
-          <div class="stat">
-            <strong>10-Year</strong>
-            <span>Product Warranty</span>
-          </div>
-          <div class="stat">
-            <strong>Local</strong>
-            <span>Owned & Manufactured</span>
+          <div class="hero-buttons">
+            <a href="#product-selector" class="btn btn-primary">Explore Our Range</a>
+            <a href="#quote-section" class="btn btn-outline-hero">Free Measure & Quote</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Intro Section -->
-    <section class="intro-section">
+    <!-- Product Selector Section -->
+    <section id="product-selector" class="product-selector-section">
       <div class="container">
-        <div class="intro-content">
-          <h2>The gap-free difference</h2>
-          <p>Most patios aren't perfectly square. Traditional outdoor blinds leave visible gaps that installers patch with foam strips—a compromise that looks unprofessional and fails over time.</p>
+        <div class="selector-header">
+          <h2>Find the right blind for your space</h2>
+          <p>We offer two outdoor blind systems to suit every home, budget, and lifestyle. Choose a product below to explore its features.</p>
+        </div>
+
+        <div class="product-toggle-cards">
+          <button class="toggle-card active" data-product="truscreen" aria-pressed="true">
+            <span class="toggle-badge">Most Popular</span>
+            <div class="toggle-card-image">
+              <img src="/assets/images/outdoor-blinds/TruScreen Track Blinds.webp" alt="TruScreen zip track blinds installed on home" loading="lazy" />
+            </div>
+            <div class="toggle-card-content">
+              <h3>TruScreen<span class="trademark">®</span> Track Blinds</h3>
+              <p class="toggle-tagline">Premium gap-free zip system</p>
+              <ul class="toggle-highlights">
+                <li>Patented Track Technology</li>
+                <li>Eliminates gaps and sagging</li>
+                <li>Motorisation-ready</li>
+              </ul>
+              <span class="toggle-spec">Zero gaps. Zero sagging.</span>
+            </div>
+            <div class="toggle-indicator">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+          </button>
+
+          <div class="toggle-divider">
+            <span>or</span>
+          </div>
+
+          <button class="toggle-card" data-product="straightdrop" aria-pressed="false">
+            <span class="toggle-badge value">Great Value</span>
+            <div class="toggle-card-image">
+              <img src="/assets/images/outdoor-blinds/Straight Drop Blinds.webp" alt="Straight drop outdoor blinds installed on patio" loading="lazy" />
+            </div>
+            <div class="toggle-card-content">
+              <h3>Straight Drop Blinds</h3>
+              <p class="toggle-tagline">Simple, versatile, affordable</p>
+              <ul class="toggle-highlights">
+                <li>No posts or tracks required</li>
+                <li>Quick, simple installation</li>
+                <li>Manual or motorised</li>
+              </ul>
+              <span class="toggle-spec">Simple by design.</span>
+            </div>
+            <div class="toggle-indicator">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Comparison Table -->
+    <section class="comparison-section">
+      <div class="container">
+        <h2>At a Glance</h2>
+        <p class="comparison-subtitle">See how our two systems compare across the features that matter most.</p>
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th class="col-truscreen">
+                  <span class="table-product-name">TruScreen<span class="trademark">®</span></span>
+                  <span class="table-product-tag">Premium</span>
+                </th>
+                <th class="col-straightdrop">
+                  <span class="table-product-name">Straight Drop</span>
+                  <span class="table-product-tag value">Value</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Side retention</td>
+                <td class="col-truscreen">Adaptive zip channels</td>
+                <td class="col-straightdrop">None required</td>
+              </tr>
+              <tr>
+                <td>Gap protection</td>
+                <td class="col-truscreen">Gap-free seal</td>
+                <td class="col-straightdrop">Open sides</td>
+              </tr>
+              <tr>
+                <td>Wind resistance</td>
+                <td class="col-truscreen">Shock-absorption system</td>
+                <td class="col-straightdrop">Base anchor clip</td>
+              </tr>
+              <tr>
+                <td>Operation</td>
+                <td class="col-truscreen">Remote / Manual</td>
+                <td class="col-straightdrop">Manual</td>
+              </tr>
+              <tr>
+                <td>Price point</td>
+                <td class="col-truscreen">Premium</td>
+                <td class="col-straightdrop">More affordable</td>
+              </tr>
+              <tr>
+                <td>Best for</td>
+                <td class="col-truscreen">Full weather protection</td>
+                <td class="col-straightdrop">Shade, privacy & tight spaces</td>
+              </tr>
+              <tr>
+                <td>Warranty</td>
+                <td class="col-truscreen">10 years</td>
+                <td class="col-straightdrop">10 years</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="comparison-cta">
+          <p>Not sure which system is right for you?</p>
+          <a href="#quote-section" class="btn btn-primary">Get Expert Advice — Free Quote</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUSCREEN DETAIL SECTION -->
+    <section id="truscreen-features" class="product-detail-section">
+      <div class="container">
+        <div class="detail-header">
+          <span class="detail-label">Premium System</span>
+          <h2>TruScreen<span class="trademark">®</span> Track Blinds</h2>
+          <p>Australia's most advanced outdoor blind system — engineered to eliminate gaps, prevent sagging, and deliver flawless performance in any weather.</p>
+        </div>
+
+        <!-- Gap-Free Intro -->
+        <div class="detail-intro-block">
+          <h3>The gap-free difference</h3>
+          <p>Most patios aren't perfectly square. Traditional outdoor blinds leave visible gaps that installers patch with foam strips — a compromise that looks unprofessional and fails over time.</p>
           <p><strong>TruScreen's patented suspension system adapts to your structure</strong>, creating a seamless, professional fit without workarounds. It's proper engineering, not a quick fix.</p>
         </div>
-      </div>
-    </section>
 
-    <!-- Image + Text Feature 1 -->
-    <section class="feature-section">
-      <div class="container">
-        <div class="feature-grid">
-          <div class="feature-image-wrapper">
-            <img src="/assets/images/outdoor-blinds/Duel Channel Render.webp" alt="TruScreen dual channel adaptive side channel system Canberra - gap-free outdoor blinds with adjustable installation technology" loading="lazy" />
+        <!-- Feature: Adaptive Side Channels -->
+        <div class="detail-feature">
+          <div class="detail-feature-image">
+            <img src="/assets/images/outdoor-blinds/Duel Channel Render.webp" alt="TruScreen dual channel adaptive side channel system - gap-free outdoor blinds with adjustable installation technology" loading="lazy" />
           </div>
-          <div class="feature-text">
+          <div class="detail-feature-text">
             <h3>Adaptive side channels</h3>
-            <p>Our flexible guide system automatically compensates for structures that aren't level or square. The channels adjust during installation to create tight, professional edges—no foam fillers, no gaps, no compromises.</p>
-            <ul class="feature-benefits">
+            <p>Our flexible guide system automatically compensates for structures that aren't level or square. The channels adjust during installation to create tight, professional edges — no foam fillers, no gaps, no compromises.</p>
+            <ul class="detail-benefits">
               <li>Accommodates structural irregularities</li>
               <li>Maintains constant fabric tension</li>
               <li>Eliminates unsightly gap fillers</li>
             </ul>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Image + Text Feature 2 (Reversed) -->
-    <section class="feature-section alt">
-      <div class="container">
-        <div class="feature-grid reverse">
-          <div class="feature-image-wrapper">
-            <img src="/assets/images/outdoor-blinds/truscreen render.webp" alt="TruScreen patented shock-absorption suspension system Canberra - wind resistant impact protection for outdoor zip blinds" loading="lazy" />
+        <!-- Feature: Impact-Resistant Suspension -->
+        <div class="detail-feature reverse">
+          <div class="detail-feature-image">
+            <img src="/assets/images/outdoor-blinds/truscreen render.webp" alt="TruScreen patented shock-absorption suspension system - wind resistant impact protection" loading="lazy" />
           </div>
-          <div class="feature-text">
+          <div class="detail-feature-text">
             <h3>Impact-resistant suspension</h3>
             <p>Wind gusts and accidental bumps don't damage TruScreen blinds. Our integrated shock-absorption system allows the fabric to flex under pressure, then automatically return to position.</p>
-            <ul class="feature-benefits">
+            <ul class="detail-benefits">
               <li>Flexes with wind and impacts</li>
               <li>Self-recovering fabric system</li>
               <li>Protects your investment from damage</li>
             </ul>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Technical Information -->
-    <section class="technical-section">
-      <div class="container">
-        <h2>A Truly Unique Blind System</h2>
-        <div class="technical-layout">
-          <div class="technical-image">
-            <img src="/assets/images/outdoor-blinds/Full Blind Render.png" alt="TruScreen complete outdoor blind system Canberra - motorised zip blinds with headbox channels and suspension technology" loading="lazy" />
+        <!-- Technical Breakdown -->
+        <div class="technical-block">
+          <h3>A Truly Unique Blind System</h3>
+          <div class="technical-layout">
+            <div class="technical-image">
+              <img src="/assets/images/outdoor-blinds/Full Blind Render.png" alt="TruScreen complete outdoor blind system - motorised zip blinds with headbox channels and suspension technology" loading="lazy" />
+            </div>
+            <div class="technical-content">
+              <div class="tech-item">
+                <h4>Performance Under Pressure</h4>
+                <p>The specially designed bottom bar minimizes movement even at wide widths, while the split bottom bar caps secure the zip more effectively for reliable performance.</p>
+              </div>
+              <div class="tech-item">
+                <h4>Self Adjusting Track</h4>
+                <p>The two separate channels allow for adjustable installation in any environment, accommodating structures that aren't perfectly level or square.</p>
+              </div>
+              <div class="tech-item">
+                <h4>Suspension System</h4>
+                <p>Optimized fabric polymer channels and tension polymer ensure optimal fabric tensions, providing the best solution for maintaining fabric stability at all times.</p>
+              </div>
+              <div class="tech-item">
+                <h4>Rubber Ring</h4>
+                <p>Reduces vibration from the motor and noise from the headbox, allowing for quiet operation and enhanced performance throughout the system's lifespan.</p>
+              </div>
+            </div>
           </div>
-          <div class="technical-content">
-            <div class="tech-item">
-              <h4>Performance Under Pressure</h4>
-              <p>The specially designed bottom bar minimizes movement even at wide widths, while the split bottom bar caps secure the zip more effectively for reliable performance.</p>
+        </div>
+
+        <!-- Feature Videos -->
+        <div class="videos-block">
+          <h3>See TruScreen Innovation in Action</h3>
+          <div class="videos-grid">
+            <div class="video-item">
+              <div class="video-wrapper">
+                <video autoplay loop muted playsinline>
+                  <source src="/assets/images/outdoor-blinds/SHOCK-ABSORPTION.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <h4>Exclusive Shock Absorption System</h4>
+              <p>Watch how TruScreen's patented suspension flexes with impacts and automatically returns to position, protecting your investment from wind and accidental bumps.</p>
             </div>
-            <div class="tech-item">
-              <h4>Self Adjusting Track</h4>
-              <p>The two separate channels allow for adjustable installation in any environment, accommodating structures that aren't perfectly level or square.</p>
-            </div>
-            <div class="tech-item">
-              <h4>Suspension System</h4>
-              <p>Optimized fabric polymer channels and tension polymer ensure optimal fabric tensions, providing the best solution for maintaining fabric stability at all times.</p>
-            </div>
-            <div class="tech-item">
-              <h4>Rubber Ring</h4>
-              <p>Reduces vibration from the motor and noise from the headbox, allowing for quiet operation and enhanced performance throughout the system's lifespan.</p>
+            <div class="video-item">
+              <div class="video-wrapper">
+                <video autoplay loop muted playsinline>
+                  <source src="/assets/images/outdoor-blinds/BOTTOM-BAR-DESIGN-v2.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <h4>Unique Bottom Bar Design</h4>
+              <p>See the specially engineered bottom bar that minimizes movement across wide spans while split caps secure the zip more effectively than any other system.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Australian Made -->
-    <section class="combined-info-section">
-      <div class="blob-background">
-        <svg class="blob blob-1" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <path fill="rgba(255,255,255,0.15)" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.6,90,-16.3,88.5,-0.9C87,14.6,81.4,29.2,73.1,42.8C64.8,56.4,53.8,69,39.9,76.4C26,83.8,9.2,86,-7.3,86.2C-23.8,86.4,-47.6,84.6,-63.4,75.6C-79.2,66.6,-87,50.4,-89.7,33.8C-92.4,17.2,-90,0.2,-84.8,-14.9C-79.6,-30,-71.6,-43.2,-60.4,-52.4C-49.2,-61.6,-35.8,-66.8,-21.8,-73.8C-7.8,-80.8,6.8,-89.6,22.7,-91.2C38.6,-92.8,30.6,-83.6,44.7,-76.4Z" transform="translate(100 100)" />
-        </svg>
-        <svg class="blob blob-2" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <path fill="rgba(255,255,255,0.1)" d="M39.5,-65.9C51.1,-58.3,60.3,-47.3,67.2,-34.8C74.1,-22.3,78.7,-8.3,78.8,5.9C78.9,20.1,74.5,34.5,66.3,46.3C58.1,58.1,46.1,67.3,32.8,72.8C19.5,78.3,4.9,80.1,-9.6,78.9C-24.1,77.7,-38.5,73.5,-50.8,65.3C-63.1,57.1,-73.3,45,-78.8,31.3C-84.3,17.6,-85.1,2.3,-81.9,-11.8C-78.7,-25.9,-71.5,-38.8,-61.2,-47.8C-50.9,-56.8,-37.5,-61.9,-24.4,-68.3C-11.3,-74.7,1.5,-82.4,15.1,-84.2C28.7,-86,27.9,-73.5,39.5,-65.9Z" transform="translate(100 100)" />
-        </svg>
-      </div>
+    <!-- Australian Made (Shared) -->
+    <section class="australian-made-section">
       <div class="container">
         <div class="australian-content">
-          <img src="/assets/images/outdoor-blinds/Australian Made.png" alt="Australian Made certified outdoor blinds Canberra - locally manufactured TruScreen zip blinds with 10 year warranty" class="australian-icon" />
+          <img src="/assets/images/outdoor-blinds/Australian Made.png" alt="Australian Made certified outdoor blinds Canberra - locally manufactured with 10 year warranty" class="australian-icon" />
           <h2>Proudly Australian Made & Owned</h2>
-          <p>Designed, engineered, and manufactured right here in Australia by a family-owned business. Built with motorisation in mind from day one, TruScreen delivers whisper-quiet operation with seamless smart home integration. Supporting local jobs while setting the global standard for outdoor blind innovation.</p>
+          <p>Both our TruScreen and Straight Drop systems are designed, engineered, and manufactured right here in Australia by a family-owned business. Built with motorisation in mind from day one, our blinds deliver whisper-quiet operation with seamless smart home integration. Supporting local jobs while setting the global standard for outdoor blind innovation.</p>
         </div>
       </div>
     </section>
 
-    <!-- Feature Videos -->
-    <section class="feature-videos-section">
+    <!-- STRAIGHT DROP DETAIL SECTION -->
+    <section id="straight-drop-features" class="product-detail-section sd-section">
       <div class="container">
-        <h2>See TruScreen Innovation in Action</h2>
-        <div class="videos-grid">
-          <div class="video-item">
-            <div class="video-wrapper">
-              <video autoplay loop muted playsinline>
-                <source src="/assets/images/outdoor-blinds/SHOCK-ABSORPTION.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            <h3>Exclusive Shock Absorption System</h3>
-            <p>Watch how TruScreen's patented suspension flexes with impacts and automatically returns to position, protecting your investment from wind and accidental bumps.</p>
+        <div class="detail-header">
+          <span class="detail-label value">Great Value</span>
+          <h2>Straight Drop Outdoor Blinds</h2>
+          <p>Sleek, unobtrusive, and elegant — shade and privacy without the need for tracks. The smart choice when you want outdoor comfort without the complexity.</p>
+        </div>
+
+        <!-- Hero Image + Description -->
+        <div class="detail-feature">
+          <div class="detail-feature-image">
+            <img src="/assets/images/outdoor-blinds/Straight Drop Blinds.webp" alt="Straight drop outdoor blinds installed on Australian home patio" loading="lazy" />
           </div>
-          <div class="video-item">
-            <div class="video-wrapper">
-              <video autoplay loop muted playsinline>
-                <source src="/assets/images/outdoor-blinds/BOTTOM-BAR-DESIGN-v2.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
+          <div class="detail-feature-text">
+            <h3>No posts — No worries</h3>
+            <p>Straight Drop outdoor blinds provide a clean, minimal finish — ideal for areas without posts or where side retention isn't needed. Unlike track-guided or wire-guided systems, they don't use side channels or wires, making them simpler to install and well-suited to narrow spaces, patios, or balconies where other systems don't fit neatly.</p>
+            <p><strong>Designed for versatility and to fit any space</strong>, offering protection from the weather as well as added privacy for your backyard. Our range of outdoor blinds are custom designed to complement your home.</p>
+          </div>
+        </div>
+
+        <!-- Benefits Grid -->
+        <div class="sd-benefits-block">
+          <h3>Why simple works better outdoors</h3>
+          <div class="sd-benefits-grid">
+            <div class="sd-benefit-card">
+              <div class="sd-benefit-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+              <h4>No side tracks or wires</h4>
+              <p>No channels, zips, or cables needed — ideal for areas where structural fixings aren't possible.</p>
             </div>
-            <h3>Unique Bottom Bar Design</h3>
-            <p>See the specially engineered bottom bar that minimizes movement across wide spans while split caps secure the zip more effectively than any other system.</p>
+            <div class="sd-benefit-card">
+              <div class="sd-benefit-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <h4>Faster installation</h4>
+              <p>Fewer components mean quicker installation, saving time and reducing labour costs.</p>
+            </div>
+            <div class="sd-benefit-card">
+              <div class="sd-benefit-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              </div>
+              <h4>More affordable</h4>
+              <p>Simpler design and fewer moving parts make them more cost-effective than track-guided systems.</p>
+            </div>
+            <div class="sd-benefit-card">
+              <div class="sd-benefit-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+              </div>
+              <h4>Fits narrow or awkward spaces</h4>
+              <p>Perfect for balconies, tight spaces, or areas with uneven walls where track systems can't be used.</p>
+            </div>
+            <div class="sd-benefit-card">
+              <div class="sd-benefit-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              </div>
+              <h4>Minimal visual impact</h4>
+              <p>Clean, minimal look preserves open views and blends into modern and traditional home styles.</p>
+            </div>
+            <div class="sd-benefit-card">
+              <div class="sd-benefit-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              </div>
+              <h4>Built to last</h4>
+              <p>High quality components and workmanship engineered to withstand harsh Australian conditions.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Operation Options -->
+        <div class="sd-operation-block">
+          <h3>Simple, versatile operation</h3>
+          <p class="sd-operation-intro">Straight Drop blinds offer a range of control options — manual or motorised — to suit different spaces, budgets, and convenience needs.</p>
+          <div class="sd-operation-grid">
+            <div class="sd-operation-card">
+              <div class="sd-operation-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+              </div>
+              <h4>Crank handle</h4>
+              <p>Easy to use, no electricity required. Ideal for areas without power access or where precise manual control is preferred.</p>
+            </div>
+            <div class="sd-operation-card">
+              <div class="sd-operation-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+              </div>
+              <h4>Motorised control</h4>
+              <p>One-touch operation via remote, wall switch, or app. Great for multiple blinds or hard-to-reach installations.</p>
+            </div>
+            <div class="sd-operation-card">
+              <div class="sd-operation-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+              </div>
+              <h4>Smart home</h4>
+              <p>Sync with home automation for timers, sensors, or voice control — better energy efficiency and comfort.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Specs bar -->
+        <div class="sd-specs-bar">
+          <div class="sd-spec">
+            <strong>Up to 6 metres wide</strong>
+            <span>with a 3 metre drop</span>
+          </div>
+          <div class="sd-spec">
+            <strong>Base anchor clip</strong>
+            <span>for secure positioning</span>
+          </div>
+          <div class="sd-spec">
+            <strong>Custom-made</strong>
+            <span>to fit any size and shape</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Frame & Headbox Colour -->
+    <!-- Frame & Headbox Colours (Shared) -->
     <section class="colours-section">
       <div class="container">
         <h2>Frame & Headbox Colours</h2>
-        <p class="colours-intro">All Headboxes and guides are high grade aluminium. Choose from 6 standard colours. All Scratch Resistant Dulux Powdercoated Aluminium 6063 Closed Headbox & Guides.</p>
+        <p class="colours-intro">All headboxes and guides are high grade aluminium. Choose from 6 standard colours. All Scratch Resistant Dulux Powdercoated Aluminium 6063 Closed Headbox & Guides.</p>
         <div class="colour-grid">
           <div class="colour"><div class="swatch" style="background: #000;"></div><span>Black</span></div>
           <div class="colour"><div class="swatch" style="background: #FFF;"></div><span>Snow White</span></div>
@@ -265,7 +499,7 @@ const breadcrumbSchema = {
         </div>
 
         <h2>Premium ViewShade Fabric Technology</h2>
-        <p class="fabric-intro">Choose from two advanced PVC-coated fiberglass fabrics—both backed by a 10-year warranty and Australian Standards certified for fire resistance.</p>
+        <p class="fabric-intro">Choose from two advanced PVC-coated fiberglass fabrics — both backed by a 10-year warranty and Australian Standards certified for fire resistance.</p>
 
         <div class="fabric-showcase">
           <div class="fabric-options-grid">
@@ -274,44 +508,30 @@ const breadcrumbSchema = {
                 <h3>ViewShade DS95</h3>
                 <span class="openness-badge openness-5">5% Openness Factor</span>
               </div>
-              <p class="fabric-type">PVC Coated Fiberglass • 2x2 Weave</p>
-
+              <p class="fabric-type">PVC Coated Fiberglass &bull; 2x2 Weave</p>
               <div class="fabric-benefits">
                 <div class="benefit-item">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                  </svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                   <span>95% solar heat reduction</span>
                 </div>
                 <div class="benefit-item">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                  </svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                   <span>Superior dimensional stability</span>
                 </div>
                 <div class="benefit-item">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                  </svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                   <span>Best for wide spans (minimal movement)</span>
                 </div>
                 <div class="benefit-item">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                  </svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                   <span>Exceptional weather protection</span>
                 </div>
               </div>
-
               <div class="fabric-tech-specs">
                 <span class="spec">560 GSM</span>
-                <span class="spec-divider">•</span>
+                <span class="spec-divider">&bull;</span>
                 <span class="spec">Up to 305cm width</span>
-                <span class="spec-divider">•</span>
+                <span class="spec-divider">&bull;</span>
                 <span class="spec">AS 1530.2 & 3</span>
               </div>
             </div>
@@ -321,44 +541,30 @@ const breadcrumbSchema = {
                 <h3>ViewShade DS99</h3>
                 <span class="openness-badge openness-1">1% Openness Factor</span>
               </div>
-              <p class="fabric-type">PVC Coated Fiberglass • Tight Weave</p>
-
+              <p class="fabric-type">PVC Coated Fiberglass &bull; Tight Weave</p>
               <div class="fabric-benefits">
                 <div class="benefit-item">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                  </svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                   <span>99% solar heat blocking</span>
                 </div>
                 <div class="benefit-item">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                  </svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                   <span>Maximum privacy with airflow</span>
                 </div>
                 <div class="benefit-item">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                  </svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                   <span>Superior glare reduction</span>
                 </div>
                 <div class="benefit-item">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                  </svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                   <span>Non-toxic, low odour materials</span>
                 </div>
               </div>
-
               <div class="fabric-tech-specs">
                 <span class="spec">620 GSM</span>
-                <span class="spec-divider">•</span>
+                <span class="spec-divider">&bull;</span>
                 <span class="spec">305cm width</span>
-                <span class="spec-divider">•</span>
+                <span class="spec-divider">&bull;</span>
                 <span class="spec">AS 1530.2 & 3</span>
               </div>
             </div>
@@ -366,7 +572,7 @@ const breadcrumbSchema = {
 
           <div class="brochure-download">
             <a href="https://heyzine.com/flip-book/654b7f3d2e.html#page/1" target="_blank" rel="noopener noreferrer">
-              Download Brochure →
+              Download Brochure &rarr;
             </a>
           </div>
         </div>
@@ -374,21 +580,29 @@ const breadcrumbSchema = {
     </section>
 
     <!-- Quote CTA -->
-    <section class="quote-cta">
+    <section id="quote-section" class="quote-cta-section">
       <div class="container">
         <div class="cta-box">
           <h2>Get your free measure & quote</h2>
           <p>Our specialists will design the perfect outdoor blind solution for your space. No obligation, no hidden costs.</p>
-          <form class="quote-form-simple" id="outdoorBlindsQuoteForm" aria-label="TruScreen outdoor blinds quote request form">
+          <form class="quote-form-simple" id="outdoorBlindsQuoteForm" aria-label="Outdoor blinds quote request form">
             <div class="form-row">
               <input type="text" name="name" placeholder="Your name*" required aria-label="Your name" autocomplete="name" />
               <input type="tel" name="phone" placeholder="Phone number*" required aria-label="Phone number" title="Please enter a valid Australian phone number" pattern="[0-9]{10}" autocomplete="tel" />
               <input type="email" name="email" placeholder="Email (optional)" aria-label="Email address" title="Please enter a valid email address" autocomplete="email" />
               <input type="text" name="suburb" placeholder="Suburb*" required aria-label="Suburb" autocomplete="address-level2" />
             </div>
-            <input type="hidden" name="product" value="Outdoor Blinds" />
+            <div class="form-product-select">
+              <label for="productInterest">Which product are you interested in?</label>
+              <select name="product" id="productInterest" aria-label="Product interest">
+                <option value="Outdoor Blinds">Not sure yet — help me decide</option>
+                <option value="TruScreen Outdoor Blinds">TruScreen Track Blinds</option>
+                <option value="Straight Drop Outdoor Blinds">Straight Drop Blinds</option>
+                <option value="Both Outdoor Blinds">Both — I need a combination</option>
+              </select>
+            </div>
             <textarea name="message" rows="3" placeholder="Tell us about your project (optional)" aria-label="Project details"></textarea>
-            <button type="submit" class="btn btn-primary" id="outdoorBlindsSubmitBtn" aria-label="Submit quote request for TruScreen outdoor blinds">
+            <button type="submit" class="btn btn-primary btn-submit" id="outdoorBlindsSubmitBtn" aria-label="Submit quote request for outdoor blinds">
               <span class="submit-text">Request Free Quote</span>
               <span class="submit-loading" style="display: none;">
                 <svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -400,24 +614,15 @@ const breadcrumbSchema = {
             </button>
             <div class="trust-signals">
               <div class="trust-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                </svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                 <span>Response within 24hrs</span>
               </div>
               <div class="trust-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                </svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
                 <span>Your info is secure</span>
               </div>
               <div class="trust-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                  <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                </svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
                 <span>No obligation quote</span>
               </div>
             </div>
@@ -433,26 +638,29 @@ const breadcrumbSchema = {
 </Layout>
 
 <style>
-  /* Hero */
-  .hero {
+  /* ============================
+     HERO — Full viewport, matching roller shutters
+     ============================ */
+  .hero-section {
     position: relative;
-    min-height: 500px;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 580px;
     display: flex;
     align-items: center;
-    color: var(--white);
     overflow: hidden;
   }
 
-  .hero-image {
+  .hero-image-container {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
     z-index: 1;
   }
 
-  .hero-image img {
+  .hero-image-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -462,23 +670,24 @@ const breadcrumbSchema = {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
-    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.2) 100%);
   }
 
-  .hero-container {
+  .hero-content {
     position: relative;
-    z-index: 3;
-    padding: 3rem 1rem;
+    z-index: 2;
+    width: 100%;
+    color: var(--white);
   }
 
-  .hero h1 {
-    font-size: clamp(2.5rem, 8vw, 4rem);
+  .hero-content h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 700;
-    margin-bottom: 1rem;
-    line-height: 1.1;
+    margin-bottom: 1.25rem;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
   }
 
   .trademark {
@@ -486,18 +695,19 @@ const breadcrumbSchema = {
     vertical-align: super;
   }
 
-  .hero-lead {
-    font-size: clamp(1.125rem, 3vw, 1.5rem);
-    line-height: 1.5;
-    max-width: 700px;
+  .hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    line-height: 1.6;
+    max-width: 680px;
     margin-bottom: 2rem;
     opacity: 0.95;
   }
 
   .hero-stats {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
     flex-wrap: wrap;
+    margin-bottom: 2rem;
   }
 
   .stat {
@@ -516,85 +726,465 @@ const breadcrumbSchema = {
     opacity: 0.9;
   }
 
-  /* Intro */
-  .intro-section {
-    padding: 4rem 0;
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-outline-hero {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    padding: 1.1rem 2rem;
+    font-weight: 700;
+    border-radius: 8px;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .btn-outline-hero:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--white);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  /* ============================
+     PRODUCT SELECTOR
+     ============================ */
+  .product-selector-section {
+    padding: 5rem 0 3.5rem;
     background: var(--white);
   }
 
-  .intro-content {
-    max-width: 800px;
-    margin: 0 auto;
+  .selector-header {
     text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem;
   }
 
-  .intro-content h2 {
-    font-size: clamp(2rem, 5vw, 3rem);
+  .selector-header h2 {
+    font-size: clamp(1.75rem, 5vw, 2.75rem);
     color: var(--olive-green);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     font-weight: 700;
   }
 
-  .intro-content p {
+  .selector-header p {
     font-size: 1.125rem;
     line-height: 1.7;
     color: var(--black);
-    margin-bottom: 1rem;
+    opacity: 0.8;
   }
 
-  .intro-content p strong {
+  .product-toggle-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: stretch;
+  }
+
+  .toggle-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0;
+  }
+
+  .toggle-divider span {
+    background: var(--light-sage);
+    color: var(--olive-green);
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--radius-full);
+  }
+
+  .toggle-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    background: var(--white);
+    border: 2px solid rgba(90, 110, 69, 0.12);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    width: 100%;
+  }
+
+  .toggle-card:hover {
+    border-color: rgba(90, 110, 69, 0.35);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .toggle-card.active {
+    border: 3px solid var(--olive-green);
+    background: linear-gradient(to bottom, rgba(90, 110, 69, 0.04) 0%, var(--white) 100%);
+    box-shadow: 0 8px 32px rgba(84, 101, 61, 0.12);
+  }
+
+  .toggle-badge {
+    position: absolute;
+    top: -11px;
+    right: 1.25rem;
+    background: linear-gradient(135deg, var(--olive-green) 0%, #4a5d38 100%);
+    color: var(--white);
+    padding: 0.3rem 0.875rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .toggle-badge.value {
+    background: linear-gradient(135deg, #c87533 0%, #b3472d 100%);
+  }
+
+  .toggle-card-image {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 1rem;
+    max-height: 180px;
+  }
+
+  .toggle-card-image img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .toggle-card-content h3 {
+    font-size: 1.375rem;
+    color: var(--olive-green);
+    margin-bottom: 0.25rem;
+    font-weight: 700;
+  }
+
+  .toggle-tagline {
+    font-size: 0.875rem;
+    color: var(--black);
+    opacity: 0.6;
+    font-style: italic;
+    margin-bottom: 0.75rem;
+  }
+
+  .toggle-highlights {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  .toggle-highlights li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.4rem;
+    font-size: 0.875rem;
+    color: var(--black);
+    line-height: 1.5;
+  }
+
+  .toggle-highlights li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: var(--olive-green);
+    font-weight: 700;
+    font-size: 0.9375rem;
+  }
+
+  .toggle-spec {
+    display: inline-block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--olive-green);
+    background: rgba(90, 110, 69, 0.08);
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .toggle-indicator {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    color: var(--olive-green);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .toggle-card.active .toggle-indicator {
+    opacity: 1;
+  }
+
+  /* ============================
+     COMPARISON TABLE
+     ============================ */
+  .comparison-section {
+    padding: 5rem 0;
+    background: var(--light-sage);
+  }
+
+  .comparison-section h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    color: var(--olive-green);
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .comparison-subtitle {
+    text-align: center;
+    font-size: 1.0625rem;
+    color: var(--black);
+    opacity: 0.8;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .comparison-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 2.5rem;
+  }
+
+  .comparison-table {
+    width: 100%;
+    min-width: 580px;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .comparison-table thead th {
+    padding: 1.25rem 1rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    border-bottom: 2px solid var(--light-sage);
+  }
+
+  .comparison-table thead th:first-child {
+    text-align: left;
+    background: var(--white);
+    color: var(--black);
+  }
+
+  .col-truscreen {
+    background: rgba(90, 110, 69, 0.05);
+  }
+
+  .col-straightdrop {
+    background: rgba(179, 71, 45, 0.03);
+  }
+
+  .table-product-name {
+    display: block;
+    font-size: 1.0625rem;
+    color: var(--olive-green);
+    margin-bottom: 0.125rem;
+  }
+
+  .col-straightdrop .table-product-name {
+    color: #8b4a2b;
+  }
+
+  .table-product-tag {
+    display: inline-block;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    background: var(--olive-green);
+    color: var(--white);
+  }
+
+  .table-product-tag.value {
+    background: #b3472d;
+  }
+
+  .comparison-table tbody td {
+    padding: 0.875rem 1rem;
+    font-size: 0.9375rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    text-align: center;
+    color: var(--black);
+    vertical-align: middle;
+  }
+
+  .comparison-table tbody td:first-child {
+    text-align: left;
+    font-weight: 600;
+    color: var(--olive-green);
+    font-size: 0.875rem;
+  }
+
+  .comparison-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .comparison-table .check {
     color: var(--olive-green);
   }
 
-  /* Feature Sections */
-  .feature-section {
-    padding: 4rem 0;
+  .comparison-table .neutral {
+    color: var(--black);
+    opacity: 0.5;
+  }
+
+  .comparison-cta {
+    text-align: center;
+  }
+
+  .comparison-cta p {
+    font-size: 1.0625rem;
+    color: var(--olive-green);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  /* ============================
+     PRODUCT DETAIL SECTIONS
+     ============================ */
+  .product-detail-section {
+    padding: 5rem 0;
     background: var(--white);
   }
 
-  .feature-section.alt {
+  .product-detail-section.sd-section {
     background: var(--cream);
   }
 
-  .feature-grid {
+  .detail-header {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 3.5rem;
+    background: var(--light-sage);
+    padding: 3rem 2.5rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .sd-section .detail-header {
+    background: var(--white);
+  }
+
+  .detail-label {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--olive-green) 0%, #4a5d38 100%);
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.375rem 1rem;
+    border-radius: var(--radius-full);
+    margin-bottom: 1rem;
+  }
+
+  .detail-label.value {
+    background: linear-gradient(135deg, #c87533 0%, #b3472d 100%);
+  }
+
+  .detail-header h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--olive-green);
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .detail-header p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--black);
+    opacity: 0.8;
+  }
+
+  .detail-intro-block {
+    max-width: 800px;
+    margin: 0 auto 3.5rem;
+    text-align: center;
+  }
+
+  .detail-intro-block h3 {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    color: var(--olive-green);
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .detail-intro-block p {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--black);
+    margin-bottom: 0.75rem;
+  }
+
+  .detail-intro-block p strong {
+    color: var(--olive-green);
+  }
+
+  /* Feature rows */
+  .detail-feature {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.5rem;
     align-items: center;
+    margin-bottom: 3.5rem;
   }
 
-  .feature-image-wrapper {
-    border-radius: var(--radius-md);
+  .detail-feature-image {
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   }
 
-  .feature-image-wrapper img {
+  .detail-feature-image img {
     width: 100%;
     height: auto;
     display: block;
   }
 
-  .feature-text h3 {
-    font-size: clamp(1.5rem, 4vw, 2rem);
+  .detail-feature-text h3 {
+    font-size: clamp(1.375rem, 3.5vw, 2rem);
     color: var(--olive-green);
     margin-bottom: 1rem;
     font-weight: 700;
   }
 
-  .feature-text p {
+  .detail-feature-text p {
     font-size: 1.0625rem;
     line-height: 1.7;
     color: var(--black);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
   }
 
-  .feature-benefits {
+  .detail-benefits {
     list-style: none;
     padding: 0;
   }
 
-  .feature-benefits li {
+  .detail-benefits li {
     position: relative;
     padding-left: 2rem;
     margin-bottom: 0.75rem;
@@ -602,8 +1192,8 @@ const breadcrumbSchema = {
     color: var(--black);
   }
 
-  .feature-benefits li::before {
-    content: '✓';
+  .detail-benefits li::before {
+    content: '\2713';
     position: absolute;
     left: 0;
     color: var(--olive-green);
@@ -611,34 +1201,33 @@ const breadcrumbSchema = {
     font-size: 1.25rem;
   }
 
-  /* Technical Information */
-  .technical-section {
-    padding: 4rem 0;
-    background: linear-gradient(135deg, var(--light-sage) 0%, var(--cream) 100%);
+  /* Technical Block */
+  .technical-block {
+    margin-bottom: 3.5rem;
+    padding: 3rem 2rem;
+    background: var(--light-sage);
+    border-radius: var(--radius-lg);
   }
 
-  .technical-section h2 {
-    font-size: clamp(1.75rem, 5vw, 2.5rem);
+  .technical-block h3 {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
     color: var(--olive-green);
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
     font-weight: 700;
   }
 
   .technical-layout {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 3rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    gap: 2.5rem;
     align-items: center;
   }
 
   .technical-image {
-    width: 100%;
     border-radius: var(--radius-md);
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   }
 
   .technical-image img {
@@ -650,43 +1239,44 @@ const breadcrumbSchema = {
   .technical-content {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.75rem;
+  }
+
+  .tech-item {
+    padding: 1.25rem;
+    background: var(--white);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--olive-green);
   }
 
   .tech-item h4 {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     color: var(--olive-green);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
     font-weight: 700;
   }
 
   .tech-item p {
-    font-size: 1rem;
+    font-size: 0.9375rem;
     line-height: 1.6;
     color: var(--black);
-    opacity: 0.9;
+    opacity: 0.85;
+    margin-bottom: 0;
   }
 
-  /* Feature Videos */
-  .feature-videos-section {
-    padding: 4rem 0;
-    background: var(--white);
-  }
-
-  .feature-videos-section h2 {
-    font-size: clamp(1.75rem, 5vw, 2.5rem);
+  /* Videos Block */
+  .videos-block h3 {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
     color: var(--olive-green);
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
     font-weight: 700;
   }
 
   .videos-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 3rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    gap: 2.5rem;
   }
 
   .video-item {
@@ -694,10 +1284,10 @@ const breadcrumbSchema = {
   }
 
   .video-wrapper {
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.25rem;
     background: var(--black);
   }
 
@@ -707,75 +1297,32 @@ const breadcrumbSchema = {
     display: block;
   }
 
-  .video-item h3 {
-    font-size: clamp(1.25rem, 3vw, 1.75rem);
+  .video-item h4 {
+    font-size: clamp(1.125rem, 3vw, 1.5rem);
     color: var(--olive-green);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.6rem;
     font-weight: 700;
   }
 
   .video-item p {
-    font-size: 1rem;
+    font-size: 0.9375rem;
     line-height: 1.7;
     color: var(--black);
-    max-width: 600px;
+    max-width: 550px;
     margin: 0 auto;
-    opacity: 0.9;
+    opacity: 0.85;
   }
 
-  /* Combined Info Section */
-  .combined-info-section {
-    position: relative;
-    padding: 4rem 0;
-    background: linear-gradient(135deg, var(--olive-green) 0%, #3d4a29 100%);
+  /* ============================
+     AUSTRALIAN MADE
+     ============================ */
+  .australian-made-section {
+    padding: 5rem 0;
+    background: var(--olive-green);
     overflow: hidden;
-  }
-
-  .blob-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .blob {
-    position: absolute;
-    opacity: 1;
-    width: 500px;
-    height: 500px;
-  }
-
-  .blob-1 {
-    top: -100px;
-    left: -50px;
-    animation: float 20s ease-in-out infinite;
-  }
-
-  .blob-2 {
-    bottom: -100px;
-    right: -50px;
-    animation: float 25s ease-in-out infinite reverse;
-  }
-
-  @keyframes float {
-    0%, 100% {
-      transform: translate(0, 0) rotate(0deg) scale(1);
-    }
-    33% {
-      transform: translate(30px, -30px) rotate(120deg) scale(1.1);
-    }
-    66% {
-      transform: translate(-20px, 20px) rotate(240deg) scale(0.9);
-    }
   }
 
   .australian-content {
-    position: relative;
-    z-index: 1;
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
@@ -783,7 +1330,7 @@ const breadcrumbSchema = {
   }
 
   .australian-icon {
-    width: 150px;
+    width: 140px;
     height: auto;
     margin: 0 auto 1.5rem;
     display: block;
@@ -797,14 +1344,161 @@ const breadcrumbSchema = {
   }
 
   .australian-content p {
-    font-size: 1.125rem;
+    font-size: 1.0625rem;
     line-height: 1.8;
     color: rgba(255, 255, 255, 0.95);
   }
 
-  /* Colours */
+  /* ============================
+     STRAIGHT DROP BENEFITS
+     ============================ */
+  .sd-benefits-block {
+    margin-bottom: 3.5rem;
+  }
+
+  .sd-benefits-block h3 {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    color: var(--olive-green);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 700;
+  }
+
+  .sd-benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .sd-benefit-card {
+    background: var(--white);
+    padding: 1.75rem;
+    border-radius: var(--radius-md);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(90, 110, 69, 0.08);
+  }
+
+  .sd-benefit-card:hover {
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .sd-benefit-icon {
+    color: var(--olive-green);
+    margin-bottom: 0.75rem;
+  }
+
+  .sd-benefit-card h4 {
+    font-size: 1.0625rem;
+    color: var(--olive-green);
+    margin-bottom: 0.4rem;
+    font-weight: 700;
+  }
+
+  .sd-benefit-card p {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--black);
+    opacity: 0.85;
+    margin-bottom: 0;
+  }
+
+  /* Operation */
+  .sd-operation-block {
+    margin-bottom: 3rem;
+  }
+
+  .sd-operation-block h3 {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    color: var(--olive-green);
+    text-align: center;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+  }
+
+  .sd-operation-intro {
+    text-align: center;
+    font-size: 1.0625rem;
+    color: var(--black);
+    opacity: 0.8;
+    margin-bottom: 2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sd-operation-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .sd-operation-card {
+    background: var(--white);
+    padding: 1.75rem;
+    border-radius: var(--radius-md);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    border-left: 4px solid var(--olive-green);
+    text-align: center;
+  }
+
+  .sd-operation-icon {
+    color: var(--olive-green);
+    margin-bottom: 0.75rem;
+  }
+
+  .sd-operation-card h4 {
+    font-size: 1.0625rem;
+    color: var(--olive-green);
+    margin-bottom: 0.4rem;
+    font-weight: 700;
+  }
+
+  .sd-operation-card p {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--black);
+    opacity: 0.85;
+    margin-bottom: 0;
+  }
+
+  /* Specs Bar */
+  .sd-specs-bar {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding: 2rem;
+    background: var(--olive-green);
+    border-radius: var(--radius-lg);
+    color: var(--white);
+  }
+
+  .sd-spec {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0.75rem;
+  }
+
+  .sd-spec strong {
+    font-size: 1.25rem;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+    font-weight: 700;
+  }
+
+  .sd-spec span {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  /* ============================
+     COLOURS & FABRIC
+     ============================ */
   .colours-section {
-    padding: 4rem 0;
+    padding: 5rem 0;
     background: var(--light-sage);
     text-align: center;
   }
@@ -820,7 +1514,7 @@ const breadcrumbSchema = {
     font-size: 1rem;
     color: var(--black);
     margin-bottom: 2rem;
-    opacity: 0.9;
+    opacity: 0.85;
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
@@ -829,7 +1523,7 @@ const breadcrumbSchema = {
   .colour-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: 1.5rem;
     margin-bottom: 4rem;
     max-width: 800px;
     margin-left: auto;
@@ -845,37 +1539,36 @@ const breadcrumbSchema = {
 
   .swatch {
     width: 100%;
-    height: 120px;
+    height: 100px;
     border-radius: var(--radius-sm);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.08);
   }
 
   .colour span {
-    font-size: 1rem;
+    font-size: 0.9375rem;
     font-weight: 500;
     color: var(--black);
   }
 
-  /* Fabric Options */
   .fabric-intro {
     font-size: 1.0625rem;
     color: var(--black);
-    opacity: 0.9;
+    opacity: 0.85;
     max-width: 900px;
-    margin: 0.5rem auto 3rem;
+    margin: 0.5rem auto 2.5rem;
     line-height: 1.7;
   }
 
   .fabric-showcase {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
   }
 
   .fabric-options-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
     margin-bottom: 2rem;
   }
 
@@ -886,7 +1579,7 @@ const breadcrumbSchema = {
 
   .brochure-download a {
     display: inline-block;
-    font-size: 1.125rem;
+    font-size: 1.0625rem;
     font-weight: 700;
     color: var(--olive-green);
     text-decoration: none;
@@ -903,15 +1596,16 @@ const breadcrumbSchema = {
     background: var(--white);
     border-radius: var(--radius-md);
     padding: 2rem 1.5rem;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    border: 2px solid rgba(90,110,69,0.1);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    border: 2px solid rgba(90, 110, 69, 0.08);
     transition: all 0.3s ease;
+    text-align: left;
   }
 
   .fabric-card:hover {
-    box-shadow: 0 6px 24px rgba(0,0,0,0.12);
-    border-color: rgba(90,110,69,0.25);
-    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-color: rgba(90, 110, 69, 0.2);
+    transform: translateY(-3px);
   }
 
   .fabric-header {
@@ -924,7 +1618,7 @@ const breadcrumbSchema = {
   }
 
   .fabric-header h3 {
-    font-size: 1.5rem;
+    font-size: 1.375rem;
     color: var(--olive-green);
     font-weight: 700;
     margin: 0;
@@ -934,7 +1628,7 @@ const breadcrumbSchema = {
     display: inline-block;
     padding: 0.375rem 1rem;
     border-radius: var(--radius-sm);
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     font-weight: 700;
     white-space: nowrap;
   }
@@ -942,7 +1636,7 @@ const breadcrumbSchema = {
   .openness-5 {
     background: linear-gradient(135deg, #f0f4ec 0%, #e8f0dd 100%);
     color: var(--olive-green);
-    border: 1px solid rgba(90,110,69,0.2);
+    border: 1px solid rgba(90, 110, 69, 0.2);
   }
 
   .openness-1 {
@@ -953,7 +1647,7 @@ const breadcrumbSchema = {
   .fabric-type {
     font-size: 0.9375rem;
     color: var(--black);
-    opacity: 0.75;
+    opacity: 0.7;
     margin-bottom: 1.5rem;
     font-weight: 500;
   }
@@ -961,7 +1655,7 @@ const breadcrumbSchema = {
   .fabric-benefits {
     display: flex;
     flex-direction: column;
-    gap: 0.875rem;
+    gap: 0.75rem;
     margin-bottom: 1.5rem;
   }
 
@@ -988,11 +1682,11 @@ const breadcrumbSchema = {
     align-items: center;
     gap: 0.5rem;
     flex-wrap: wrap;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(90,110,69,0.1);
-    font-size: 0.875rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(90, 110, 69, 0.1);
+    font-size: 0.8125rem;
     color: var(--black);
-    opacity: 0.8;
+    opacity: 0.75;
   }
 
   .spec {
@@ -1004,19 +1698,21 @@ const breadcrumbSchema = {
     font-weight: 700;
   }
 
-  /* Quote CTA */
-  .quote-cta {
-    padding: 4rem 0;
-    background: var(--white);
+  /* ============================
+     QUOTE CTA
+     ============================ */
+  .quote-cta-section {
+    padding: 5rem 0;
+    background: var(--cream);
   }
 
   .cta-box {
-    max-width: 700px;
+    max-width: 720px;
     margin: 0 auto;
     padding: 3rem 2rem;
-    background: linear-gradient(135deg, var(--light-sage) 0%, var(--cream) 100%);
+    background: var(--white);
     border-radius: var(--radius-lg);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
   }
 
   .cta-box h2 {
@@ -1032,7 +1728,7 @@ const breadcrumbSchema = {
     font-size: 1.0625rem;
     color: var(--black);
     margin-bottom: 2rem;
-    opacity: 0.9;
+    opacity: 0.8;
   }
 
   .quote-form-simple {
@@ -1047,42 +1743,74 @@ const breadcrumbSchema = {
     gap: 1rem;
   }
 
-  .quote-form-simple input,
-  .quote-form-simple textarea {
+  .form-product-select {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-product-select label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--olive-green);
+    margin-bottom: 0;
+  }
+
+  .form-product-select select {
     padding: 1rem;
-    border: 2px solid transparent;
+    border: 2px solid rgba(0, 0, 0, 0.08);
     border-radius: var(--radius-sm);
     font-size: 16px;
     background: var(--white);
     transition: border-color 0.2s ease;
+    appearance: auto;
+  }
+
+  .form-product-select select:focus {
+    outline: none;
+    border-color: var(--olive-green);
+    box-shadow: 0 0 0 3px rgba(90, 110, 69, 0.1);
+  }
+
+  .quote-form-simple input,
+  .quote-form-simple textarea {
+    padding: 1rem;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+    border-radius: var(--radius-sm);
+    font-size: 16px;
+    background: var(--white);
+    transition: border-color 0.2s ease;
+    font-family: inherit;
   }
 
   .quote-form-simple input:focus,
   .quote-form-simple textarea:focus {
     outline: none;
     border-color: var(--olive-green);
+    box-shadow: 0 0 0 3px rgba(90, 110, 69, 0.1);
   }
 
   .quote-form-simple textarea {
     resize: vertical;
-    min-height: 100px;
+    min-height: 90px;
   }
 
-  .quote-form-simple button {
-    padding: 1rem 2rem;
-    font-size: 1.0625rem;
-    font-weight: 700;
+  .btn-submit {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    padding: 1.125rem 2rem;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
   }
 
-  .quote-form-simple button.loading .submit-text {
+  .btn-submit.loading .submit-text {
     display: none;
   }
 
-  .quote-form-simple button.loading .submit-loading {
+  .btn-submit.loading .submit-loading {
     display: flex !important;
     align-items: center;
     gap: 0.5rem;
@@ -1093,15 +1821,10 @@ const breadcrumbSchema = {
   }
 
   @keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
 
-  /* Trust Signals */
   .trust-signals {
     display: flex;
     justify-content: center;
@@ -1109,61 +1832,53 @@ const breadcrumbSchema = {
     gap: 1.5rem;
     margin-top: 1.5rem;
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(90, 110, 69, 0.15);
+    border-top: 1px solid rgba(90, 110, 69, 0.1);
   }
 
   .trust-item {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     color: var(--olive-green);
   }
 
   .trust-item svg {
     flex-shrink: 0;
-    opacity: 0.8;
+    opacity: 0.7;
   }
 
   .trust-item span {
     font-weight: 500;
   }
 
-  /* Tablet */
+  /* ============================
+     RESPONSIVE — TABLET (768px+)
+     ============================ */
   @media (min-width: 768px) {
-    .hero {
-      min-height: 600px;
-    }
-
-    .feature-grid {
+    .detail-feature {
       grid-template-columns: 1fr 1fr;
     }
 
-    .feature-grid.reverse {
+    .detail-feature.reverse {
       direction: rtl;
     }
 
-    .feature-grid.reverse > * {
+    .detail-feature.reverse > * {
       direction: ltr;
     }
 
     .technical-layout {
       grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-    }
-
-    .technical-content {
-      grid-template-columns: 1fr;
+      gap: 3rem;
     }
 
     .videos-grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: 3rem;
     }
 
     .fabric-options-grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
     }
 
     .colour-grid {
@@ -1173,16 +1888,75 @@ const breadcrumbSchema = {
     .form-row {
       grid-template-columns: repeat(2, 1fr);
     }
+
+    .sd-benefits-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sd-operation-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .sd-specs-bar {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
-  /* Desktop */
+  /* ============================
+     RESPONSIVE — DESKTOP (1025px+)
+     ============================ */
   @media (min-width: 1025px) {
-    .hero {
-      min-height: 700px;
+    .product-toggle-cards {
+      grid-template-columns: 1fr auto 1fr;
+      align-items: stretch;
+    }
+
+    .toggle-divider {
+      padding: 0 0.5rem;
+    }
+
+    .toggle-card {
+      grid-template-columns: 200px 1fr;
+      gap: 1.25rem;
+      padding: 1.5rem;
+      align-items: center;
+    }
+
+    .toggle-card-image {
+      margin-bottom: 0;
+      max-height: 160px;
+    }
+
+    .toggle-card-image img {
+      height: 160px;
     }
 
     .colour-grid {
       grid-template-columns: repeat(6, 1fr);
+    }
+
+    .sd-benefits-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* ============================
+     RESPONSIVE — MOBILE (max 500px)
+     ============================ */
+  @media (max-width: 500px) {
+    .hero-section {
+      min-height: 500px;
+    }
+
+    .hero-buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .hero-buttons .btn,
+    .hero-buttons .btn-outline-hero {
+      width: 100%;
+      text-align: center;
     }
   }
 </style>
@@ -1192,6 +1966,31 @@ const breadcrumbSchema = {
 
   initializeSessionTracking();
 
+  // Product toggle cards - smooth scroll to relevant section
+  const toggleCards = document.querySelectorAll('.toggle-card');
+  toggleCards.forEach(card => {
+    card.addEventListener('click', () => {
+      // Update active states
+      toggleCards.forEach(c => {
+        c.classList.remove('active');
+        c.setAttribute('aria-pressed', 'false');
+      });
+      card.classList.add('active');
+      card.setAttribute('aria-pressed', 'true');
+
+      // Scroll to the relevant product section
+      const product = card.getAttribute('data-product');
+      const targetId = product === 'truscreen' ? 'truscreen-features' : 'straight-drop-features';
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        setTimeout(() => {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 150);
+      }
+    });
+  });
+
+  // Form submission
   const quoteForm = document.getElementById('outdoorBlindsQuoteForm');
   if (quoteForm) {
     quoteForm.addEventListener('submit', async (e) => {
@@ -1210,7 +2009,7 @@ const breadcrumbSchema = {
           email: formData.get('email') as string,
           phone: formData.get('phone') as string,
           suburb: formData.get('suburb') as string,
-          product: 'Outdoor Blinds',
+          product: formData.get('product') as string || 'Outdoor Blinds',
           message: formData.get('message') as string || undefined,
         };
 
@@ -1225,7 +2024,6 @@ const breadcrumbSchema = {
         const result = await response.json();
 
         if (response.ok && result.success) {
-          // Conversion tracking happens on thank-you page (no race condition)
           window.location.href = '/thank-you';
         } else {
           throw new Error(result.message || 'Submission failed');

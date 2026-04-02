@@ -1,8 +1,9 @@
 ---
 ---
 
+<div class="modal-overlay" id="modalOverlay"></div>
 <div class="quote-modal" id="quoteModal">
-  <div class="modal-overlay" id="modalOverlay"></div>
+  <div class="modal-inner">
   <div class="modal-content">
     <button class="modal-close" id="modalClose" aria-label="Close modal">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -93,35 +94,45 @@
       </div>
     </form>
   </div>
+  </div>
 </div>
 
 <style>
-  .quote-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-  }
-
-  .quote-modal.active {
-    display: flex;
-  }
-
+  /* Backdrop — covers full screen, doesn't scroll */
   .modal-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    display: none;
+    position: fixed;
+    inset: 0;
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(4px);
+    z-index: 9999;
     animation: fadeIn 0.3s ease;
+  }
+
+  /* Scroll container — sits on top of backdrop, scrolls content */
+  .quote-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.75rem;
+  }
+
+  .quote-modal.active,
+  .quote-modal.active ~ .modal-overlay,
+  .modal-overlay.active {
+    display: block;
+  }
+
+  /* Inner wrapper centres content vertically when there's room */
+  .modal-inner {
+    min-height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0.5rem 0;
   }
 
   @keyframes fadeIn {
@@ -135,8 +146,6 @@
     border-radius: var(--radius-lg);
     max-width: 600px;
     width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     animation: slideUp 0.4s ease;
   }
@@ -156,14 +165,15 @@
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.9);
     border: none;
     cursor: pointer;
     padding: 0.5rem;
     border-radius: 50%;
     transition: all 0.3s ease;
     color: var(--black);
-    z-index: 1;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
   .modal-close:hover {
@@ -244,7 +254,7 @@
 
   .form-group textarea {
     resize: vertical;
-    min-height: 100px;
+    min-height: 70px;
   }
 
   .modal-submit-btn {
@@ -337,36 +347,88 @@
   }
 
   @media (max-width: 600px) {
+    .quote-modal {
+      padding: 0.5rem;
+      align-items: flex-start;
+    }
+
     .modal-content {
-      max-height: 95vh;
       border-radius: var(--radius-md);
+      margin: 0.5rem auto;
+    }
+
+    .modal-close {
+      top: 0.625rem;
+      right: 0.625rem;
+      padding: 0.5rem;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-close svg {
+      width: 22px;
+      height: 22px;
     }
 
     .modal-header {
-      padding: 2rem 1.5rem 1rem;
+      padding: 1.25rem 1.25rem 0.875rem;
     }
 
     .modal-header h2 {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
+      margin-bottom: 0.375rem;
     }
 
     .modal-header p {
-      font-size: 0.875rem;
+      font-size: 0.8125rem;
+      line-height: 1.4;
     }
 
     .modal-form {
-      padding: 1.5rem;
+      padding: 1rem 1.25rem 1.25rem;
+    }
+
+    .form-row {
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .form-group {
+      gap: 0.3rem;
+    }
+
+    .form-group label {
+      font-size: 0.8125rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 0.625rem 0.75rem;
+    }
+
+    .form-group textarea {
+      min-height: 50px;
     }
 
     .modal-submit-btn {
-      font-size: 1rem;
-      padding: 0.875rem 1.5rem;
+      font-size: 0.9375rem;
+      padding: 0.75rem 1.25rem;
+      margin-top: 0.75rem;
+    }
+
+    .trust-signals {
+      gap: 0.75rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+    }
+
+    .trust-item {
+      font-size: 0.8125rem;
     }
   }
 
-  body.modal-open {
-    overflow: hidden;
-  }
+  /* body scroll lock is handled via JS (iOS Safari compatible) */
 </style>
 
 <script>
@@ -383,11 +445,31 @@
 
   console.log('[QuoteModal] Initialized', { modal: !!modal, form: !!modalForm });
 
+  // iOS Safari scroll lock helpers
+  let scrollY = 0;
+  function lockBodyScroll() {
+    scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.overflow = 'hidden';
+  }
+  function unlockBodyScroll() {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.overflow = '';
+    window.scrollTo(0, scrollY);
+  }
+
   // Modal functions
   function openModal() {
     if (modal) {
       modal.classList.add('active');
-      document.body.classList.add('modal-open');
+      modalOverlay?.classList.add('active');
+      lockBodyScroll();
       console.log('[QuoteModal] Opened');
     }
   }
@@ -395,7 +477,8 @@
   function closeModal() {
     if (modal) {
       modal.classList.remove('active');
-      document.body.classList.remove('modal-open');
+      modalOverlay?.classList.remove('active');
+      unlockBodyScroll();
       console.log('[QuoteModal] Closed');
     }
   }

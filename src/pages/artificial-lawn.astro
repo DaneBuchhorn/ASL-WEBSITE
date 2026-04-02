@@ -2,14 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import QuoteModal from '../components/QuoteModal.astro';
-import OfferModal from '../components/OfferModal.astro';
-import ExitIntentPopup from '../components/ExitIntentPopup.astro';
+
+export const prerender = true;
 
 const pageTitle = 'Artificial Lawn Canberra | Premium Synthetic Grass | All Seasons Living';
 const pageDescription = 'Premium artificial lawn installation in Canberra. Synthetic grass designed for the Australian climate. Pet-friendly, low maintenance, and looks great all year. Free measure & quote.';
 
-// Product Schema for SEO
 const productSchema = {
   '@context': 'https://schema.org',
   '@type': 'Product',
@@ -21,19 +19,18 @@ const productSchema = {
   },
   aggregateRating: {
     '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    reviewCount: '50000',
+    ratingValue: '5.0',
+    reviewCount: '47',
     bestRating: '5'
   },
   offers: {
     '@type': 'Offer',
     priceCurrency: 'AUD',
     availability: 'https://schema.org/InStock',
-    priceValidUntil: '2025-12-31'
+    priceValidUntil: '2026-12-31'
   }
 };
 
-// Breadcrumb Schema
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -62,158 +59,134 @@ const breadcrumbSchema = {
 
   <Header />
 
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="hero-image-container">
+  <!-- ======================== HERO ======================== -->
+  <section class="hero">
+    <div class="hero-bg">
       <img
         src="/assets/images/artificial-lawn/asl-artificial-lawn-hero.webp"
-        alt="Premium artificial lawn installation in Canberra showing realistic synthetic grass in modern backyard"
-        class="hero-image"
+        alt="Premium artificial lawn installation in Canberra showing lush synthetic grass in modern backyard"
+        width="1920"
+        height="1080"
         loading="eager"
+        fetchpriority="high"
       />
       <div class="hero-overlay"></div>
     </div>
-    <div class="hero-content">
-      <div class="container">
-        <h1>Premium Artificial Lawn Canberra | Synthetic Grass Experts</h1>
-        <p class="hero-subtitle">
-          Transform your outdoor space with premium artificial lawn designed for the Australian climate.
-          Enjoy a lush, green lawn all year round without the maintenance. Perfect for families, pets, and busy lifestyles.
-        </p>
-        <div class="hero-buttons">
-          <button class="btn btn-primary quote-trigger">FREE MEASURE & QUOTE</button>
-          <a href="tel:0261889606" class="btn btn-secondary">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <h1>Premium Artificial Lawn in Canberra</h1>
+        <p class="hero-sub">Transform your outdoor space with synthetic grass designed for Australian conditions. Lush, green, and maintenance-free all year round — perfect for families, pets, and busy lifestyles.</p>
+        <div class="hero-ctas">
+          <a href="#quote-section" class="btn btn-primary btn-lg">Get Free Measure & Quote</a>
+          <a href="tel:0261889606" class="btn btn-outline-light">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
             (02) 6188 9606
           </a>
         </div>
         <a href="https://tigerturf.com/au/" target="_blank" rel="noopener noreferrer" class="hero-badge">
           <span class="badge-text">Authorized TigerTurf Provider</span>
-          <img src="/assets/images/artificial-lawn/tigerturf-logo-green.svg" alt="TigerTurf Logo" class="badge-logo" />
+          <img src="/assets/images/artificial-lawn/tigerturf-logo-green.svg" alt="TigerTurf" class="badge-logo" />
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Four Key Benefits -->
-  <section class="benefits-icons-section">
+  <!-- ======================== KEY BENEFITS ======================== -->
+  <section class="benefits-section">
     <div class="container">
-      <div class="benefits-grid-four">
+      <div class="benefits-grid">
         <div class="benefit-card">
           <div class="benefit-icon">
-            <img src="/assets/icons/guarantee-certificate.svg" alt="10 year warranty on artificial lawn installation Canberra" width="80" height="80" />
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
           </div>
-          <h3>Quality Committed</h3>
-          <p>Rest assured, our exceptional 10-year warranties on all our lawn types have you fully covered.</p>
+          <h3>10-Year Warranty</h3>
+          <p>Exceptional warranties on all lawn types give you peace of mind that your investment is fully protected.</p>
         </div>
-
         <div class="benefit-card">
           <div class="benefit-icon">
-            <img src="/assets/icons/sketch (1).png" alt="Exclusive Design Icon" width="80" height="80" />
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
           </div>
           <h3>Exclusive Design</h3>
-          <p>We are dedicated to creating a product tailored specifically to you and your living space.</p>
+          <p>Every solution is tailored specifically to your space — custom measured, designed, and installed for a perfect fit.</p>
         </div>
-
         <div class="benefit-card">
           <div class="benefit-icon">
-            <img src="/assets/icons/car.png" alt="Licensed Installers Icon" width="80" height="80" />
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
           </div>
           <h3>Licensed Installers</h3>
-          <p>Our licensed installers are trained in-house, ensuring confidence in both our installations and product range.</p>
+          <p>Our licensed installers are trained in-house, ensuring confidence in both the installation and product quality.</p>
         </div>
-
         <div class="benefit-card">
-          <div class="benefit-icon">
-            <img src="/assets/icons/australia.svg" alt="Australian owned and operated artificial lawn company Canberra with 15 years experience" width="80" height="80" />
+          <div class="benefit-icon australian-owned-icon">
+            <img src="/assets/icons/australia.svg" alt="Australian Owned" width="36" height="36" loading="eager" />
           </div>
           <h3>Australian Owned</h3>
-          <p>All Seasons Living is 100% Australian owned and operated, with over 15 years industry experience.</p>
+          <p>100% Australian owned and operated with over 15 years industry experience in outdoor living solutions.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Quote Form Section -->
-  <section class="quote-form-section">
-    <div class="quote-form-background">
-      <img
-        src="/assets/images/artificial-lawn/asl-artificial-lawn-close-up-2.png"
-        alt="Close-up view of premium artificial lawn showing realistic blade detail and natural appearance"
-        loading="lazy"
-      />
-    </div>
+  <!-- ======================== QUOTE FORM ======================== -->
+  <section class="quote-section" id="quote-section">
     <div class="container">
-      <div class="quote-form-wrapper">
-        <div class="quote-form-content">
-          <form class="inline-quote-form" id="artificialLawnQuoteForm" novalidate>
-            <div class="form-header">
-              <h2>BOOK A FREE DESIGN & QUOTE</h2>
-              <p>One of our design specialist will assess your area and design the perfect solutions for your home.</p>
-            </div>
-            <div class="form-row">
+      <div class="quote-grid">
+        <div class="quote-image">
+          <img
+            src="/assets/images/artificial-lawn/asl-artificial-lawn-close-up-2.png"
+            alt="Close-up of premium artificial lawn showing realistic blade detail"
+            loading="lazy"
+            width="800"
+            height="800"
+          />
+        </div>
+        <div class="quote-form-wrapper">
+          <div class="form-header">
+            <h2>Book a Free Design & Quote</h2>
+            <p>One of our design specialists will assess your area and design the perfect solution for your home.</p>
+          </div>
+          <form class="quote-form" id="artificialLawnQuoteForm" novalidate>
+            <div class="form-grid">
               <div class="form-group">
                 <label for="al-name">Name *</label>
-                <input type="text" id="al-name" name="name" required placeholder="John Doe" autocomplete="name">
+                <input type="text" id="al-name" name="name" required placeholder="John Doe" autocomplete="name" />
               </div>
               <div class="form-group">
                 <label for="al-phone">Phone *</label>
-                <input type="tel" id="al-phone" name="phone" required placeholder="0412 345 678" pattern="[0-9]{10}" autocomplete="tel">
+                <input type="tel" id="al-phone" name="phone" required placeholder="0412 345 678" autocomplete="tel" />
               </div>
-            </div>
-
-            <div class="form-row">
               <div class="form-group">
                 <label for="al-email">Email (optional)</label>
-                <input type="email" id="al-email" name="email" placeholder="john.doe@email.com" autocomplete="email">
+                <input type="email" id="al-email" name="email" placeholder="john@example.com" autocomplete="email" />
               </div>
               <div class="form-group">
                 <label for="al-suburb">Suburb *</label>
-                <input type="text" id="al-suburb" name="suburb" required placeholder="Belconnen" autocomplete="address-level2">
+                <input type="text" id="al-suburb" name="suburb" required placeholder="Belconnen" autocomplete="address-level2" />
               </div>
             </div>
-
             <div class="form-group">
               <label for="al-message">Tell us about your project (optional)</label>
-              <textarea id="al-message" name="message" rows="3" placeholder="Tell us about your artificial lawn requirements..."></textarea>
+              <textarea id="al-message" name="message" rows="3" placeholder="Describe your lawn area, any specific requirements..."></textarea>
             </div>
-
             <button type="submit" class="form-submit-btn" id="alQuoteSubmitBtn">
               <span class="submit-text">Get Free Quote</span>
               <span class="submit-loading" style="display: none;">
-                <svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
-                  <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/>
-                </svg>
+                <svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"/><path d="M12 2a10 10 0 0110 10" stroke-linecap="round"/></svg>
                 Submitting...
               </span>
-              <svg class="submit-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
+              <svg class="submit-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </button>
             <div class="trust-signals">
               <div class="trust-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                </svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                 <span>Response within 24hrs</span>
               </div>
               <div class="trust-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                </svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
                 <span>Your info is secure</span>
               </div>
               <div class="trust-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                  <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                </svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                 <span>No obligation quote</span>
               </div>
             </div>
@@ -223,67 +196,45 @@ const breadcrumbSchema = {
     </div>
   </section>
 
-  <!-- Benefits List Section -->
+  <!-- ======================== BENEFITS LIST ======================== -->
   <section class="benefits-list-section">
     <div class="container">
-      <h2 class="section-title">BENEFITS OF ARTIFICIAL LAWN</h2>
+      <h2 class="section-heading">Benefits of Artificial Lawn</h2>
       <div class="benefits-content-grid">
         <div class="benefits-image">
-          <img
-            src="/assets/images/artificial-lawn/asl-artificial-lawn-puppy.png"
-            alt="Happy puppy playing on premium artificial lawn showing pet-friendly synthetic grass"
-            loading="lazy"
-            width="800"
-            height="800"
-          />
+          <img src="/assets/images/artificial-lawn/asl-artificial-lawn-puppy.png" alt="Happy puppy playing on premium artificial lawn" loading="lazy" width="800" height="800" />
         </div>
         <div class="benefits-list">
           <div class="benefit-item">
-            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            <span>Pet Friendly - Safe & Non-Toxic</span>
+            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Pet Friendly — Safe & Non-Toxic</span>
           </div>
           <div class="benefit-item">
-            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
+            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
             <span>No Mowing, Watering, or Fertilizing</span>
           </div>
           <div class="benefit-item">
-            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
+            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
             <span>Looks Great All Year Round</span>
           </div>
           <div class="benefit-item">
-            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
+            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
             <span>UV Stabilized & Fade Resistant</span>
           </div>
           <div class="benefit-item">
-            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
+            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
             <span>Saves Water & Reduces Bills</span>
           </div>
           <div class="benefit-item">
-            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
+            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
             <span>Excellent Drainage System</span>
           </div>
           <div class="benefit-item">
-            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
+            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
             <span>Soft, Comfortable & Durable</span>
           </div>
           <div class="benefit-item">
-            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
+            <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
             <span>Perfect for Kids & Families</span>
           </div>
         </div>
@@ -291,373 +242,146 @@ const breadcrumbSchema = {
     </div>
   </section>
 
-  <!-- Product Range Section -->
+  <!-- ======================== PRODUCT RANGE ======================== -->
   <section class="product-range-section">
     <div class="container">
-      <h2 class="section-title">ALL SEASONS LIVING ARTIFICIAL LAWN PRODUCT RANGE</h2>
-      <p class="section-subtitle">Choose from our premium range of artificial lawn products designed for Australian conditions</p>
+      <h2 class="section-heading">Our Artificial Lawn Range</h2>
+      <p class="section-sub">Choose from premium products designed and tested for Australian conditions</p>
 
       <div class="product-cards">
         <!-- Oasis Blend -->
         <div class="product-card">
           <div class="product-image">
-            <img src="/assets/images/artificial-lawn/asl-artificial-lawn-family.png" alt="Oasis Blend premium artificial lawn Canberra - pet friendly synthetic grass with UV protection" loading="lazy" width="400" height="300" />
+            <img src="/assets/images/artificial-lawn/asl-artificial-lawn-family.png" alt="Oasis Blend premium artificial lawn — pet friendly with UV protection" loading="lazy" width="400" height="300" />
           </div>
           <h3 class="product-name">Oasis Blend</h3>
           <a href="https://tigerturf.com/au/" target="_blank" rel="noopener noreferrer" class="supplier-badge">
             <span class="supplier-text">Proud supplier of</span>
-            <img src="/assets/images/artificial-lawn/tigerturf-logo-green.svg" alt="TigerTurf Logo" class="supplier-logo" />
+            <img src="/assets/images/artificial-lawn/tigerturf-logo-green.svg" alt="TigerTurf" class="supplier-logo" />
           </a>
-          <p class="product-description">Oasis Blend offers a lush, natural looking lawn with soft feel, UV stability, and durability. Perfect for families and light commercial spaces.</p>
-
+          <p class="product-desc">Lush, natural-looking lawn with soft feel, UV stability, and durability. Perfect for families and light commercial spaces.</p>
           <div class="product-ratings">
-            <div class="rating-row">
-              <span class="rating-label">Natural Look</span>
-              <div class="rating-bars">
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-              </div>
-            </div>
-            <div class="rating-row">
-              <span class="rating-label">UV Stability</span>
-              <div class="rating-bars">
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar"></span>
-              </div>
-            </div>
-            <div class="rating-row">
-              <span class="rating-label">Durability</span>
-              <div class="rating-bars">
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar"></span>
-              </div>
-            </div>
-            <div class="rating-row">
-              <span class="rating-label">Pet Friendly</span>
-              <div class="rating-bars">
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-              </div>
-            </div>
+            <div class="rating-row"><span class="rating-label">Natural Look</span><div class="rating-bars"><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span></div></div>
+            <div class="rating-row"><span class="rating-label">UV Stability</span><div class="rating-bars"><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span><span class="bar"></span></div></div>
+            <div class="rating-row"><span class="rating-label">Durability</span><div class="rating-bars"><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span><span class="bar"></span></div></div>
+            <div class="rating-row"><span class="rating-label">Pet Friendly</span><div class="rating-bars"><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span></div></div>
           </div>
-
           <div class="product-specs">
-            <div class="spec-item">
-              <span class="spec-label">Pile Height</span>
-              <span class="spec-value">35mm / 44mm</span>
-            </div>
-            <div class="spec-item">
-              <span class="spec-label">Pile Weight</span>
-              <span class="spec-value">2,036 g/sq m</span>
-            </div>
-            <div class="spec-item">
-              <span class="spec-label">Yarn</span>
-              <span class="spec-value">Polyethylene Monofilament</span>
-            </div>
-            <div class="spec-item">
-              <span class="spec-label">Warranty</span>
-              <span class="spec-value">10 Years</span>
-            </div>
-            <div class="spec-item">
-              <span class="spec-label">Permeability</span>
-              <span class="spec-value">>223mm/hr</span>
-            </div>
+            <div class="spec-row"><span class="spec-label">Pile Height</span><span class="spec-value">35mm / 44mm</span></div>
+            <div class="spec-row"><span class="spec-label">Pile Weight</span><span class="spec-value">2,036 g/sq m</span></div>
+            <div class="spec-row"><span class="spec-label">Yarn</span><span class="spec-value">Polyethylene Monofilament</span></div>
+            <div class="spec-row"><span class="spec-label">Warranty</span><span class="spec-value">10 Years</span></div>
+            <div class="spec-row"><span class="spec-label">Permeability</span><span class="spec-value">>223mm/hr</span></div>
           </div>
-
           <div class="product-badges">
-            <div class="badge">
-              <img src="/assets/icons/paw-svgrepo-com.svg" alt="Pet Safe" width="32" height="32" />
-              <span>Pet Safe</span>
-            </div>
-            <div class="badge">
-              <img src="/assets/icons/sun-2-svgrepo-com.svg" alt="UV Stable" width="32" height="32" />
-              <span>UV Stable</span>
-            </div>
+            <div class="badge"><img src="/assets/icons/paw-svgrepo-com.svg" alt="Pet Safe" width="24" height="24" /><span>Pet Safe</span></div>
+            <div class="badge"><img src="/assets/icons/sun-2-svgrepo-com.svg" alt="UV Stable" width="24" height="24" /><span>UV Stable</span></div>
           </div>
         </div>
 
         <!-- Retreat Blend -->
         <div class="product-card">
           <div class="product-image">
-            <img src="/assets/images/artificial-lawn/asl-artificial-lawn-picnic2.png" alt="Retreat Blend artificial lawn Canberra - cooling technology synthetic grass for Australian climate" loading="lazy" width="400" height="300" />
+            <img src="/assets/images/artificial-lawn/asl-artificial-lawn-picnic2.png" alt="Retreat Blend artificial lawn with cooling technology" loading="lazy" width="400" height="300" />
           </div>
           <h3 class="product-name">Retreat Blend</h3>
           <a href="https://tigerturf.com/au/" target="_blank" rel="noopener noreferrer" class="supplier-badge">
             <span class="supplier-text">Proud supplier of</span>
-            <img src="/assets/images/artificial-lawn/tigerturf-logo-green.svg" alt="TigerTurf Logo" class="supplier-logo" />
+            <img src="/assets/images/artificial-lawn/tigerturf-logo-green.svg" alt="TigerTurf" class="supplier-logo" />
           </a>
-          <p class="product-description">Retreat Blend offers a natural olive-green lawn with a soft, non-shiny finish and advanced cooling technology for year-round comfort.</p>
-
+          <p class="product-desc">Natural olive-green lawn with a soft, non-shiny finish and advanced cooling technology for year-round comfort.</p>
           <div class="product-ratings">
-            <div class="rating-row">
-              <span class="rating-label">Natural Look</span>
-              <div class="rating-bars">
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar"></span>
-              </div>
-            </div>
-            <div class="rating-row">
-              <span class="rating-label">UV Stability</span>
-              <div class="rating-bars">
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-              </div>
-            </div>
-            <div class="rating-row">
-              <span class="rating-label">Durability</span>
-              <div class="rating-bars">
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-              </div>
-            </div>
-            <div class="rating-row">
-              <span class="rating-label">Pet Friendly</span>
-              <div class="rating-bars">
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-              </div>
-            </div>
+            <div class="rating-row"><span class="rating-label">Natural Look</span><div class="rating-bars"><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span><span class="bar"></span></div></div>
+            <div class="rating-row"><span class="rating-label">UV Stability</span><div class="rating-bars"><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span></div></div>
+            <div class="rating-row"><span class="rating-label">Durability</span><div class="rating-bars"><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span></div></div>
+            <div class="rating-row"><span class="rating-label">Pet Friendly</span><div class="rating-bars"><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span></div></div>
           </div>
-
           <div class="product-specs">
-            <div class="spec-item">
-              <span class="spec-label">Pile Height</span>
-              <span class="spec-value">30mm / 40mm</span>
-            </div>
-            <div class="spec-item">
-              <span class="spec-label">Pile Weight</span>
-              <span class="spec-value">1,305 g/sq m</span>
-            </div>
-            <div class="spec-item">
-              <span class="spec-label">Yarn</span>
-              <span class="spec-value">Polyethylene Monofilament</span>
-            </div>
-            <div class="spec-item">
-              <span class="spec-label">Warranty</span>
-              <span class="spec-value">10 Years</span>
-            </div>
-            <div class="spec-item">
-              <span class="spec-label">Permeability</span>
-              <span class="spec-value">>223mm/hr</span>
-            </div>
+            <div class="spec-row"><span class="spec-label">Pile Height</span><span class="spec-value">30mm / 40mm</span></div>
+            <div class="spec-row"><span class="spec-label">Pile Weight</span><span class="spec-value">1,305 g/sq m</span></div>
+            <div class="spec-row"><span class="spec-label">Yarn</span><span class="spec-value">Polyethylene Monofilament</span></div>
+            <div class="spec-row"><span class="spec-label">Warranty</span><span class="spec-value">10 Years</span></div>
+            <div class="spec-row"><span class="spec-label">Permeability</span><span class="spec-value">>223mm/hr</span></div>
           </div>
-
           <div class="product-badges">
-            <div class="badge">
-              <img src="/assets/icons/paw-svgrepo-com.svg" alt="Pet Friendly" width="32" height="32" />
-              <span>Pet Friendly</span>
-            </div>
-            <div class="badge">
-              <img src="/assets/icons/sun-2-svgrepo-com.svg" alt="UV Stable" width="32" height="32" />
-              <span>UV Stable</span>
-            </div>
-            <div class="badge">
-              <img src="/assets/icons/wind-svgrepo-com.svg" alt="Cooling Tech" width="32" height="32" />
-              <span>Cooling Tech</span>
-            </div>
+            <div class="badge"><img src="/assets/icons/paw-svgrepo-com.svg" alt="Pet Friendly" width="24" height="24" /><span>Pet Friendly</span></div>
+            <div class="badge"><img src="/assets/icons/sun-2-svgrepo-com.svg" alt="UV Stable" width="24" height="24" /><span>UV Stable</span></div>
+            <div class="badge"><img src="/assets/icons/wind-svgrepo-com.svg" alt="Cooling Tech" width="24" height="24" /><span>Cooling Tech</span></div>
           </div>
         </div>
 
         <!-- Pro Sport -->
         <div class="product-card">
           <div class="product-image">
-            <img src="/assets/images/artificial-lawn/Pro Sport Golf Green.png" alt="Pro Sport artificial putting green Canberra - professional grade synthetic turf for golf and sports" loading="lazy" width="400" height="300" />
+            <img src="/assets/images/artificial-lawn/Pro Sport Golf Green.png" alt="Pro Sport artificial putting green — professional grade" loading="lazy" width="400" height="300" />
           </div>
           <h3 class="product-name">Pro Sport</h3>
           <a href="https://tigerturf.com/au/" target="_blank" rel="noopener noreferrer" class="supplier-badge">
             <span class="supplier-text">Proud supplier of</span>
-            <img src="/assets/images/artificial-lawn/tigerturf-logo-green.svg" alt="TigerTurf Logo" class="supplier-logo" />
+            <img src="/assets/images/artificial-lawn/tigerturf-logo-green.svg" alt="TigerTurf" class="supplier-logo" />
           </a>
-          <p class="product-description">Pro Sport delivers a premium, low-maintenance sporting surface with true ball roll and accurate speed, perfect for residential sport surfaces.</p>
-
+          <p class="product-desc">Premium, low-maintenance sporting surface with true ball roll and accurate speed. Perfect for residential putting greens.</p>
           <div class="product-ratings">
-            <div class="rating-row">
-              <span class="rating-label">Natural Look</span>
-              <div class="rating-bars">
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-              </div>
-            </div>
-            <div class="rating-row">
-              <span class="rating-label">UV Stability</span>
-              <div class="rating-bars">
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-              </div>
-            </div>
-            <div class="rating-row">
-              <span class="rating-label">Durability</span>
-              <div class="rating-bars">
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-              </div>
-            </div>
-            <div class="rating-row">
-              <span class="rating-label">Pet Friendly</span>
-              <div class="rating-bars">
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-                <span class="bar filled"></span>
-              </div>
-            </div>
+            <div class="rating-row"><span class="rating-label">Natural Look</span><div class="rating-bars"><span class="bar filled"></span><span class="bar filled"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></div></div>
+            <div class="rating-row"><span class="rating-label">UV Stability</span><div class="rating-bars"><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span></div></div>
+            <div class="rating-row"><span class="rating-label">Durability</span><div class="rating-bars"><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span></div></div>
+            <div class="rating-row"><span class="rating-label">Pet Friendly</span><div class="rating-bars"><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span><span class="bar filled"></span></div></div>
           </div>
-
           <div class="product-specs">
-            <div class="spec-item">
-              <span class="spec-label">Pile Height</span>
-              <span class="spec-value">13mm</span>
-            </div>
-            <div class="spec-item">
-              <span class="spec-label">Pile Weight</span>
-              <span class="spec-value">1,450 g/sqm</span>
-            </div>
-            <div class="spec-item">
-              <span class="spec-label">Yarn</span>
-              <span class="spec-value">Polypropylene Monofilament</span>
-            </div>
-            <div class="spec-item">
-              <span class="spec-label">Warranty</span>
-              <span class="spec-value">10 Years</span>
-            </div>
-            <div class="spec-item">
-              <span class="spec-label">Speed</span>
-              <span class="spec-value">9-10 Stimp</span>
-            </div>
+            <div class="spec-row"><span class="spec-label">Pile Height</span><span class="spec-value">13mm</span></div>
+            <div class="spec-row"><span class="spec-label">Pile Weight</span><span class="spec-value">1,450 g/sqm</span></div>
+            <div class="spec-row"><span class="spec-label">Yarn</span><span class="spec-value">Polypropylene Monofilament</span></div>
+            <div class="spec-row"><span class="spec-label">Warranty</span><span class="spec-value">10 Years</span></div>
+            <div class="spec-row"><span class="spec-label">Speed</span><span class="spec-value">9-10 Stimp</span></div>
           </div>
-
           <div class="product-badges">
-            <div class="badge">
-              <img src="/assets/icons/paw-svgrepo-com.svg" alt="Pet Friendly" width="32" height="32" />
-              <span>Pet Friendly</span>
-            </div>
-            <div class="badge">
-              <img src="/assets/icons/sun-2-svgrepo-com.svg" alt="UV Stable" width="32" height="32" />
-              <span>UV Stable</span>
-            </div>
+            <div class="badge"><img src="/assets/icons/paw-svgrepo-com.svg" alt="Pet Friendly" width="24" height="24" /><span>Pet Friendly</span></div>
+            <div class="badge"><img src="/assets/icons/sun-2-svgrepo-com.svg" alt="UV Stable" width="24" height="24" /><span>UV Stable</span></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Installation Process Section -->
+  <!-- ======================== INSTALLATION PROCESS ======================== -->
   <section class="installation-section">
     <div class="container">
-      <h2 class="section-title">READY FOR US TO INSTALL YOUR ARTIFICIAL LAWN?</h2>
-      <p class="section-subtitle">Our professional installation process ensures a perfect, long-lasting result</p>
-
-      <div class="installation-steps">
+      <h2 class="section-heading">Our Installation Process</h2>
+      <p class="section-sub">Professional installation ensures a perfect, long-lasting result</p>
+      <div class="steps-grid">
         <div class="step-card">
-          <div class="step-icon">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8 38L14 32L20 36L26 28L32 32L38 26L40 28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M4 42H44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-              <circle cx="24" cy="14" r="3" fill="currentColor"/>
-              <path d="M28 20L32 24M20 20L16 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h3>Ground Prep<br>& Excavation</h3>
-          <p>Carefully prepare the base to support your lawn.</p>
+          <div class="step-number">1</div>
+          <h3>Ground Prep & Excavation</h3>
+          <p>Carefully prepare the base to support your lawn for years to come.</p>
         </div>
-
         <div class="step-card">
-          <div class="step-icon">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="6" y="28" width="36" height="8" fill="currentColor" opacity="0.3"/>
-              <rect x="6" y="36" width="36" height="6" fill="currentColor"/>
-              <path d="M12 20L16 28M20 18L24 28M28 18L32 28M36 20L40 28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M10 10L14 16M22 8L26 16M34 10L38 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h3>Backfilling<br>& Levelling</h3>
-          <p>Crusher dust, compacted for a solid foundation.</p>
+          <div class="step-number">2</div>
+          <h3>Backfilling & Levelling</h3>
+          <p>Crusher dust compacted for a solid, even foundation.</p>
         </div>
-
         <div class="step-card">
-          <div class="step-icon">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8 24H40" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-              <path d="M24 10V38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 3"/>
-              <rect x="6" y="22" width="4" height="4" fill="currentColor"/>
-              <rect x="38" y="22" width="4" height="4" fill="currentColor"/>
-              <path d="M12 16L16 20L12 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M36 16L32 20L36 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <rect x="10" y="8" width="28" height="3" rx="1.5" fill="currentColor" opacity="0.4"/>
-              <rect x="10" y="37" width="28" height="3" rx="1.5" fill="currentColor" opacity="0.4"/>
-            </svg>
-          </div>
-          <h3>Joins &<br>Edging</h3>
-          <p>Secure seams and borders for durability.</p>
+          <div class="step-number">3</div>
+          <h3>Joins & Edging</h3>
+          <p>Secure seams and borders for durability and a seamless look.</p>
         </div>
-
         <div class="step-card">
-          <div class="step-icon">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M24 8L26 14L32 15L27 20L28 26L24 23L20 26L21 20L16 15L22 14L24 8Z" fill="currentColor" opacity="0.3"/>
-              <path d="M24 8L26 14L32 15L27 20L28 26L24 23L20 26L21 20L16 15L22 14L24 8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-              <circle cx="38" cy="14" r="2" fill="currentColor"/>
-              <circle cx="10" cy="18" r="1.5" fill="currentColor"/>
-              <circle cx="38" cy="34" r="2" fill="currentColor"/>
-              <circle cx="10" cy="38" r="1.5" fill="currentColor"/>
-              <path d="M14 34L16 36M34 12L36 14M12 14L14 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h3>Final<br>Touches</h3>
-          <p>Sand infill for stability and a lush finish.</p>
+          <div class="step-number">4</div>
+          <h3>Final Touches</h3>
+          <p>Sand infill for stability and a lush, natural finish.</p>
         </div>
       </div>
-
       <div class="installation-cta">
-        <button class="btn btn-primary quote-trigger">GET YOUR FREE QUOTE TODAY</button>
+        <a href="#quote-section" class="btn btn-primary btn-lg">Get Your Free Quote Today</a>
       </div>
     </div>
   </section>
 
-  <QuoteModal />
-  <OfferModal />
-  <ExitIntentPopup />
   <Footer />
 </Layout>
 
 <script>
   import { captureFormData, initializeSessionTracking } from '../utils/formTracking';
 
-  // Initialize tracking
   initializeSessionTracking();
 
   const form = document.getElementById('artificialLawnQuoteForm') as HTMLFormElement;
@@ -668,14 +392,10 @@ const breadcrumbSchema = {
 
       const submitBtn = document.getElementById('alQuoteSubmitBtn') as HTMLButtonElement;
 
-      // Get form values
       const name = (document.getElementById('al-name') as HTMLInputElement)?.value.trim();
       const phone = (document.getElementById('al-phone') as HTMLInputElement)?.value.trim();
-      const email = (document.getElementById('al-email') as HTMLInputElement)?.value.trim();
       const suburb = (document.getElementById('al-suburb') as HTMLInputElement)?.value.trim();
-      const message = (document.getElementById('al-message') as HTMLTextAreaElement)?.value.trim();
 
-      // Validate required fields
       if (!name || !phone || !suburb) {
         alert('Please fill in all required fields');
         return;
@@ -708,7 +428,6 @@ const breadcrumbSchema = {
         const result = await response.json();
 
         if (response.ok && result.success) {
-          // Conversion tracking happens on thank-you page (no race condition)
           window.location.href = '/thank-you';
         } else {
           throw new Error(result.message || 'Submission failed');
@@ -727,65 +446,119 @@ const breadcrumbSchema = {
 </script>
 
 <style>
-  /* Hero Section */
-  .hero-section {
+  /* ============================
+     HERO
+     ============================ */
+  .hero {
     position: relative;
-    min-height: 600px;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 580px;
     display: flex;
     align-items: center;
+    color: var(--white);
     overflow: hidden;
   }
 
-  .hero-image-container {
+  .hero-bg {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0; right: 0; bottom: 0;
     z-index: 1;
   }
 
-  .hero-image {
+  .hero-bg img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 60%;
   }
 
   .hero-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.3) 0%,
+      rgba(0,0,0,0.35) 30%,
+      rgba(0,0,0,0.45) 50%,
+      rgba(0,0,0,0.5) 70%,
+      rgba(0,0,0,0.7) 100%
+    );
+    z-index: 2;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 3;
+    padding: 2rem 1rem;
     width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
   }
 
   .hero-content {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    padding: 6rem 0 4rem;
+    max-width: 700px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    line-height: 1.65;
+    opacity: 0.95;
+    margin-bottom: 1.5rem;
+    max-width: 620px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-outline-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
     color: var(--white);
+    border: 2px solid rgba(255,255,255,0.5);
+    padding: 1rem 1.75rem;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.25s ease;
+  }
+
+  .btn-outline-light:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: var(--white);
+    color: var(--white);
+    transform: translateY(-2px);
   }
 
   .hero-badge {
     display: inline-flex;
     align-items: center;
     gap: 0.625rem;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255,255,255,0.95);
     padding: 0.625rem 1.25rem;
-    border-radius: var(--radius-full);
-    margin-top: 1.5rem;
+    border-radius: 100px;
     text-decoration: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
   }
 
   .hero-badge:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    background: var(--white);
   }
 
   .badge-text {
@@ -801,121 +574,97 @@ const breadcrumbSchema = {
     width: auto;
   }
 
-  .hero-content h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-  }
-
-  .hero-subtitle {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-    max-width: 700px;
-    line-height: 1.6;
-    opacity: 0.95;
-  }
-
-  .hero-buttons {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  /* Benefits Icons Section - Four Grid */
-  .benefits-icons-section {
+  /* ============================
+     BENEFITS SECTION
+     ============================ */
+  .benefits-section {
     padding: 4rem 0;
-    background: #f5f1e7;
+    background: var(--cream);
   }
 
-  .benefits-grid-four {
+  .benefits-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
   }
 
   .benefit-card {
     text-align: center;
-    padding: 2rem 1rem;
+    padding: 2rem 1.5rem;
   }
 
   .benefit-icon {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto 1.5rem;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 1.25rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: var(--light-sage);
+    border-radius: 50%;
+    color: var(--olive-green);
   }
 
-  .benefit-icon img {
-    width: 80px;
-    height: 80px;
+  .benefit-icon.australian-owned-icon img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    /* Recolor black icon to olive-green, then thicken lines with drop-shadows */
+    filter: invert(36%) sepia(11%) saturate(1200%) hue-rotate(55deg) brightness(95%) contrast(90%)
+      drop-shadow(0.5px 0 0 rgba(84, 101, 61, 0.7))
+      drop-shadow(-0.5px 0 0 rgba(84, 101, 61, 0.7))
+      drop-shadow(0 0.5px 0 rgba(84, 101, 61, 0.7))
+      drop-shadow(0 -0.5px 0 rgba(84, 101, 61, 0.7));
   }
 
   .benefit-card h3 {
     font-size: 1.125rem;
     color: var(--olive-green);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     font-weight: 700;
-    text-align: center;
   }
 
   .benefit-card p {
     color: var(--black);
     opacity: 0.8;
     line-height: 1.6;
-    text-align: center;
     font-size: 0.9375rem;
   }
 
-  /* Quote Form Section */
-  .quote-form-section {
-    position: relative;
-    padding: 3rem 0;
-    min-height: 400px;
-    overflow: hidden;
+  /* ============================
+     QUOTE FORM
+     ============================ */
+  .quote-section {
+    padding: 5rem 0;
+    background: var(--light-sage);
   }
 
-  .quote-form-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
+  .quote-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
   }
 
-  .quote-form-background img {
+  .quote-image {
+    display: none;
+  }
+
+  .quote-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
-  }
-
-  .quote-form-section .container {
-    position: relative;
-    z-index: 1;
-  }
-
-  .quote-form-wrapper {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    min-height: 350px;
-  }
-
-  .quote-form-content {
-    max-width: 500px;
-    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    max-height: 600px;
   }
 
   .form-header {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
   }
 
   .form-header h2 {
-    font-size: 1.625rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
     color: var(--olive-green);
     margin-bottom: 0.5rem;
     font-weight: 700;
@@ -924,21 +673,20 @@ const breadcrumbSchema = {
   .form-header p {
     color: var(--black);
     opacity: 0.8;
-    font-size: 0.9375rem;
   }
 
-  .inline-quote-form {
+  .quote-form {
     background: var(--white);
-    padding: 1.5rem;
-    border-radius: var(--radius-lg);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   }
 
-  .form-row {
+  .form-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
-    margin-bottom: 0.75rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
   }
 
   .form-group {
@@ -948,31 +696,31 @@ const breadcrumbSchema = {
   }
 
   .form-group label {
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
     font-weight: 600;
     color: var(--black);
   }
 
   .form-group input,
   .form-group textarea {
-    padding: 0.75rem;
-    border: 2px solid rgba(0, 0, 0, 0.1);
-    border-radius: var(--radius-sm);
+    padding: 0.875rem;
+    border: 2px solid rgba(0,0,0,0.1);
+    border-radius: 8px;
     font-size: 16px;
     font-family: inherit;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
   }
 
   .form-group input:focus,
   .form-group textarea:focus {
     outline: none;
     border-color: var(--olive-green);
-    box-shadow: 0 0 0 3px rgba(90, 110, 69, 0.1);
+    box-shadow: 0 0 0 3px rgba(84,101,61,0.1);
   }
 
   .form-group textarea {
     resize: vertical;
-    min-height: 70px;
+    min-height: 80px;
   }
 
   .form-submit-btn {
@@ -981,22 +729,22 @@ const breadcrumbSchema = {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: 0.875rem 1.75rem;
+    padding: 1rem 2rem;
     background: var(--olive-green);
     color: var(--white);
     border: none;
-    border-radius: var(--radius-sm);
-    font-size: 1rem;
+    border-radius: 8px;
+    font-size: 1.0625rem;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 0.75rem;
+    transition: all 0.25s ease;
+    margin-top: 1rem;
   }
 
   .form-submit-btn:hover {
-    background: #465331;
+    filter: brightness(1.1);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(90, 110, 69, 0.3);
+    box-shadow: 0 4px 16px rgba(84,101,61,0.3);
   }
 
   .form-submit-btn.loading .submit-text,
@@ -1010,6 +758,11 @@ const breadcrumbSchema = {
     gap: 0.5rem;
   }
 
+  .form-submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
   .spinner {
     animation: spin 1s linear infinite;
   }
@@ -1019,7 +772,6 @@ const breadcrumbSchema = {
     to { transform: rotate(360deg); }
   }
 
-  /* Trust Signals */
   .trust-signals {
     display: flex;
     justify-content: center;
@@ -1027,7 +779,7 @@ const breadcrumbSchema = {
     gap: 1.5rem;
     margin-top: 1.5rem;
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(90, 110, 69, 0.15);
+    border-top: 1px solid rgba(84,101,61,0.15);
   }
 
   .trust-item {
@@ -1038,30 +790,26 @@ const breadcrumbSchema = {
     color: var(--olive-green);
   }
 
-  .trust-item svg {
-    flex-shrink: 0;
-    opacity: 0.8;
-  }
+  .trust-item svg { flex-shrink: 0; opacity: 0.8; }
+  .trust-item span { font-weight: 500; }
 
-  .trust-item span {
-    font-weight: 500;
-  }
-
-  /* Benefits List Section */
+  /* ============================
+     BENEFITS LIST
+     ============================ */
   .benefits-list-section {
     padding: 5rem 0;
-    background: #e2e8d9;
+    background: var(--cream);
   }
 
-  .section-title {
+  .section-heading {
     text-align: center;
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
     color: var(--olive-green);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     font-weight: 700;
   }
 
-  .section-subtitle {
+  .section-sub {
     text-align: center;
     color: var(--black);
     opacity: 0.8;
@@ -1071,9 +819,16 @@ const breadcrumbSchema = {
 
   .benefits-content-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
     align-items: center;
+  }
+
+  .benefits-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
   }
 
   .benefits-list {
@@ -1090,57 +845,50 @@ const breadcrumbSchema = {
 
   .check-icon {
     flex-shrink: 0;
-    width: 24px;
-    height: 24px;
     color: var(--olive-green);
   }
 
   .benefit-item span {
     font-size: 1.0625rem;
-    line-height: 1.6;
+    line-height: 1.5;
     color: var(--black);
   }
 
-  .benefits-image img {
-    width: 100%;
-    height: auto;
-    border-radius: var(--radius-lg);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  }
-
-  /* Product Range Section */
+  /* ============================
+     PRODUCT RANGE
+     ============================ */
   .product-range-section {
     padding: 5rem 0;
-    background: #f5f1e7;
+    background: var(--light-sage);
   }
 
   .product-cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     gap: 2rem;
-    margin-top: 3rem;
+    margin-top: 2rem;
   }
 
   .product-card {
-    background: #e2e8d9;
-    border-radius: var(--radius-lg);
-    padding: 1.25rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: var(--white);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
   }
 
   .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
   }
 
   .product-image {
     width: 100%;
-    height: 180px;
+    height: 200px;
     overflow: hidden;
-    border-radius: var(--radius-lg);
+    border-radius: 12px;
     margin-bottom: 1rem;
   }
 
@@ -1154,33 +902,21 @@ const breadcrumbSchema = {
     font-size: 1.375rem;
     color: var(--black);
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.375rem;
     text-align: center;
   }
 
   .supplier-badge {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
     margin-bottom: 0.75rem;
-    padding: 0.5rem 0;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
   }
 
-  .supplier-badge:hover {
-    transform: translateY(-2px);
-  }
-
-  .supplier-badge:hover .supplier-text {
-    color: #465331;
-  }
-
-  .supplier-badge:hover .supplier-logo {
-    opacity: 1;
-  }
+  .supplier-badge:hover { transform: translateY(-1px); }
 
   .supplier-text {
     font-size: 0.75rem;
@@ -1188,17 +924,15 @@ const breadcrumbSchema = {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    transition: color 0.3s ease;
   }
 
   .supplier-logo {
     height: 20px;
     width: auto;
     opacity: 0.9;
-    transition: opacity 0.3s ease;
   }
 
-  .product-description {
+  .product-desc {
     color: #5a5a5a;
     line-height: 1.5;
     font-size: 0.875rem;
@@ -1206,7 +940,6 @@ const breadcrumbSchema = {
     text-align: center;
   }
 
-  /* Rating Bars */
   .product-ratings {
     display: flex;
     flex-direction: column;
@@ -1228,7 +961,7 @@ const breadcrumbSchema = {
 
   .rating-bars {
     display: flex;
-    gap: 0.3rem;
+    gap: 0.25rem;
   }
 
   .rating-bars .bar {
@@ -1242,21 +975,19 @@ const breadcrumbSchema = {
     background: var(--olive-green);
   }
 
-  /* Product Specs */
   .product-specs {
     display: flex;
     flex-direction: column;
     gap: 0.375rem;
     margin-bottom: 1rem;
     padding-top: 0.75rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(0,0,0,0.08);
   }
 
-  .spec-item {
+  .spec-row {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 0.125rem 0;
   }
 
   .spec-label {
@@ -1267,19 +998,17 @@ const breadcrumbSchema = {
 
   .spec-value {
     color: var(--black);
-    font-weight: 400;
     font-size: 0.8125rem;
     text-align: right;
     max-width: 60%;
   }
 
-  /* Product Badges */
   .product-badges {
     display: flex;
     gap: 1.5rem;
     justify-content: center;
     padding-top: 1rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(0,0,0,0.08);
     margin-top: auto;
   }
 
@@ -1301,114 +1030,136 @@ const breadcrumbSchema = {
     font-size: 0.75rem;
     color: #5a5a5a;
     font-weight: 500;
-    text-align: center;
   }
 
-  /* Installation Process Section */
+  /* ============================
+     INSTALLATION PROCESS
+     ============================ */
   .installation-section {
-    padding: 4rem 0;
-    background: #e2e8d9;
+    padding: 5rem 0;
+    background: var(--cream);
   }
 
-  .installation-steps {
+  .steps-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr;
     gap: 1.5rem;
     margin-top: 2.5rem;
-    max-width: 1100px;
+    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
   }
 
   .step-card {
     background: var(--white);
-    padding: 1.5rem 1rem;
-    border-radius: var(--radius-lg);
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
   .step-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
   }
 
-  .step-icon {
+  .step-number {
+    width: 48px;
+    height: 48px;
     margin: 0 auto 1rem;
+    background: var(--olive-green);
+    color: var(--white);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 64px;
-    height: 64px;
-    background: #e2e8d9;
-    border-radius: 50%;
-    color: var(--olive-green);
-  }
-
-  .step-icon img {
-    width: 40px;
-    height: 40px;
-    opacity: 0.7;
-  }
-
-  .step-icon svg {
-    width: 40px;
-    height: 40px;
+    font-size: 1.25rem;
+    font-weight: 800;
   }
 
   .step-card h3 {
-    font-size: 1rem;
+    font-size: 1.125rem;
     color: var(--black);
     margin-bottom: 0.5rem;
     font-weight: 700;
-    line-height: 1.3;
   }
 
   .step-card p {
     color: #5a5a5a;
     line-height: 1.5;
-    font-size: 0.8125rem;
+    font-size: 0.9375rem;
   }
 
   .installation-cta {
     text-align: center;
-    margin-top: 2.5rem;
+    margin-top: 3rem;
   }
 
-  /* Responsive Design */
-  @media (max-width: 1200px) {
-    .benefits-grid-four {
-      grid-template-columns: repeat(2, 1fr);
+  /* ============================
+     TABLET (768px+)
+     ============================ */
+  @media (min-width: 768px) {
+    .benefits-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .quote-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .quote-image {
+      display: block;
+    }
+
+    .form-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .benefits-content-grid {
+      grid-template-columns: 1fr 1fr;
     }
 
     .product-cards {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    .installation-steps {
+    .steps-grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  @media (max-width: 1024px) {
-    .quote-form-wrapper {
-      justify-content: center;
+  /* ============================
+     DESKTOP (1025px+)
+     ============================ */
+  @media (min-width: 1025px) {
+    .hero-inner {
+      padding: 2rem 1rem;
     }
 
-    .benefits-content-grid {
-      grid-template-columns: 1fr;
+    .product-cards {
+      grid-template-columns: repeat(3, 1fr);
     }
 
-    .benefits-image {
-      order: -1;
+    .steps-grid {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 
-  @media (max-width: 768px) {
+  /* ============================
+     SMALL MOBILE
+     ============================ */
+  @media (max-width: 500px) {
+    .hero-ctas {
+      flex-direction: column;
+    }
+
+    .hero-ctas .btn-outline-light {
+      justify-content: center;
+    }
+
     .hero-badge {
       padding: 0.5rem 1rem;
-      margin-top: 1rem;
     }
 
     .badge-text {
@@ -1417,48 +1168,6 @@ const breadcrumbSchema = {
 
     .badge-logo {
       height: 18px;
-    }
-
-    .hero-content h1 {
-      font-size: 2.5rem;
-    }
-
-    .hero-subtitle {
-      font-size: 1rem;
-    }
-
-    .form-row {
-      grid-template-columns: 1fr;
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-    }
-
-    .benefits-grid-four {
-      grid-template-columns: 1fr;
-    }
-
-    .product-cards {
-      grid-template-columns: 1fr;
-    }
-
-    .installation-steps {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  @media (max-width: 500px) {
-    .hero-buttons {
-      flex-direction: column;
-    }
-
-    .hero-buttons .btn {
-      width: 100%;
-    }
-
-    .hero-content h1 {
-      font-size: 2rem;
     }
   }
 </style>

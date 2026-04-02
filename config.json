@@ -1,10 +1,11 @@
 {
   "offerBanner": {
     "enabled": true,
-    "text": "Limited Offer! Spring Special Now On – GET UP TO 30% OFF – CLICK HERE NOW! 🎁",
-    "link": "/contact",
-    "backgroundColor": "#ffd166",
-    "textColor": "#000000"
+    "badge": "AUTUMN GRAND SALE",
+    "headline": "Up To $1000 Off — Limited Offer",
+    "cta": "Claim Offer",
+    "offerCode": "AUTUMN2026",
+    "link": "#"
   },
   "contact": {
     "phone": "(02) 6188 9606",

@@ -66,7 +66,7 @@ const currentYear = new Date().getFullYear();
 
   <div class="footer-bottom">
     <div class="container">
-      <p>&copy; {currentYear} All Seasons Living Australia Pty Ltd. | Trading as All Seasons Living Australia | ABN: 61 686 382 263 | ACN: 686 382 263 | <a href="/privacy-policy">Privacy Policy</a> | <a href="/terms-and-conditions">Terms & Conditions</a></p>
+      <p>&copy; {currentYear} All Seasons Living Australia Pty Ltd. | Trading as All Seasons Living Australia | ABN: <span class="no-detect">14 690 268 912</span> | ACN: <span class="no-detect">686 382 263</span> | <a href="/privacy-policy">Privacy Policy</a> | <a href="/terms-and-conditions">Terms & Conditions</a></p>
     </div>
   </div>
 </footer>
@@ -123,8 +123,9 @@ const currentYear = new Date().getFullYear();
   }
 
   .coming-soon {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.75);
     font-size: 0.9rem;
+    font-style: italic;
   }
 
   .footer-contact {
@@ -181,7 +182,7 @@ const currentYear = new Date().getFullYear();
   }
 
   .footer-bottom p {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.95);
     font-size: 0.85rem;
     margin: 0;
   }
@@ -193,6 +194,12 @@ const currentYear = new Date().getFullYear();
 
   .footer-bottom a:hover {
     color: var(--yellow);
+  }
+
+  .no-detect {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
   }
 
   @media (min-width: 769px) and (max-width: 1024px) {
@@ -208,8 +215,20 @@ const currentYear = new Date().getFullYear();
       gap: var(--spacing-md);
     }
 
+    .footer-bottom {
+      padding: var(--spacing-md) var(--spacing-sm);
+    }
+
     .footer-bottom p {
-      font-size: 0.75rem;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 1);
+    }
+
+    .footer-bottom a {
+      color: rgba(255, 255, 255, 1) !important;
+      font-weight: 500;
     }
   }
 </style>

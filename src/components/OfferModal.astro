@@ -1,14 +1,18 @@
 ---
-// Offer Modal Component - Special Offer Claim Form
+import config from '../../config.json';
+
+const { offerBanner } = config;
 ---
 
-<div id="offerModal" class="offer-modal-overlay">
+<div class="offer-modal-backdrop" id="offerModalBackdrop"></div>
+<div id="offerModal" class="offer-modal-overlay" data-offer-code={offerBanner.offerCode} data-form-type={`${offerBanner.badge} - ${offerBanner.headline}`}>
+  <div class="offer-modal-inner">
   <div class="offer-modal-content">
     <button class="offer-modal-close" aria-label="Close modal">&times;</button>
 
     <div class="offer-modal-header">
-      <div class="offer-badge">New Year Special 2025</div>
-      <h2>FREE Installation<br>On All Products</h2>
+      <div class="offer-badge">{offerBanner.badge}</div>
+      <h2>{offerBanner.headline}</h2>
     </div>
 
     <form id="offerForm" class="offer-form">
@@ -89,7 +93,7 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
             <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <span>FREE professional installation</span>
+          <span>Up to $1000 off your order</span>
         </div>
         <div class="offer-benefit">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -106,7 +110,7 @@
       </div>
 
       <button type="submit" class="offer-submit-btn" id="offerSubmitBtn">
-        <span class="submit-text">Claim FREE Installation</span>
+        <span class="submit-text">Claim Autumn Sale Offer</span>
         <span class="submit-loading" style="display: none;">
           <svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
@@ -120,30 +124,48 @@
       </button>
     </form>
   </div>
+  </div>
 </div>
 
 <style>
-  .offer-modal-overlay {
+  /* Backdrop — fixed, covers full screen */
+  .offer-modal-backdrop {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(8px);
     z-index: 10000;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    animation: fadeIn 0.3s ease forwards;
+  }
+
+  .offer-modal-backdrop.active {
+    display: block;
+  }
+
+  /* Scroll container — on top of backdrop */
+  .offer-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10001;
     overflow-y: auto;
-    padding: 20px;
+    -webkit-overflow-scrolling: touch;
+    padding: 12px;
   }
 
   .offer-modal-overlay.active {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
     animation: fadeIn 0.3s ease forwards;
+  }
+
+  /* Inner wrapper to centre content */
+  .offer-modal-inner {
+    min-height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0.5rem 0;
   }
 
   @keyframes fadeIn {
@@ -158,6 +180,7 @@
     max-width: 600px;
     width: 100%;
     position: relative;
+    margin: auto;
     animation: slideUp 0.4s ease;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     overflow: hidden;
@@ -190,7 +213,7 @@
     justify-content: center;
     color: #333;
     transition: all 0.2s ease;
-    z-index: 1;
+    z-index: 10;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
@@ -201,27 +224,23 @@
   }
 
   .offer-modal-header {
-    background: linear-gradient(135deg, #059669 0%, #10b981 50%, #059669 100%);
+    background: linear-gradient(to right, #7C3A1E, #B85C2A);
     padding: 30px 30px 25px;
     text-align: center;
     position: relative;
-    border-bottom: 2px solid #34d399;
   }
 
   .offer-badge {
     display: inline-block;
-    background: linear-gradient(135deg, #ffffff, #f0fdf4);
-    color: #059669;
+    background: #F5E6C8;
+    color: #7C3A1E;
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 6px 16px;
-    border-radius: 20px;
+    letter-spacing: 0.08em;
+    padding: 5px 14px;
+    border-radius: 4px;
     margin-bottom: 12px;
-    border: 1px solid #34d399;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
   }
 
   .offer-modal-header h2 {
@@ -280,8 +299,8 @@
   .offer-form-group select:focus,
   .offer-form-group textarea:focus {
     outline: none;
-    border-color: #10b981;
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+    border-color: var(--olive-green);
+    box-shadow: 0 0 0 3px rgba(84, 101, 61, 0.1);
   }
 
   .offer-form-group input:invalid:not(:placeholder-shown),
@@ -336,13 +355,13 @@
 
   .offer-benefit svg {
     flex-shrink: 0;
-    stroke: #10b981;
+    stroke: var(--olive-green);
     stroke-width: 3;
   }
 
   .offer-submit-btn {
     width: 100%;
-    background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+    background: linear-gradient(to right, #7C3A1E, #B85C2A);
     color: #ffffff;
     border: none;
     padding: 15px 28px;
@@ -355,13 +374,13 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+    box-shadow: 0 4px 20px rgba(124, 58, 30, 0.3);
   }
 
   .offer-submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 30px rgba(16, 185, 129, 0.6);
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    box-shadow: 0 6px 30px rgba(124, 58, 30, 0.45);
+    filter: brightness(1.1);
   }
 
   .offer-submit-btn:active {
@@ -412,39 +431,96 @@
   }
 
   @media (max-width: 640px) {
+    .offer-modal-overlay {
+      padding: 8px;
+      align-items: flex-start;
+    }
+
     .offer-modal-content {
-      margin: 20px 0;
+      margin: 0.5rem auto;
       border-radius: 16px;
     }
 
+    .offer-modal-close {
+      top: 8px;
+      right: 8px;
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.95);
+      font-size: 22px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
     .offer-modal-header {
-      padding: 20px 20px 18px;
+      padding: 20px 16px 12px;
+    }
+
+    .offer-badge {
+      font-size: 9px;
+      padding: 3px 10px;
+      margin-bottom: 6px;
     }
 
     .offer-modal-header h2 {
-      font-size: 20px;
+      font-size: 16px;
+      line-height: 1.2;
+      margin: 0;
     }
 
     .offer-subtitle {
-      font-size: 14px;
-    }
-
-    .offer-modal-header h2 {
-      font-size: 22px;
+      font-size: 12px;
     }
 
     .offer-form {
-      padding: 18px;
+      padding: 12px 16px 16px;
     }
 
     .offer-form-row {
       grid-template-columns: 1fr;
       gap: 0;
+      margin-bottom: 0;
+    }
+
+    .offer-form-group {
+      margin-bottom: 10px;
+    }
+
+    .offer-form-group label {
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .offer-form-group input,
+    .offer-form-group select,
+    .offer-form-group textarea {
+      padding: 8px 10px;
+      font-size: 14px;
+    }
+
+    .offer-form-group textarea {
+      min-height: 44px;
+    }
+
+    .offer-benefits {
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+    }
+
+    .offer-benefit {
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 12px;
+    }
+
+    .offer-benefit svg {
+      width: 14px;
+      height: 14px;
     }
 
     .offer-submit-btn {
-      font-size: 15px;
-      padding: 12px 24px;
+      font-size: 14px;
+      padding: 11px 16px;
     }
   }
 </style>
@@ -453,17 +529,39 @@
   import { captureFormData } from '../utils/formTracking';
 
   const modal = document.getElementById('offerModal');
+  const backdrop = document.getElementById('offerModalBackdrop');
   const closeBtn = modal?.querySelector('.offer-modal-close');
   const form = document.getElementById('offerForm') as HTMLFormElement;
 
+  // iOS Safari scroll lock helpers
+  let scrollY = 0;
+  function lockBodyScroll() {
+    scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.overflow = 'hidden';
+  }
+  function unlockBodyScroll() {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.overflow = '';
+    window.scrollTo(0, scrollY);
+  }
+
   function openModal() {
     modal?.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    backdrop?.classList.add('active');
+    lockBodyScroll();
   }
 
   function closeModal() {
     modal?.classList.remove('active');
-    document.body.style.overflow = '';
+    backdrop?.classList.remove('active');
+    unlockBodyScroll();
   }
 
   // Open modal when clicking "Claim Offer" button
@@ -480,11 +578,7 @@
   // Close modal
   closeBtn?.addEventListener('click', closeModal);
 
-  modal?.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      closeModal();
-    }
-  });
+  backdrop?.addEventListener('click', closeModal);
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal?.classList.contains('active')) {
@@ -529,11 +623,15 @@
         }
       }
 
+      // Read config-driven values from data attributes
+      const offerFormType = modal?.getAttribute('data-form-type') || 'Promotional Offer';
+      const offerCode = modal?.getAttribute('data-offer-code') || '';
+
       // Capture comprehensive tracking data
       const submissionData = captureFormData(
         leadData,
         'offer-modal',
-        'New Year Free Installation'
+        offerFormType
       );
 
       // Add offer-specific metadata and reCAPTCHA token
@@ -541,8 +639,8 @@
         ...submissionData,
         lead: {
           ...submissionData.lead,
-          leadSource: 'New Year Free Installation',
-          offerCode: 'NEWYEAR2025'
+          leadSource: offerFormType,
+          offerCode: offerCode
         },
         recaptchaToken
       };

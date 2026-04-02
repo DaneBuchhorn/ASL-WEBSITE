@@ -1,20 +1,21 @@
 ---
 // Google Reviews Floating Badge
 const googleBusinessUrl = 'https://share.google/t77wsy7F6lPBVbll1';
-const rating = 5.0; // Update this with your actual rating
-const reviewCount = 4; // Update this with your actual review count
+const rating = 5.0;
+const reviewCount = 14;
 ---
 
 <a
   href={googleBusinessUrl}
   target="_blank"
   rel="noopener noreferrer"
-  class="google-reviews-badge"
-  aria-label="Read our Google reviews"
+  class="google-badge"
+  aria-label={`Rated ${rating} out of 5 on Google - Read our ${reviewCount} reviews`}
 >
-  <div class="badge-content">
-    <div class="badge-icon">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <div class="google-badge-inner">
+    <!-- Google "G" logo -->
+    <div class="google-badge-logo">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
         <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
         <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
         <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
@@ -22,163 +23,145 @@ const reviewCount = 4; // Update this with your actual review count
       </svg>
     </div>
 
-    <div class="badge-info">
-      <div class="badge-stars">
-        {Array.from({ length: 5 }).map(() => (
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFA500">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-          </svg>
-        ))}
-      </div>
-      <div class="badge-rating">{rating.toFixed(1)}</div>
+    <!-- Rating number -->
+    <span class="google-badge-rating">{rating.toFixed(1)}</span>
+
+    <!-- Stars -->
+    <div class="google-badge-stars">
+      {Array.from({ length: 5 }).map(() => (
+        <svg width="14" height="14" viewBox="0 0 24 24">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#FBBC05"/>
+        </svg>
+      ))}
     </div>
 
-    <div class="badge-label">5 Star Reviews</div>
+    <!-- Review count -->
+    <span class="google-badge-count">({reviewCount})</span>
   </div>
 </a>
 
 <style>
-  .google-reviews-badge {
+  .google-badge {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    padding: 14px 18px;
+    bottom: 24px;
+    right: 24px;
+    background: var(--white);
+    border-radius: var(--radius-full);
+    padding: 10px 18px;
     text-decoration: none;
-    z-index: 9999;
-    transition: all 0.3s ease;
+    z-index: 9998;
     cursor: pointer;
-    border: 2px solid #f0f0f0;
-    animation: slideIn 0.5s ease, pulse 3s ease-in-out 2s infinite;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.04);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    animation: badgeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1s both;
   }
 
-  .google-reviews-badge:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-    border-color: #4285F4;
+  .google-badge:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.06);
+    color: inherit;
   }
 
-  @keyframes slideIn {
+  @keyframes badgeSlideUp {
     from {
-      transform: translateX(400px);
       opacity: 0;
+      transform: translateY(20px);
     }
     to {
-      transform: translateX(0);
       opacity: 1;
+      transform: translateY(0);
     }
   }
 
-  @keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.05);
-    }
-  }
-
-  .badge-content {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    align-items: center;
-  }
-
-  .badge-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .badge-icon svg {
-    width: 32px;
-    height: 32px;
-  }
-
-  .badge-info {
+  .google-badge-inner {
     display: flex;
     align-items: center;
     gap: 8px;
+    white-space: nowrap;
   }
 
-  .badge-stars {
+  .google-badge-logo {
     display: flex;
-    gap: 2px;
+    align-items: center;
+    flex-shrink: 0;
   }
 
-  .badge-rating {
-    font-size: 18px;
+  .google-badge-rating {
+    font-size: 0.9375rem;
     font-weight: 700;
-    color: #333;
+    color: var(--black);
+    line-height: 1;
   }
 
-  .badge-label {
-    font-size: 11px;
-    color: #999;
+  .google-badge-stars {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+  }
+
+  .google-badge-stars svg {
+    display: block;
+  }
+
+  .google-badge-count {
+    font-size: 0.8125rem;
+    color: #666;
     font-weight: 500;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    line-height: 1;
   }
 
-  /* Mobile responsiveness */
+  /* Tablet */
   @media (max-width: 768px) {
-    .google-reviews-badge {
-      bottom: 15px;
-      right: 15px;
-      padding: 12px 14px;
+    .google-badge {
+      bottom: 18px;
+      right: 18px;
+      padding: 8px 14px;
     }
 
-    .badge-icon svg {
-      width: 28px;
-      height: 28px;
+    .google-badge-logo svg {
+      width: 18px;
+      height: 18px;
     }
 
-    .badge-stars svg {
+    .google-badge-stars svg {
       width: 12px;
       height: 12px;
     }
 
-    .badge-rating {
-      font-size: 16px;
+    .google-badge-rating {
+      font-size: 0.875rem;
     }
 
-    .badge-label {
-      font-size: 10px;
+    .google-badge-count {
+      font-size: 0.75rem;
     }
   }
 
-  /* Very small screens */
+  /* Small mobile */
   @media (max-width: 480px) {
-    .google-reviews-badge {
-      bottom: 10px;
-      right: 10px;
-      padding: 10px 12px;
-    }
-
-    .badge-content {
+    .google-badge {
+      bottom: 14px;
+      right: 14px;
+      padding: 7px 12px;
       gap: 6px;
     }
 
-    .badge-icon svg {
-      width: 24px;
-      height: 24px;
+    .google-badge-inner {
+      gap: 6px;
     }
 
-    .badge-stars svg {
+    .google-badge-logo svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .google-badge-stars svg {
       width: 11px;
       height: 11px;
     }
 
-    .badge-rating {
-      font-size: 14px;
-    }
-
-    .badge-label {
-      font-size: 9px;
+    .google-badge-count {
+      display: none;
     }
   }
 </style>
